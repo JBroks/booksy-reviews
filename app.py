@@ -11,6 +11,9 @@ app = Flask(__name__)
 app.config['MONGO_DBNAME'] = 'booksDB'
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 
+# Configure SECRET_KEY and pass it via os environment
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
 # Set up the connection to the booksyDB database
 
 mongo = PyMongo(app)
