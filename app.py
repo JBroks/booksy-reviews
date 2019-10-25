@@ -1,8 +1,9 @@
 import os
 # Import Flask functionality in order to set up the application for use
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from forms import LoginForm
 
 # Create an instance of Flask / Flask app and store it in the app variable
 app = Flask(__name__)
@@ -18,11 +19,22 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 mongo = PyMongo(app)
 
-# Create a function with a route in it
+# Function with a route in it that will direct you to the landing site / home page
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template("index.html")
+
+# Function that will renders sign in template
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)
+
+
+
+
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
