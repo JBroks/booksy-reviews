@@ -1,6 +1,6 @@
 import os
 # Import Flask functionality in order to set up the application for use
-from flask import Flask, render_template, flash, redirect, request, url_for
+from flask import Flask, render_template, flash, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from bson.objectid import ObjectId
@@ -21,8 +21,8 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 # Set up the connection to the booksyDB database
 
 mongo = PyMongo(app)
-login = LoginManager(app)
-login.login_view = 'login'
+loginM = LoginManager(app)
+loginM.login_view = 'login'
 
 class User:
     def __init__(self, username):
@@ -48,13 +48,6 @@ class User:
         return check_password_hash(password_hash, password)
 
 
-    @login.user_loader
-    def load_user(self):
-        user = mongo.db.users.find_one({"username": self.username})
-        if not user:
-            return None
-        return User(username=user['username'])
-
 # Function with a route in it that will direct you to the landing site / home page
 @app.route('/')
 @app.route('/index')
@@ -65,7 +58,8 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return flash('You are currently logged in!', 'success')
+        flash('You are currently logged in!', 'success')
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         existing_user = mongo.db.users.find_one({"username": form.username.data}, {"email": form.email.data})
@@ -78,7 +72,31 @@ def register():
             flash('Username or email that you provided already exists', 'danger')
             
     return render_template('register.html', title='Sign Up', form=form)
-    
+
+@loginM.user_loader
+def load_user(username):
+    u = mongo.db.users.find_one({"username": username})
+    if not u:
+        return None
+    return User(u['username'])
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        user = mongo.db.users.find_one({"username": form.username.data})
+        if user and User.check_password(user['password'], form.password.data):
+            user_obj = User(user['username'])
+            login_user(user_obj)
+            flash("Logged in successfully", category='success')
+            return redirect(request.args.get("next") or url_for("index"))
+        flash("Wrong username or password", category='error')
+    return render_template('login.html', title='login', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
