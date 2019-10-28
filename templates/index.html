@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <div>
-    <div><h1>"To read or not to read...that is a silly question!"</h1></div>
+    <div>
+        <h1>"To read or not to read...that is a silly question!"</h1>
+    </div>
 </div>
 <div>
     <h2>Welcome to Booksy</h2>
@@ -9,11 +11,14 @@
     <p>Read Reviews, Find New Books and Share Opinions</p>
 </div>
 
-<div>
-    <button>Sign Up</button>
-</div>
-<div>
-    <button><a href="{{ url_for('login') }}">Sign In</a></button>
-</div>
 
-{% endblock %}
+{% if current_user.is_authenticated %} {% else %}
+<div class="row">
+    <div class="col s6">
+        <button><a href="{{ url_for('register') }}">Sign Up</a></button>
+    </div>
+    <div class="col s6">
+        <button><a href="{{ url_for('login') }}">Sign In</a></button>
+    </div>
+</div>
+{% endif %} {% endblock %}

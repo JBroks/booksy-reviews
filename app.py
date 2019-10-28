@@ -67,7 +67,7 @@ def register():
             password = generate_password_hash(request.form['password'])
             mongo.db.users.insert_one({'username': request.form['username'],'email': request.form['email'],
                              'password': password})
-            flash('Congratulations, you are now a registered user!')
+            flash(f'Congratulations {form.username.data}, you are now a registered user!')
         else:
             flash('Username or email that you provided already exists', 'danger')
             
@@ -88,9 +88,9 @@ def login():
         if user and User.check_password(user['password'], form.password.data):
             user_obj = User(user['username'])
             login_user(user_obj)
-            flash("Logged in successfully", category='success')
+            flash(f'Hello {form.username.data}, you have successfully logged into your account', 'success')
             return redirect(request.args.get("next") or url_for("index"))
-        flash("Wrong username or password", category='error')
+        flash("Wrong username or password", 'error')
     return render_template('login.html', title='login', form=form)
 
 @app.route('/logout')
