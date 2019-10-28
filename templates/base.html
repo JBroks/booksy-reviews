@@ -9,38 +9,92 @@
     {% else %}
     <title>Booksy</title>
     {% endif %}
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 
 <body>
+
     <nav>
-         <a href="{{ url_for('index') }}">Home</a>
-         
         {% if current_user.is_authenticated %}
-        <a href="{{ url_for('logout') }}">Sign Out</a>
+        <div class="nav-wrapper">
+            <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="">Collection</a></li>
+                <li><a href="">Add Review</a></li>
+                <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                <li><a href="">Account</a></li>
+                <li>
+                    <div>
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="">Collection</a></li>
+                <li><a href="">Add Review</a></li>
+                <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                <li><a href="">Account</a></li>
+                <li>
+                    <div>
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
         {% else %}
-        <a href="{{ url_for('login') }}">Sign In</a>
-        <a href="{{ url_for('register') }}">Sign Up</a>
+        <div class="nav-wrapper">
+            <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Sign In</a></li>
+                <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Sign In</a></li>
+                <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+            </ul>
+        </div>
         {% endif %}
-        
     </nav>
     <div class="container">
-        
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
+
+        {% with messages = get_flashed_messages() %} {% if messages %}
         <ul>
             {% for message in messages %}
             <li>{{ message }}</li>
             {% endfor %}
         </ul>
-        {% endif %}
-        {% endwith %}
-        
-        {% block content %} {% endblock %}
+        {% endif %} {% endwith %} {% block content %} {% endblock %}
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+        });
+    </script>
 </body>
 
 </html>
