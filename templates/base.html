@@ -15,7 +15,7 @@
 
 <body>
 
-    <nav>
+    <nav class="">
         {% if current_user.is_authenticated %}
         <div class="nav-wrapper">
             <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
@@ -25,36 +25,14 @@
                 <li><a href="">Collection</a></li>
                 <li><a href="">Add Review</a></li>
                 <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
-                <li><a href="">Account</a></li>
-                <li>
-                    <div>
-                        <form>
-                            <div class="input-field">
-                                <input id="search" type="search" required>
-                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                <i class="material-icons">close</i>
-                            </div>
-                        </form>
-                    </div>
-                </li>
+                <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="{{url_for('index')}}">Home</a></li>
                 <li><a href="">Collection</a></li>
                 <li><a href="">Add Review</a></li>
                 <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
-                <li><a href="">Account</a></li>
-                <li>
-                    <div>
-                        <form>
-                            <div class="input-field">
-                                <input id="search" type="search" required>
-                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                <i class="material-icons">close</i>
-                            </div>
-                        </form>
-                    </div>
-                </li>
+                 <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
             </ul>
         </div>
         {% else %}

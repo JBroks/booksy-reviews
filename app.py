@@ -98,6 +98,13 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+@app.route('/user/<username>')
+@login_required
+def profile(username):
+    user = mongo.db.users.find_one({'username': username})
+    return render_template('profile.html', user=user)
+ 
+  
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
