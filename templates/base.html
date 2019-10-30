@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% if title %}
-    <title>{{ title }} - Booksy</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Generate title -->
+    {% if title %}
+    <title>Booksy - {{ title }}</title>
     {% else %}
     <title>Booksy</title>
     {% endif %}
+
+    <!-- Load stylesheets -->
+    <link rel="icon" href="https://img.icons8.com/nolan/64/000000/open-book.png" type="image/png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
+
 </head>
 
 <body>
@@ -21,15 +28,15 @@
             <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{{url_for('index')}}">Home</a></li>
-                <li><a href="">Collection</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
                 <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
                 <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                 <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="{{url_for('index')}}">Home</a></li>
-                <li><a href="">Collection</a></li>
+                <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
                 <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
                 <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                 <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
