@@ -15,10 +15,10 @@
 {% if current_user.is_authenticated %} {% else %}
 <div class="row">
     <div class="col s6">
-        <button><a href="{{ url_for('register') }}">Sign Up</a></button>
+        <button class="btn waves-effect waves-light"><a href="{{ url_for('register') }}">Sign Up</a></button>
     </div>
     <div class="col s6">
-        <button><a href="{{ url_for('login') }}">Sign In</a></button>
+        <button class="btn waves-effect waves-light"><a href="{{ url_for('login') }}">Sign In</a></button>
     </div>
 </div>
 {% endif %} {% endblock %}
