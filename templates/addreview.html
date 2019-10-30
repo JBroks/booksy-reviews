@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% block content %}
+<h3>Add Task</h3>
+<div class="row">
+    <form action="{{ url_for('insert_review') }}" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">title</i>
+                <input id="book_title" name="book_title" type="text" required>
+                <label for="icon_prefix">Book Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">person</i>
+                <input id="author" name="author" type="text" required>
+                <label for="icon_prefix">Author</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">today</i>
+                <input id="publication_year" name="publication_year" type="text" required>
+                <label for="icon_prefix">Publication year</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">poll</i>
+                <select required id="category" name="category_name">
+                  <option value="" disabled selected>Select type</option>
+                  <option value="Fiction">Fiction</option>
+                  <option value="Non-fiction">Non-fiction</option>
+                </select>
+                <label>Book Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">book</i>
+                <input id="book_genre" name="book_genre" type="text" required>
+                <label for="icon_prefix">Book genre</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">image</i>
+                <input id="book_cover" name="book_cover" type="text" required>
+                <label for="icon_prefix">Link to book cover image</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">subject</i>
+                <textarea name="book_summary" id="book_summary" class="materialize-textarea" required></textarea>
+                <label for="icon_telephone">Book Summary</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">subject</i>
+                <textarea name="book_review" id="book_review" class="materialize-textarea" required></textarea>
+                <label for="icon_telephone">Book Review</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input value="{{ user.username }}" name="added_by" id="added_by" type="text" readonly>
+                <label for="added_by">Added by</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add review
+                <i class="material-icons right">playlist_add</i>
+             </button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

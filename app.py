@@ -8,6 +8,7 @@ from forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 # Create an instance of Flask / Flask app and store it in the app variable
 app = Flask(__name__)
 
@@ -103,8 +104,20 @@ def logout():
 def profile(username):
     user = mongo.db.users.find_one({'username': username})
     return render_template('profile.html', user=user)
- 
-  
+
+@app.route('/add_review/<username>')
+@login_required
+def add_review(username):
+    user = mongo.db.users.find_one({'username': username})
+    return render_template('addreview.html', user=user)
+    
+@app.route('/insert_review', methods=['POST'])
+@login_required
+def insert_review():
+    reviews = mongo.db.reviews
+    reviews.insert_one(request.form.to_dict())
+    return render_template('index.html')
+
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

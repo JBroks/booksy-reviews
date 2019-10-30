@@ -23,16 +23,16 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{url_for('index')}}">Home</a></li>
                 <li><a href="">Collection</a></li>
-                <li><a href="">Add Review</a></li>
+                <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
                 <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                 <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="{{url_for('index')}}">Home</a></li>
                 <li><a href="">Collection</a></li>
-                <li><a href="">Add Review</a></li>
+                <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
                 <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
-                 <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
             </ul>
         </div>
         {% else %}
@@ -53,6 +53,7 @@
         </div>
         {% endif %}
     </nav>
+
     <div class="container">
 
         {% with messages = get_flashed_messages() %} {% if messages %}
@@ -71,6 +72,9 @@
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
+        });
+        $(document).ready(function() {
+            $('select').material_select();
         });
     </script>
 </body>
