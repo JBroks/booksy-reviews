@@ -124,11 +124,12 @@ def insert_review():
 
 itemtotal = mongo.db.reviews.find().count()
 
-def get_reviews(offset=0, per_page=4):
+def get_reviews(offset=0, per_page=3):
     collection = mongo.db.reviews.find().sort([("_id", -1)])
     return collection[offset: offset + per_page]
 
 @app.route('/show_collection')
+@login_required
 def show_collection():
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
@@ -141,7 +142,12 @@ def show_collection():
                             page=page,
                             per_page=per_page,
                             pagination=pagination)
-                       
+
+@app.route('/view/<review_id>')
+def view_review(review_id):
+    the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template('viewreview.html', review=the_review)
+    
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

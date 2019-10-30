@@ -2,12 +2,12 @@
 {% block content %} 
 
 
+<div>{{ pagination.links }}</div>
 
 {% for review in reviews %}
 
 <div>{{ loop.index + pagination.skip }}</div>
-<div>{{ pagination.links }}</div>
-
+     
 <div class="row">
     <div class="col s4"><img class="image-collection" src="{{ review.book_cover }}" alt="Picture of {{ review.book_title }}"></div>
     <div class="col l4 m4 s8">
@@ -27,8 +27,9 @@
             <div class="col s12">Likes</div>
         </div>
     </div>
-    <div class="col l4 m4 s12"><button class="btn waves-effect waves-light">View</button></div>
+    <div class="col l4 m4 s12"><button class="btn waves-effect waves-light"><a href="{{url_for('view_review', review_id=review._id)}}">View</a></button></div>
 </div>
+
 
 {% if loop.index == (loop.length - 1) %}
 
