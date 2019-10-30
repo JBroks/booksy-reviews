@@ -92,7 +92,7 @@ def login():
             flash(f'Hello {form.username.data}, you have successfully logged into your account', 'success')
             return redirect(request.args.get("next") or url_for("index"))
         flash("Wrong username or password", 'error')
-    return render_template('login.html', title='login', form=form)
+    return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/logout')
 def logout():
@@ -103,13 +103,13 @@ def logout():
 @login_required
 def profile(username):
     user = mongo.db.users.find_one({'username': username})
-    return render_template('profile.html', user=user)
+    return render_template('profile.html', user=user, title='Profile')
 
 @app.route('/add_review/<username>')
 @login_required
 def add_review(username):
     user = mongo.db.users.find_one({'username': username})
-    return render_template('addreview.html', user=user)
+    return render_template('addreview.html', user=user, title='Add Review')
     
 @app.route('/insert_review', methods=['POST'])
 @login_required
@@ -117,6 +117,11 @@ def insert_review():
     reviews = mongo.db.reviews
     reviews.insert_one(request.form.to_dict())
     return render_template('index.html')
+
+@app.route('/show_collection')
+def show_collection():
+    return render_template("collection.html", 
+                           reviews=mongo.db.reviews.find(), title='Collection')
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
