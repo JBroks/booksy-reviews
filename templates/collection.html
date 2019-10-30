@@ -6,7 +6,7 @@
 {% for review in reviews %}
 
 <div>{{ loop.index + pagination.skip }}</div>
-
+<div>{{ pagination.links }}</div>
 
 <div class="row">
     <div class="col s4"><img class="image-collection" src="{{ review.book_cover }}" alt="Picture of {{ review.book_title }}"></div>

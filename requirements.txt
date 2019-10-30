@@ -7,6 +7,7 @@ dnspython==1.16.0
 docutils==0.15.2
 Flask==1.1.1
 Flask-Login==0.4.1
+flask-paginate==0.5.4
 Flask-PyMongo==2.3.0
 Flask-WTF==0.14.2
 ikp3db==1.1.4

@@ -1,7 +1,7 @@
 import os
 # Import Flask functionality in order to set up the application for use
 from flask import Flask, render_template, flash, redirect, request, url_for, session
-from flask_paginate import Pagination, get_page_parameter, get_page_args
+from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from bson.objectid import ObjectId
@@ -119,15 +119,29 @@ def insert_review():
     reviews = mongo.db.reviews
     reviews.insert_one(request.form.to_dict())
     return render_template('index.html')
+    
+# Reviews collection pagination
+
+itemtotal = mongo.db.reviews.find().count()
+
+def get_reviews(offset=0, per_page=4):
+    collection = mongo.db.reviews.find().sort([("_id", -1)])
+    return collection[offset: offset + per_page]
 
 @app.route('/show_collection')
 def show_collection():
-    reviews=mongo.db.reviews.find().sort([("_id", -1)])
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, per_page=4, total=reviews.count(), record_name='reviews')
-    return render_template("collection.html", 
-                           reviews=reviews, pagination=pagination, title='Collection')
-                        
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                           per_page_parameter='per_page')
+    total = itemtotal
+    paginated_reviews = get_reviews(offset=offset, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total,
+                            css_framework='materialize')
+    return render_template('collection.html',
+                            reviews=paginated_reviews,
+                            page=page,
+                            per_page=per_page,
+                            pagination=pagination)
+                       
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
