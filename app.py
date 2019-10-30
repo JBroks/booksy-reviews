@@ -69,6 +69,7 @@ def register():
             mongo.db.users.insert_one({'username': request.form['username'],'email': request.form['email'],
                              'password': password})
             flash(f'Congratulations {form.username.data}, you are now a registered user!')
+            return redirect(url_for('login'))
         else:
             flash('Username or email that you provided already exists', 'danger')
             
