@@ -1,6 +1,7 @@
 import os
 # Import Flask functionality in order to set up the application for use
 from flask import Flask, render_template, flash, redirect, request, url_for, session
+from flask_paginate import Pagination, get_page_parameter, get_page_args
 from flask_pymongo import PyMongo
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from bson.objectid import ObjectId
@@ -121,9 +122,12 @@ def insert_review():
 
 @app.route('/show_collection')
 def show_collection():
+    reviews=mongo.db.reviews.find().sort([("_id", -1)])
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, per_page=4, total=reviews.count(), record_name='reviews')
     return render_template("collection.html", 
-                           reviews=mongo.db.reviews.find(), title='Collection')
-
+                           reviews=reviews, pagination=pagination, title='Collection')
+                        
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
