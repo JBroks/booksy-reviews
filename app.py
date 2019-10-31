@@ -8,7 +8,7 @@ from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm
 from werkzeug.urls import url_parse
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from datetime import datetime
 
 # Create an instance of Flask / Flask app and store it in the app variable
 app = Flask(__name__)
@@ -143,24 +143,28 @@ def show_collection():
                             pagination=pagination)
 
 @app.route('/view/<review_id>')
+@login_required
 def view_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template('viewreview.html', review=the_review)
 
 @app.route('/delete_review/<review_id>')
+@login_required
 def delete_review(review_id):
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
     return redirect(url_for('show_collection'))
 
 @app.route('/edit_review/<review_id>')
+@login_required
 def edit_review(review_id):
     the_review =  mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template('editreview.html', review=the_review)
 
 @app.route('/update_review/<review_id>', methods=["POST"])
+@login_required
 def update_review(review_id):
     reviews = mongo.db.reviews
-    reviews.update( {'_id': ObjectId(review_id)},
+    reviews.update({'_id': ObjectId(review_id)},
     {
         'title':request.form.get('title'),
         'author':request.form.get('author'),
@@ -173,6 +177,16 @@ def update_review(review_id):
         'added_by': request.form.get('added_by')
     })
     return redirect(url_for('show_collection'))
+
+@app.route('/upvote/<review_id>', methods=['GET', 'POST'])
+def upvote(review_id):
+    mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},{'$inc': {'upvote': 1}})
+    return redirect(url_for('view_review', review_id=review_id))
+    
+@app.route('/downvote/<review_id>', methods=['GET', 'POST'])
+def downvote(review_id):
+    mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},{'$inc': {'downvote': 1}})
+    return redirect(url_for('view_review', review_id=review_id))
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':

@@ -27,11 +27,18 @@
         <div class="row">
             <div class="col s12">Review submitted by: {{ review.added_by }}</div>
         </div>
+         <div class="row left">
+            <div class="col s3"><i class="material-icons">thumb_up</i></div>
+            <div class="col s2"><span>{{ review.upvote }}</span></div>
+            <div class="col s3"><i class="material-icons">thumb_down</i></div>
+            <div class="col s2"><span>{{ review.downvote }}</span></div>
+        </div>
         <div class="row">
             <div class="col s12 center-on-small-only"><button class="btn waves-effect waves-light"><a href="http://www.google.com/search?q={{ review.title }}" target="_new"></a>Buy online
                 <i class="material-icons right">add_shopping_cart</i>
              </button></div>
         </div>
+       
     </div>
 </div>
 
@@ -69,16 +76,13 @@
 <!-- Likes and like, Delete and Edit buttons -->
 
 <div class="row center">
-    <div class="col m3 s6">Likes</div>
-    <div class="col m3 s6"><a class="waves-effect waves-light btn btn_small">Like<i class="material-icons right">thumb_up</i></a></div>
     {% if current_user.username == review.added_by %}
-    <div class="col m3 s6"><a href="{{url_for('edit_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Edit<i class="material-icons right">edit</i></a></div>
-    <div class="col m3 s6"><a href="{{url_for('delete_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Delete<i class="material-icons right">delete</i></a></div>
+    <div class="col s6"><a href="{{url_for('edit_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Edit<i class="material-icons right">edit</i></a></div>
+    <div class="col s6"><a href="{{url_for('delete_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Delete<i class="material-icons right">delete</i></a></div>
+    {% else %}
+    <div class="col s6"><a href="{{ url_for('upvote', review_id=review._id ) }}" class="waves-effect waves-light btn btn_small">Like<i class="material-icons right">thumb_up</i></a></div>
+    <div class="col s6"><a href="{{ url_for('downvote', review_id=review._id ) }}" class="waves-effect waves-light btn btn_small">Dislike<i class="material-icons right">thumb_down</i></a></div>
     {% endif %}
 </div>
 
-<hr>
-
-
-
-{% endblock %}
+<hr> {% endblock %}
