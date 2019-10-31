@@ -152,7 +152,27 @@ def delete_review(review_id):
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
     return redirect(url_for('show_collection'))
 
+@app.route('/edit_review/<review_id>')
+def edit_review(review_id):
+    the_review =  mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    return render_template('editreview.html', review=the_review)
 
+@app.route('/update_review/<review_id>', methods=["POST"])
+def update_review(review_id):
+    reviews = mongo.db.reviews
+    reviews.update( {'_id': ObjectId(review_id)},
+    {
+        'title':request.form.get('title'),
+        'author':request.form.get('author'),
+        'publication_year': request.form.get('publication_year'),
+        'type': request.form.get('type'),
+        'genre': request.form.get('genre'),
+        'cover': request.form.get('cover'),
+        'summary': request.form.get('summary'),
+        'review': request.form.get('review'),
+        'added_by': request.form.get('added_by')
+    })
+    return redirect(url_for('show_collection'))
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
