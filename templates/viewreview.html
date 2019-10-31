@@ -66,15 +66,19 @@
     </div>
 </div>
 
-<!-- Likes and like, Deletee and Edit buttons -->
+<!-- Likes and like, Delete and Edit buttons -->
 
 <div class="row center">
-    <div class="col l3 m3 s12">Likes</div>
-    <div class="col l3 m3 s4"><a>Like</a></div>
-    <div class="col l3 m3 s4"><a>Edit</a></div>
-    <div class="col l3 m3 s4"><a>Delete</a></div>
+    <div class="col m3 s6">Likes</div>
+    <div class="col m3 s6"><a class="waves-effect waves-light btn btn_small">Like<i class="material-icons right">thumb_up</i></a></div>
+    {% if current_user.username == review.added_by %}
+    <div class="col m3 s6"><a href="" class="waves-effect waves-light btn btn_small">Edit<i class="material-icons right">edit</i></a></div>
+    <div class="col m3 s6"><a href="{{url_for('delete_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Delete<i class="material-icons right">delete</i></a></div>
+    {% endif %}
 </div>
 
 <hr>
+
+
 
 {% endblock %}
