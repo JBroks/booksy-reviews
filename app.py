@@ -118,7 +118,7 @@ def add_review(username):
 def insert_review():
     reviews = mongo.db.reviews
     reviews.insert_one(request.form.to_dict())
-    return render_template('index.html')
+    return redirect(url_for('show_collection'))
     
 # Reviews collection pagination
 
@@ -146,7 +146,14 @@ def show_collection():
 def view_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template('viewreview.html', review=the_review)
-    
+
+@app.route('/delete_review/<review_id>')
+def delete_review(review_id):
+    mongo.db.reviews.remove({'_id': ObjectId(review_id)})
+    return redirect(url_for('show_collection'))
+
+
+
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
