@@ -135,8 +135,7 @@ def show_collection():
                                            per_page_parameter='per_page')
     total = itemtotal
     paginated_reviews = get_reviews(offset=offset, per_page=per_page)
-    pagination = Pagination(page=page, per_page=per_page, total=total,
-                            css_framework='materialize')
+    pagination = Pagination(page=page, per_page=per_page, total=total)
     return render_template('collection.html',
                             reviews=paginated_reviews,
                             page=page,
