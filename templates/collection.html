@@ -29,9 +29,7 @@
             <div class="col s2"><span>{{ review.downvote }}</span></div>
         </div>
     </div>
-    <div class="col l3 m3 valign-wrapper center-align"><button class="btn waves-effect waves-light"><a href="{{url_for('view_review', review_id=review._id)}}">View</a>
-                <i class="material-icons right">local_library</i>
-             </button>
+    <div class="col l3 m3 valign-wrapper center-align"><a class="btn waves-effect waves-light" href="{{url_for('view_review', review_id=review._id)}}"><i class="material-icons right">local_library</i>View</a>
         </div>
 </div>
 
