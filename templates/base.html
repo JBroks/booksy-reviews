@@ -22,7 +22,7 @@
 
 <body>
 
-    <nav class="teal lighten-1">
+    <nav class="">
         {% if current_user.is_authenticated %}
         <div class="nav-wrapper">
             <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
@@ -72,6 +72,23 @@
         {% endif %} {% endwith %} {% block content %} {% endblock %}
 
     </div>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Disclaimer</h5>
+                    <p class="grey-text text-lighten-4">For educational purposes only</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                &copy; 2019 JBroks. All rights reserved.
+                <a class="grey-text text-lighten-4 right" href="https://github.com/JBroks/booksy-reviews" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Loading scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
