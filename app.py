@@ -125,7 +125,7 @@ def profile(username):
 @login_required
 def delete_account(user_id):
     mongo.db.users.remove({'_id': ObjectId(user_id)})
-    flash('Your account has been deleted.')
+    flash('We are sorry to see you go, please note that your account has been pernamently deleted.')
     return redirect(url_for('index'))
 
 # Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
