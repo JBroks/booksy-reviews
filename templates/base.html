@@ -22,7 +22,7 @@
 
 <body>
 
-    <nav class="">
+    <nav class="teal lighten-1">
         {% if current_user.is_authenticated %}
         <div class="nav-wrapper">
             <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
@@ -69,24 +69,14 @@
             <li>{{ message }}</li>
             {% endfor %}
         </ul>
-        {% endif %} {% endwith %} 
-        
-        {% block content %} {% endblock %}
+        {% endif %} {% endwith %} {% block content %} {% endblock %}
 
     </div>
 
+    <!-- Loading scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.collapsible').collapsible();
-            $('select').material_select();
-            $(".button-collapse").sideNav();
-        });
-        $(document).ready(function() {
-            $('select').material_select();
-        });
-    </script>
+    <script src="{{url_for('static', filename='js/script.js')}}" type="text/javascript"></script>
 </body>
 
 </html>
