@@ -101,6 +101,14 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+# Function that records time and date when a particular user (current user) was seen last
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        username = current_user.get_id()
+        mongo.db.users.find_one_and_update({'username': username}, {'$set': {'last_seen': current_user.last_seen}})
+
 @app.route('/user/<username>')
 @login_required
 def profile(username):
@@ -177,12 +185,15 @@ def update_review(review_id):
         'added_by': request.form.get('added_by')
     })
     return redirect(url_for('show_collection'))
-
+    
+# Functions that allows upvoting and adds increment of 1 to the review table
+ 
 @app.route('/upvote/<review_id>', methods=['GET', 'POST'])
 def upvote(review_id):
     mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},{'$inc': {'upvote': 1}})
     return redirect(url_for('view_review', review_id=review_id))
-    
+ 
+# Functions that allows downvoting and adds increment of 1 to the review table    
 @app.route('/downvote/<review_id>', methods=['GET', 'POST'])
 def downvote(review_id):
     mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},{'$inc': {'downvote': 1}})
