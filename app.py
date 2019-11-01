@@ -26,6 +26,7 @@ mongo = PyMongo(app)
 loginM = LoginManager(app)
 loginM.login_view = 'login'
 
+# User class
 class User:
     def __init__(self, username):
         self.username = username
@@ -82,7 +83,8 @@ def load_user(username):
     if not u:
         return None
     return User(u['username'])
-
+    
+# Function that logs user in and checked if password is correct
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -96,6 +98,7 @@ def login():
         flash("Wrong username or password", 'error')
     return render_template('login.html', title='Sign In', form=form)
 
+# Function that enables user logout
 @app.route('/logout')
 def logout():
     logout_user()
@@ -114,9 +117,9 @@ def before_request():
 @login_required
 def profile(username):
     user = mongo.db.users.find_one({'username': username})
-    user_review = mongo.db.reviews.find({'added_by': username }).sort([("_id", -1)])
+    user_review = mongo.db.reviews.find({"added_by": username })
     return render_template('profile.html', user=user, reviews=user_review, title='Profile')
-  
+
 # Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
 @app.route('/add_review/<username>')
 @login_required
@@ -154,6 +157,7 @@ def show_collection():
                             per_page=per_page,
                             pagination=pagination)
 
+# Function that renders view review template of a selected by user review
 @app.route('/view/<review_id>')
 @login_required
 def view_review(review_id):
@@ -165,15 +169,22 @@ def view_review(review_id):
 @login_required
 def delete_review(review_id):
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
-    flash('Your review has been permanently deleted from our collection.')
     return redirect(url_for('show_collection'))
+    
+# Function that deletes review - user accessing it from 'profile' page
+@app.route('/delete_review/<review_id>')
+def delete_review_profile(review_id):
+    mongo.db.reviews.remove({'_id': ObjectId(review_id)})
+    return redirect(url_for('profile'))
  
+# Function that renders edit review template i.e. displays edit review form to the user 
 @app.route('/edit_review/<review_id>')
 @login_required
 def edit_review(review_id):
     the_review =  mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template('editreview.html', review=the_review)
 
+# Function that submits user input to the database
 @app.route('/update_review/<review_id>', methods=["POST"])
 @login_required
 def update_review(review_id):
