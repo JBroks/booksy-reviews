@@ -114,7 +114,7 @@ def before_request():
 @login_required
 def profile(username):
     user = mongo.db.users.find_one({'username': username})
-    user_review = mongo.db.reviews.find({'added_by': username })
+    user_review = mongo.db.reviews.find({'added_by': username }).sort([("_id", -1)])
     return render_template('profile.html', user=user, reviews=user_review, title='Profile')
   
 # Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
