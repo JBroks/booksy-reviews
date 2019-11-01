@@ -109,18 +109,22 @@ def before_request():
         username = current_user.get_id()
         mongo.db.users.find_one_and_update({'username': username}, {'$set': {'last_seen': current_user.last_seen}})
 
+# Function that displays user name in his/her profile and displays all reviews added by the user
 @app.route('/user/<username>')
 @login_required
 def profile(username):
     user = mongo.db.users.find_one({'username': username})
-    return render_template('profile.html', user=user, title='Profile')
+    user_review = mongo.db.reviews.find({"added_by": username })
+    return render_template('profile.html', user=user, reviews=user_review, title='Profile')
 
+# Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
 @app.route('/add_review/<username>')
 @login_required
 def add_review(username):
     user = mongo.db.users.find_one({'username': username})
     return render_template('addreview.html', user=user, title='Add Review')
-    
+
+# Function that sends user input (review record) to the reviews database - activated when user clicks "add review" button  
 @app.route('/insert_review', methods=['POST'])
 @login_required
 def insert_review():
