@@ -1,30 +1,31 @@
 {% extends 'base.html' %} {% block content %}
-
-<div>
+<div class="container home-page-container">
     <div>
-        <h1>"To read or not to read...that is a silly question!"</h1>
+        <div>
+            <h1>"To read or not to read...that is a silly question!"</h1>
+        </div>
     </div>
-</div>
-<div>
-    <h2>Welcome to Booksy</h2>
-    <p>New Way to Explore Books</p>
-    <p>Read Reviews, Find New Books and Share Opinions</p>
+    <div>
+        <h2>Welcome to Booksy</h2>
+        <p>New Way to Explore Books</p>
+        <p>Read Reviews, Find New Books and Share Opinions</p>
+    </div>
+
+    {% if current_user.is_authenticated %}
+    <div class="row">
+        <div class="col s12">
+            <a class="btn waves-effect waves-light" href="{{ url_for('show_collection') }}">See our collection</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col s6">
+            <a class="btn waves-effect waves-light" href="{{ url_for('register') }}">Sign Up</a>
+        </div>
+        <div class="col s6">
+            <a class="btn waves-effect waves-light" href="{{ url_for('login') }}">Sign In</a>
+        </div>
+    </div>
 </div>
 
-
-{% if current_user.is_authenticated %}
-<div class="row">
-    <div class="col s12">
-        <a class="btn waves-effect waves-light" href="{{ url_for('show_collection') }}">See our collection</a>
-    </div>
-</div>
-{% else %}
-<div class="row">
-    <div class="col s6">
-        <a class="btn waves-effect waves-light" href="{{ url_for('register') }}">Sign Up</a>
-    </div>
-    <div class="col s6">
-        <a class="btn waves-effect waves-light" href="{{ url_for('login') }}">Sign In</a>
-    </div>
-</div>
 {% endif %} {% endblock %}

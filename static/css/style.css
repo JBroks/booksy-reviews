@@ -1,9 +1,40 @@
+/* Remove padding and margins for body and h5 */
+
+body, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Create equivalent of bootstrap's fluid container 
+source: https://stackoverflow.com/questions/37194886/does-materialize-css-framework-have-a-container-fluid-equivalent*/
+
+.container {
+  width: 100%;
+  max-width:initial;
+}
+.container > .row {
+  margin: 0;
+}
+.container > .row > .col {
+  padding: 0;
+}
+
 .image-collection {
     max-width: 100%;
     max-height: 100%;
 }
 
-/* To make image smaller for the profile page display */
+/* Make image smaller for the profile page display */
 .image-profile {
     max-width: 30%;
 }
+
+/* Background photo for home page */
+.home-page-container {
+    height: 70vh;
+    background-image: url('../images/open-book.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
