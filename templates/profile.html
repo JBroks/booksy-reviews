@@ -6,6 +6,7 @@
     <div class="row">
         <div class="col s12">Username: {{ user.username }}</div>
         <div class="col s12">Last seen:  {{ user.last_seen }}</div>
+        <div class="col s12"><a href= "{{url_for('delete_account', user_id=user._id)}}" >Delete account</a></div>
     </div>
     
     <div class="row">

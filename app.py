@@ -120,6 +120,14 @@ def profile(username):
     user_review = mongo.db.reviews.find({'added_by': username }).sort([("_id", -1)])
     return render_template('profile.html', user=user, reviews=user_review, title='Profile')
 
+# Function that deletes the user account
+@app.route('/delete_account/<user_id>')
+@login_required
+def delete_account(user_id):
+    mongo.db.users.remove({'_id': ObjectId(user_id)})
+    flash('Your account has been deleted.')
+    return redirect(url_for('index'))
+
 # Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
 @app.route('/add_review/<username>')
 @login_required
