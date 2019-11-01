@@ -114,9 +114,9 @@ def before_request():
 @login_required
 def profile(username):
     user = mongo.db.users.find_one({'username': username})
-    user_review = mongo.db.reviews.find({"added_by": username })
+    user_review = mongo.db.reviews.find({'added_by': username })
     return render_template('profile.html', user=user, reviews=user_review, title='Profile')
-
+  
 # Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
 @app.route('/add_review/<username>')
 @login_required
@@ -160,12 +160,14 @@ def view_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     return render_template('viewreview.html', review=the_review)
 
+# Function that deletes review - user accessing it from 'view review' page
 @app.route('/delete_review/<review_id>')
 @login_required
 def delete_review(review_id):
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
+    flash('Your review has been permanently deleted from our collection.')
     return redirect(url_for('show_collection'))
-
+ 
 @app.route('/edit_review/<review_id>')
 @login_required
 def edit_review(review_id):

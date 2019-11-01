@@ -17,8 +17,8 @@
     <div class="row">
         <div class="col m2 s12 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
         <div class="col m6 s12 center-on-small-only">{{ review.title }} by {{ review.author }}</div>
-        <div class="col m2 s6 center">Edit</div>
-        <div class="col m2 s6 center">Delete</div>
+        <div class="col m2 s6 center"><a href="{{url_for('edit_review', review_id=review._id)}}">Edit</a></div>
+        <div class="col m2 s6 center"><a href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
     </div>
       
     {% endfor %}
