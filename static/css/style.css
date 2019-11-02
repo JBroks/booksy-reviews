@@ -12,7 +12,8 @@ body, h1 {
 /* Font settings */
 
 body,
-.user-reviews a {
+.user-reviews a,
+#profile-review-title a {
     font-family: "Lato", sans-serif;
     color: #373737;
 }
@@ -76,7 +77,7 @@ nav .nav-wrapper {
 /* Make image smaller for the profile page display */
 
 .image-profile {
-    max-width: 30%;
+    max-width: 50%;
 }
 
 /* Background photo for home page*/
@@ -107,32 +108,36 @@ main {
 /* Link hover effect. Source: https://codepen.io/jstn/pen/zuDst */
 
 .user-reviews a {
-  color: #373737;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 0.10em;
-  
-  display: inline-block;
-  padding: 10px 15px;
-  position: relative;
+    color: #373737;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.10em;
+
+    display: inline-block;
+    padding: 3px 12px;
+    position: relative;
 }
 
-.user-reviews a:after {    
-  background: none repeat scroll 0 0 transparent;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: #373737;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
+.user-reviews a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #373737;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
 }
 
-.user-reviews a:hover:after { 
-  width: 100%; 
-  left: 0; 
+.user-reviews a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+#profile-review-title a:hover {
+    color: #a99c72;
 }
 
 /* Accordion header background color and font styling */

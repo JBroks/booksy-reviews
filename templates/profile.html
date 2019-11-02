@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %}
 <div class="content-container">
-    <h1>Hello, {{ user.username }}</h1>
+    <h2>Hello, {{ user.username }}</h2>
     <hr>
     <div class="row">
         <div class="col s12">Username: {{ user.username }}</div>
@@ -12,15 +12,15 @@
 
     <div class="row">
         <div class="col s12">
-            <h2>{{ user.username }}'s reviews</h2>
+            <h3>{{ user.username }}'s reviews</h3>
         </div>
     </div>
     <hr> {% for review in reviews %}
-    <div class="row user-reviews">
-        <div class="col m2 s12 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
-        <div class="col m6 s12 center-on-small-only">{{ review.title }} by {{ review.author }}</div>
-        <div class="col m2 s6 center"><a href="{{url_for('edit_review', review_id=review._id)}}">Edit</a></div>
-        <div class="col m2 s6 center"><a href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
+    <div class="row valign-wrapper">
+        <div class="col m2 s4 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
+        <div class="col m6 s8 center-on-small-only" id="profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
+        <div class="col m2 s6 center hide-on-small-only user-reviews"><a href="{{url_for('edit_review', review_id=review._id)}}">Edit</a></div>
+        <div class="col m2 s6 center hide-on-small-only user-reviews"><a href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
     </div>
 
     {% endfor %}
