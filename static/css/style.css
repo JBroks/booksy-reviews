@@ -5,38 +5,126 @@ body, h1 {
     padding: 0;
 } */
 
-.content-container {
-  background-color: rgba(244, 244, 244, 0.9);
-  padding: 20px 50px;
-  margin: 30px 0;
-  
+/* Import fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne&display=swap');
+
+/* Font settings */
+
+body,
+.user-reviews a {
+    font-family: "Lato", sans-serif;
+    color: #373737;
 }
+
+
+/* Navbar, footer and buttons color set */
+
+nav,
+.page-footer,
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #c0b283;
+}
+
+/* Hover effect and focus color overwritting materialize default */
+
+.btn:focus,
+.btn-large:focus,
+.btn-small:focus,
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+    background-color: #a99c72;
+}
+
+/* Overlay created for forms and text in content-containers */
+
+.content-container {
+    background-color: rgba(244, 244, 244, 0.9);
+    padding: 20px 50px;
+    margin: 30px 0;
+}
+
+/* Index page container settings and h1 styling */
+
+.homepage-container {
+    background-color: rgba(244, 244, 244, 0.7);
+    padding: 20px 50px;
+    margin: 30px 0;
+}
+
+.homepage-container h1 {
+    color: #bdaa6c;
+    font-family: "Parisienne", sans-serif;
+}
+
 /* Set size for images in the collection page */
+
 .image-collection {
     max-width: 100%;
     max-height: 100%;
 }
 
 /* Make image smaller for the profile page display */
+
 .image-profile {
     max-width: 30%;
 }
 
 /* Background photo for home page*/
+
 main {
     background: url('../images/open-book.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-
 /* Materialize sticky footer */
- body {
+
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
+}
 
-  main {
+main {
     flex: 1 0 auto;
-  }
+}
 
+/* Footer link underline */
+
+.footer-copyright a {
+    text-decoration: underline;
+}
+
+/* Link hover effect. Source: https://codepen.io/jstn/pen/zuDst */
+
+.user-reviews a {
+  color: #373737;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.10em;
+  
+  display: inline-block;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.user-reviews a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #373737;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.user-reviews a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
