@@ -1,10 +1,3 @@
-/* Remove padding and margins for body and h5
-
-body, h1 {
-    margin: 0;
-    padding: 0;
-} */
-
 /* Import fonts */
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne&display=swap');
@@ -18,21 +11,46 @@ body,
     color: #373737;
 }
 
+/* Footer gradient color effect */
 
-/* Navbar, footer and buttons color set */
+.page-footer {
+    background: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+}
 
-nav,
-.page-footer,
-.btn,
-.btn-large,
-.btn-small {
-    background-color: #c0b283;
+/* Navbar gradient effect and skew shape. Tutorial used: https://css-tricks.com/creating-non-rectangular-headers/ */
+
+nav:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+    transform: skewY(-4deg);
+    transform-origin: top left;
+}
+
+/* Padding added to main to accomodate the skew navbar effect */
+
+main {
+    padding-top: 180px;
 }
 
 /* Navbar padding */
 
 nav .nav-wrapper {
     padding: 0 30px;
+}
+
+/* Button color changed from default to gold */
+
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #c0b283;
 }
 
 /* Hover effect and focus color overwritting materialize default */
@@ -49,7 +67,7 @@ nav .nav-wrapper {
 /* Overlay created for forms and text in content-containers */
 
 .content-container {
-    background-color: rgba(244, 244, 244, 0.9);
+    background-color: rgba(228, 224, 211, 0.9);
     padding: 20px 50px;
     margin: 30px 0;
 }
@@ -57,7 +75,7 @@ nav .nav-wrapper {
 /* Index page container settings and h1 styling */
 
 .homepage-container {
-    background-color: rgba(244, 244, 244, 0.7);
+    background-color: rgba(228, 224, 211, 0.7);
     padding: 20px 50px;
     margin: 30px 0;
 }
