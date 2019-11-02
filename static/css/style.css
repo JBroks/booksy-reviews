@@ -28,6 +28,12 @@ nav,
     background-color: #c0b283;
 }
 
+/* Navbar padding */
+
+nav .nav-wrapper {
+    padding: 0 30px;
+}
+
 /* Hover effect and focus color overwritting materialize default */
 
 .btn:focus,
@@ -127,4 +133,14 @@ main {
 .user-reviews a:hover:after { 
   width: 100%; 
   left: 0; 
+}
+
+/* Accordion header background color and font styling */
+
+.collapsible-header {
+    background-color: #dcd8ca;
+    border-bottom: 1px solid #b5b5b3;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #848482;
 }
