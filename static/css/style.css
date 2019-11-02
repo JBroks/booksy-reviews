@@ -1,24 +1,17 @@
-/* Remove padding and margins for body and h5 */
+/* Remove padding and margins for body and h5
 
 body, h1 {
     margin: 0;
     padding: 0;
-}
+} */
 
-/* Create equivalent of bootstrap's fluid container 
-source: https://stackoverflow.com/questions/37194886/does-materialize-css-framework-have-a-container-fluid-equivalent*/
-
-.container {
-  width: 100%;
-  max-width:initial;
+.content-container {
+  background-color: rgba(244, 244, 244, 0.9);
+  padding: 20px 50px;
+  margin: 30px 0;
+  
 }
-.container > .row {
-  margin: 0;
-}
-.container > .row > .col {
-  padding: 0;
-}
-
+/* Set size for images in the collection page */
 .image-collection {
     max-width: 100%;
     max-height: 100%;
@@ -29,12 +22,21 @@ source: https://stackoverflow.com/questions/37194886/does-materialize-css-framew
     max-width: 30%;
 }
 
-/* Background photo for home page */
-.home-page-container {
-    height: 70vh;
-    background-image: url('../images/open-book.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
+/* Background photo for home page*/
+main {
+    background: url('../images/open-book.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+
+
+/* Materialize sticky footer */
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
 
