@@ -49,8 +49,7 @@ class User:
     @staticmethod
     def check_password(password_hash, password):
         return check_password_hash(password_hash, password)
-
-
+    
 # Function with a route in it that will direct you to the landing site / home page
 @app.route('/')
 @app.route('/index')
@@ -140,7 +139,19 @@ def add_review(username):
 @login_required
 def insert_review():
     reviews = mongo.db.reviews
-    reviews.insert_one(request.form.to_dict())
+    reviews.insert_one({
+        'title': request.form['title'],
+        'author': request.form['title'],
+        'publication_year': request.form['title'],
+        'type': request.form['title'],
+        'genre': request.form['title'],
+        'cover': request.form['title'],
+        'summary': request.form['title'],
+        'review': request.form['title'],
+        'added_by': request.form['title'],
+        'upvote': []
+    })
+    
     return redirect(url_for('show_collection'))
     
 # Reviews collection pagination
@@ -169,7 +180,7 @@ def show_collection():
 @app.route('/view/<review_id>')
 @login_required
 def view_review(review_id):
-    the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    the_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
     return render_template('viewreview.html', review=the_review)
 
 # Function that deletes review
@@ -210,13 +221,32 @@ def update_review(review_id):
  
 @app.route('/upvote/<review_id>', methods=['GET', 'POST'])
 def upvote(review_id):
-    mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},{'$inc': {'upvote': 1}})
+    
+    username = current_user.get_id()
+    
+    upvoted = mongo.db.reviews.find( { '_id' : ObjectId(review_id) },
+                                        { 'upvote' : { '$elemMatch': 
+                                            { 'username' : username } } } ).count()
+        
+    if upvoted > 0:
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$pull': 
+                                            { 'upvote': 
+                                                {'username': username} } } )
+    else:
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) }, 
+                                        { '$push': 
+                                            { 'upvote': 
+                                            {'username': username}  } } )
+
     return redirect(url_for('view_review', review_id=review_id))
- 
-# Functions that allows downvoting and adds increment of 1 to the review table    
+      
+# Functions that allows downvoting and adds increment of 1 to the review table
+
 @app.route('/downvote/<review_id>', methods=['GET', 'POST'])
 def downvote(review_id):
-    mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},{'$inc': {'downvote': 1}})
+    mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'downvote': 1}})
     return redirect(url_for('view_review', review_id=review_id))
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
