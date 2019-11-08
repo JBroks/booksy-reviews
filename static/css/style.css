@@ -188,7 +188,7 @@ nav .input-field input[type=text]:valid {
 
 /* place search icon inside the input box */
 
-.input-field label:not(.label-icon).active {
+.search-bar .input-field label:not(.label-icon).active {
     transform: translateY(9px) scale(0.7);
     transform-origin: 0 0;
 }
