@@ -245,21 +245,36 @@ def upvote(review_id):
                                         { '$pull':
                                             { 'upvote':
                                             {'username': username}  } } )
+                                            
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'upvote_total': -1}})
+                                            
     elif match_count_downvote > 0:
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$push':
                                             { 'upvote':
                                             {'username': username}  } } )
+                                            
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'upvote_total': 1}})
+                                            
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$pull':
                                             { 'downvote':
-                                            {'username': username}  } } )                                   
+                                            {'username': username}  } } )  
+                                            
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'downvote_total': -1}})
+                                            
     else:
         print("equal to 0")
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$push':
                                             { 'upvote':
                                             {'username': username}  } } )
+                                            
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'upvote_total': 1}})
 
     return redirect(url_for('view_review', review_id=review_id))
       
@@ -286,23 +301,36 @@ def downvote(review_id):
                                         { '$pull':
                                             { 'downvote':
                                             {'username': username}  } } )
+        
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'downvote_total': -1}})
+                                            
     elif match_count_upvote > 0:
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$push':
                                             { 'downvote':
                                             {'username': username}  } } )
+                                            
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'downvote_total': 1}})
+        
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$pull':
                                             { 'upvote':
-                                            {'username': username}  } } )                                   
+                                            {'username': username}  } } ) 
+        
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'upvote_total': -1}})
+        
     else:
         print("equal to 0")
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$push':
                                             { 'downvote':
                                             {'username': username}  } } )
-    
-    
+                                            
+        mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
+                                            {'$inc': {'downvote_total': 1}})
     
     return redirect(url_for('view_review', review_id=review_id))
 
