@@ -14,7 +14,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Configure MONGO_DBNAME and MONGO_URI and pass it via os environment
-app.config['MONGO_DBNAME'] = 'booksDB'
+app.config['MONGO_DBNAME'] = 'booksyDB'
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 
 # Configure SECRET_KEY and pass it via os environment
@@ -218,25 +218,30 @@ def update_review(review_id):
     return redirect(url_for('show_collection'))
     
 # Functions that allows upvoting and adds increment of 1 to the review table
- 
+
 @app.route('/upvote/<review_id>', methods=['GET', 'POST'])
 def upvote(review_id):
+
+    username = current_user.username
     
-    username = current_user.get_id()
-    
-    upvoted = mongo.db.reviews.find( { '_id' : ObjectId(review_id) },
-                                        { 'upvote' : { '$elemMatch': 
-                                            { 'username' : username } } } ).count()
-        
-    if upvoted > 0:
+    match_count = mongo.db.reviews.count_documents({
+        '_id' : ObjectId(review_id),
+        'upvote': {'$elemMatch': { "username": username}},
+    })
+
+
+    if match_count > 0:
+        print("not equal to 0")
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
-                                        { '$pull': 
-                                            { 'upvote': 
-                                                {'username': username} } } )
+                                        { '$pull':
+                                            { 'upvote':
+                                            {'username': username}  } } )
+
     else:
-        mongo.db.reviews.update({ "_id": ObjectId(review_id) }, 
-                                        { '$push': 
-                                            { 'upvote': 
+        print("equal to 0")
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$push':
+                                            { 'upvote':
                                             {'username': username}  } } )
 
     return redirect(url_for('view_review', review_id=review_id))
