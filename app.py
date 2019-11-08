@@ -141,16 +141,19 @@ def insert_review():
     reviews = mongo.db.reviews
     reviews.insert_one({
         'title': request.form['title'],
-        'author': request.form['title'],
-        'publication_year': request.form['title'],
-        'type': request.form['title'],
-        'genre': request.form['title'],
-        'cover': request.form['title'],
-        'summary': request.form['title'],
-        'review': request.form['title'],
-        'added_by': request.form['title'],
+        'author': request.form['author'],
+        'publication_year': request.form['publication_year'],
+        'type': request.form['type'],
+        'genre': request.form['genre'],
+        'cover': request.form['cover'],
+        'summary': request.form['summary'],
+        'review': request.form['review'],
+        'added_by': request.form['added_by'],
         'upvote': [],
-        'downvote': []
+        'downvote': [],
+        'upvote_total': 0,
+        'downvote_total': 0
+        
     })
     
     return redirect(url_for('show_collection'))
@@ -277,7 +280,6 @@ def downvote(review_id):
         'downvote': {'$elemMatch': { "username": username}},
     })
 
-
     if match_count_downvote > 0:
         print("not equal to 0")
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
@@ -299,7 +301,9 @@ def downvote(review_id):
                                         { '$push':
                                             { 'downvote':
                                             {'username': username}  } } )
-
+    
+    
+    
     return redirect(url_for('view_review', review_id=review_id))
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
