@@ -149,7 +149,8 @@ def insert_review():
         'summary': request.form['title'],
         'review': request.form['title'],
         'added_by': request.form['title'],
-        'upvote': []
+        'upvote': [],
+        'downvote': []
     })
     
     return redirect(url_for('show_collection'))
@@ -224,19 +225,32 @@ def upvote(review_id):
 
     username = current_user.username
     
-    match_count = mongo.db.reviews.count_documents({
+    match_count_upvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
         'upvote': {'$elemMatch': { "username": username}},
     })
+    
+    match_count_downvote = mongo.db.reviews.count_documents({
+        '_id' : ObjectId(review_id),
+        'downvote': {'$elemMatch': { "username": username}},
+    })
 
 
-    if match_count > 0:
+    if match_count_upvote > 0:
         print("not equal to 0")
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$pull':
                                             { 'upvote':
                                             {'username': username}  } } )
-
+    elif match_count_downvote > 0:
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$push':
+                                            { 'upvote':
+                                            {'username': username}  } } )
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$pull':
+                                            { 'downvote':
+                                            {'username': username}  } } )                                   
     else:
         print("equal to 0")
         mongo.db.reviews.update({ "_id": ObjectId(review_id) },
@@ -250,8 +264,42 @@ def upvote(review_id):
 
 @app.route('/downvote/<review_id>', methods=['GET', 'POST'])
 def downvote(review_id):
-    mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
-                                            {'$inc': {'downvote': 1}})
+    
+    username = current_user.username
+    
+    match_count_upvote = mongo.db.reviews.count_documents({
+        '_id' : ObjectId(review_id),
+        'upvote': {'$elemMatch': { "username": username}},
+    })
+    
+    match_count_downvote = mongo.db.reviews.count_documents({
+        '_id' : ObjectId(review_id),
+        'downvote': {'$elemMatch': { "username": username}},
+    })
+
+
+    if match_count_downvote > 0:
+        print("not equal to 0")
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$pull':
+                                            { 'downvote':
+                                            {'username': username}  } } )
+    elif match_count_upvote > 0:
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$push':
+                                            { 'downvote':
+                                            {'username': username}  } } )
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$pull':
+                                            { 'upvote':
+                                            {'username': username}  } } )                                   
+    else:
+        print("equal to 0")
+        mongo.db.reviews.update({ "_id": ObjectId(review_id) },
+                                        { '$push':
+                                            { 'downvote':
+                                            {'username': username}  } } )
+
     return redirect(url_for('view_review', review_id=review_id))
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
