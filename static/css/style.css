@@ -2,6 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne&display=swap');
 
+/* Remove margin from rows */
+
+.row {
+    margin: 0;
+}
+
 /* Font settings */
 
 body,
@@ -75,7 +81,7 @@ nav .nav-wrapper {
 /* Index page container settings and h1 styling */
 
 .homepage-container {
-    background-color: rgba(228, 224, 211, 0.7);
+    background-color: rgba(228, 224, 211, 0.8);
     padding: 20px 50px;
     margin: 30px 0;
 }
@@ -119,7 +125,7 @@ main {
 
 /* Footer link underline */
 
-.footer-copyright a {
+.footer-copyright a:hover {
     text-decoration: underline;
 }
 
@@ -166,4 +172,50 @@ main {
     text-transform: uppercase;
     font-weight: 700;
     color: #848482;
+}
+
+
+/* SEARCH BAR*/
+
+/* Search bar box */ 
+
+nav .input-field input[type=text]:valid {
+    background-color: #fff;
+    color: #373737;
+    height: 2rem;
+}
+
+/* Remove border bottom and edit shadow */
+
+.search-bar input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: none;
+    box-shadow: 2px 3px #847a5a;
+}
+
+/* Search icon color */
+
+.search-bar .input-field .prefix.active {
+    color: #fff;
+}
+
+
+/* Remove padding for search bar */
+#search-input-field, .search-bar .col {
+    padding: 0;
+}
+
+
+/* Style colors for form input fileds when active */
+
+input[type=text]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #a99c72;
+    box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label, .input-field label:not(.label-icon).active {
+    color: #a99c72;
+}
+    
+.input-field .prefix.active, .dropdown-content li>span {
+    color: #a99c72;
 }

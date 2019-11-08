@@ -24,23 +24,51 @@
     <header>
         <nav class="">
             {% if current_user.is_authenticated %}
-            <div class="nav-wrapper">
-                <a class="brand-logo" href="{{ url_for('index') }}">Booksy</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
-                    <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
-                    <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
-                    <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('index')}}">Home</a></li>
-                    <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
-                    <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
-                    <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
-                    <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
-                </ul>
+            <div class="nav-wrapper row">
+                <div class="col l4 s12"><a class="brand-logo" href="{{ url_for('index') }}">Booksy</a></div>
+
+                <div class="col l5 s12">
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
+                        <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
+                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                        <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a href="{{url_for('index')}}">Home</a></li>
+                        <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
+                        <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
+                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                        <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li>
+                            <div class="center row search-bar">
+                                <div class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6 s12">
+                                            <i class="material-icons prefix">search</i>
+                                            <input type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <div class="center row search-bar">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12" id="search-input-field">
+                                    <i class="material-icons prefix">search</i>
+                                    <input type="text" placeholder="Search by title or author">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             {% else %}
             <div class="nav-wrapper">
