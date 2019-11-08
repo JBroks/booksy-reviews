@@ -83,7 +83,7 @@ nav .nav-wrapper {
 .homepage-container {
     background-color: rgba(228, 224, 211, 0.8);
     padding: 20px 50px;
-    margin: 30px 0;
+    margin: 30px 0 60px;
 }
 
 .homepage-container h1 {
@@ -177,45 +177,72 @@ main {
 
 /* SEARCH BAR*/
 
-/* Search bar box */ 
+/* Search bar box */
 
 nav .input-field input[type=text]:valid {
     background-color: #fff;
     color: #373737;
     height: 2rem;
+    box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
+}
+
+/* place search icon inside the input box */
+
+.input-field label:not(.label-icon).active {
+    transform: translateY(9px) scale(0.7);
+    transform-origin: 0 0;
+}
+
+/* Adjust input text and placeholder padding to accommodate the search symbol */
+
+#search-input-field > input {
+  padding-left: 40px;
+}
+
+/* Adjust the input field  width to take into account padding added to accommodate the search symbol */
+
+#search-input-field {
+    width: calc(100% - 40px);
 }
 
 /* Remove border bottom and edit shadow */
 
 .search-bar input[type=text]:not(.browser-default):focus:not([readonly]) {
     border-bottom: none;
-    box-shadow: 2px 3px #847a5a;
+    box-shadow: 2px 2px 10px 2px rgba(124, 114, 82, 0.75)
 }
 
 /* Search icon color */
 
-.search-bar .input-field .prefix.active {
-    color: #fff;
+.search-bar .input-field .prefix {
+    color: #a99c72;
 }
 
 
 /* Remove padding for search bar */
-#search-input-field, .search-bar .col {
+
+#search-input-field,
+.search-bar .col {
     padding: 0;
 }
 
 
 /* Style colors for form input fileds when active */
 
-input[type=text]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]) {
+input[type=text]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid #a99c72;
     box-shadow: none;
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label, .input-field label:not(.label-icon).active {
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label,
+.input-field label:not(.label-icon).active {
     color: #a99c72;
 }
-    
-.input-field .prefix.active, .dropdown-content li>span {
+
+.input-field .prefix.active,
+.dropdown-content li>span {
     color: #a99c72;
 }
