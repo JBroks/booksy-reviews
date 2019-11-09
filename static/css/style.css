@@ -194,7 +194,7 @@ nav .input-field input[type=text]:valid {
     transform-origin: 0 0;
 }
 
-/* Edit search button styling */
+/* Edit search button styling 
 
 #search-icon {
     font-size: 20px;
@@ -202,10 +202,11 @@ nav .input-field input[type=text]:valid {
     line-height: 30px;
 }
 
-#search-button a {
+#search-button {
     padding: 0 0.5rem;
     height: 2rem;
 }
+*/
 
 /* Adjust input text and placeholder padding to accommodate the search symbol */
 

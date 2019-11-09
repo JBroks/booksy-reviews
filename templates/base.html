@@ -49,15 +49,17 @@
                     <div class="row center search-bar">
                         <form action="{{ url_for('search') }}" method="POST" class="col s12">
                             <div class="row valign-wrapper">
-                                <div class="col s10">
+                                <div class="col s12">
                                     <div class="input-field" id="search-input-field">
                                         <label for="search-input-field"><i class="material-icons prefix">search</i></label>
-                                        <input class="submit_on_enter" type="text" name='search_input' placeholder="Search by title, author, genre or type">
+                                        <input class="submit_on_enter" type="text" name="search_input" id="search_input" placeholder="Search by title, author, genre or type">
                                     </div>
                                 </div>
-                                <div class="col s2 left-align" id="search-button">
-                                    <a type="submit" class="btn waves-effect waves-light"><i class="material-icons" id="search-icon">search</i></a>
+                                <!--
+                                <div class="col s2 left-align" >
+                                    <a type="submit" id="search-button" class="btn waves-effect waves-light"><i class="material-icons" id="search-icon">search</i></a>
                                 </div>
+                                -->
                             </div>
                         </form>
                     </div>

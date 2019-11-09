@@ -315,11 +315,11 @@ def downvote(review_id):
 
 @app.route('/search', methods=['POST'])
 def search():
-    if request.method=='POST':
-        search_input=request.form.get("search_input")
-        mongo.db.reviews.create_index([('$**', 'text')])
-        search_results = mongo.db.reviews.find({ "$text": { "$search": search_input }})
-    return render_template('searchresults.html', reviews=search_results)
+     if request.method=='POST':
+         search_input=request.form.get("search_input")
+         mongo.db.reviews.create_index([('$**', 'text')])
+         search_results = mongo.db.reviews.find({ "$text": { "$search": search_input }})
+         return render_template('searchresults.html', reviews=search_results)
     
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
