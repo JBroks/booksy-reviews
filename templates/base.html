@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Generate title -->
+    <!-- Generate title -->x
     {% if title %}
     <title>Booksy - {{ title }}</title>
     {% else %}
@@ -47,11 +47,11 @@
                 </div>
                 <div class="col l3 s12">
                     <div class="center row search-bar">
-                        <form class="col s12">
+                        <form action="{{ url_for('search') }}" method="POST"class="col s12">
                             <div class="row">
                                 <div class="input-field col s12" id="search-input-field">
                                     <label for="search-input-field"><i class="material-icons prefix">search</i></label>
-                                    <input type="text" name='search_input' placeholder="Search by title, author, genre or type">
+                                    <input class="submit_on_enter" type="text" name='search_input' placeholder="Search by title, author, genre or type">
                                 </div>
                             </div>
                         </form>
