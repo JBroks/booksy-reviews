@@ -184,6 +184,7 @@ nav .input-field input[type=text]:valid {
     color: #373737;
     height: 2rem;
     box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
+    margin: 0;
 }
 
 /* place search icon inside the input box */
@@ -193,10 +194,23 @@ nav .input-field input[type=text]:valid {
     transform-origin: 0 0;
 }
 
+/* Edit search button styling */
+
+#search-icon {
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#search-button a {
+    padding: 0 0.5rem;
+    height: 2rem;
+}
+
 /* Adjust input text and placeholder padding to accommodate the search symbol */
 
-#search-input-field > input {
-  padding-left: 40px;
+#search-input-field>input {
+    padding-left: 40px;
 }
 
 /* Adjust the input field  width to take into account padding added to accommodate the search symbol */
