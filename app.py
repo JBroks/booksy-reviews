@@ -226,6 +226,10 @@ def update_review(review_id):
 and set variable for keys upvote/downvote and upvote_total/downvote_total
 '''
  
+''' Define general functions that will add or remove vote from username list and vote total 
+and set variable for keys upvote/downvote and upvote_total/downvote_total
+'''
+ 
 def add_vote(vote_type, vote_type_total, review_id, username):
     mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$push':
@@ -306,6 +310,23 @@ def downvote(review_id):
         add_vote('downvote', 'downvote_total', review_id, username)
     
     return redirect(url_for('view_review', review_id=review_id))
+
+# Search function
+'''
+@app.route('/search', methods=['GET'])
+@login_required
+def search():
+    mongo.db.reviews.create_index([('$**', 'text')])
+    search_results = mongo.db.reviews.find( { '$text': { '$search': str() } }  )
+    return render_template('searchresults.html', reviews=search_results)
+'''   
+@app.route('/search', methods=['POST'])
+def search():
+    if request.method=='POST':
+        search_input=request.form.get("search_input")
+        mongo.db.reviews.create_index( { '$**' : "text" } )
+        search_results = mongo.db.reviews.find({ "$text": { "$search": search_input } })
+    return render_template('searchresults.html', reviews=search_results)
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':

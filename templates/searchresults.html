@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="content-container">
+    <h3>Search results</h3>
+
+    {% for review in reviews %}
+    <div class="row">
+        <div class="col l4 m4 s12 center-on-small-only"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
+        <div class="col l5 m4 s12 center-on-small-only">
+            <div class="row">
+                <div class="col s12">{{ review.title }}</div>
+            </div>
+            <div class="row">
+                <div class="col s12"> By {{ review.author }} </div>
+            </div>
+            <div class="row">
+                <div class="col s12">{{ review.publication_year }}</div>
+            </div>
+            <div class="row">
+                <div class="col s12">Added by: {{ review.added_by }}</div>
+            </div>
+            <div class="row left hide-on-small-only">
+                <div class="col s3"><i class="material-icons">thumb_up</i></div>
+                <div class="col s2"><span>{{ review.upvote_total }}</span></div>
+                <div class="col s3"><i class="material-icons">thumb_down</i></div>
+                <div class="col s2"><span>{{ review.downvote_total }}</span></div>
+            </div>
+
+        </div>
+        <div class="col l3 m4 s12 center-on-small-only"><a class="btn waves-effect waves-light" href="{{url_for('view_review', review_id=review._id)}}"><i class="material-icons right">local_library</i>View</a>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
