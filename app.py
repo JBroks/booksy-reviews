@@ -225,8 +225,8 @@ def update_review(review_id):
 ''' Define general functions that will add or remove vote from username list and vote total 
 and set variable for keys upvote/downvote and upvote_total/downvote_total
 '''
-
-def vote(vote_type, vote_type_total, review_id, username):
+ 
+def add_vote(vote_type, vote_type_total, review_id, username):
     mongo.db.reviews.update({ "_id": ObjectId(review_id) },
                                         { '$push':
                                             { vote_type:
@@ -243,7 +243,7 @@ def remove_vote(vote_type, vote_type_total, review_id, username):
                                             
     mongo.db.reviews.find_one_and_update({'_id': ObjectId(review_id)},
                                             {'$inc': {vote_type_total: -1}})
-   
+                                            
 # Functions that allows upvoting and adds increment of 1 to the review table
 
 @app.route('/upvote/<review_id>', methods=['GET', 'POST'])
@@ -269,12 +269,12 @@ def upvote(review_id):
                                             
     elif match_count_downvote > 0:
         
-        vote('upvote', 'upvote_total', review_id, username)
+        add_vote('upvote', 'upvote_total', review_id, username)
         remove_vote('downvote', 'downvote_total', review_id, username)
                                             
     else:
         print("equal to 0")
-        vote('upvote', 'upvote_total', review_id, username)
+        add_vote('upvote', 'upvote_total', review_id, username)
 
     return redirect(url_for('view_review', review_id=review_id))
       
@@ -299,11 +299,11 @@ def downvote(review_id):
         remove_vote('downvote', 'downvote_total', review_id, username)
                                             
     elif match_count_upvote > 0:
-        vote('downvote', 'downvote_total', review_id, username)
+        add_vote('downvote', 'downvote_total', review_id, username)
         remove_vote('upvote', 'upvote_total', review_id, username)
         
     else:
-        vote('downvote', 'downvote_total', review_id, username)
+        add_vote('downvote', 'downvote_total', review_id, username)
     
     return redirect(url_for('view_review', review_id=review_id))
 
