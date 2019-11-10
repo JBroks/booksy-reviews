@@ -233,6 +233,7 @@ nav .input-field input[type=text]:valid {
 
 .search-bar .input-field .prefix {
     color: #a99c72;
+    padding-left: 10px;
 }
 
 
