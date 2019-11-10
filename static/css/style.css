@@ -276,6 +276,7 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 }
 
 /* Position loader in the center */
+
 .preloader-wrapper {
     position: absolute;
     top: 0;
@@ -286,6 +287,26 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 }
 
 /* Set color for the loader */
+
 .spinner-layer {
     border-color: #fff;
+}
+
+/* Back to top button */
+
+.back-to-top-container {
+    background-color: #292826;
+    padding: 10px 0;
+}
+
+.back-to-top-container a {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: letter-spacing 1.5s ease-in-out;
+}
+
+.back-to-top-container a:hover {
+    letter-spacing: 0.3em;
+    color: #a99c72;
 }
