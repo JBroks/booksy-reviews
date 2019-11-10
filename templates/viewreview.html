@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="content-container">
+<div class="content-container" id="view-review-container">
     <!-- Selected book title -->
 
     <h3>{{ review.title }}</h3>
@@ -17,16 +17,16 @@
         <div class="col l4 m4 s12"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
         <div class="col l8 m8 s12">
             <div class="row">
-                <div class="col s12">Type: {{ review.type }}</div>
+                <div class="col s12"><p>Type: {{ review.type }}</p></div>
             </div>
             <div class="row">
-                <div class="col s12">Genre: {{ review.genre }} </div>
+                <div class="col s12"><p>Genre: {{ review.genre }}</p></div>
             </div>
             <div class="row">
-                <div class="col s12">Published: {{ review.publication_year }}</div>
+                <div class="col s12"><p>Published: {{ review.publication_year }}</p></div>
             </div>
             <div class="row">
-                <div class="col s12">Review submitted by: {{ review.added_by }}</div>
+                <div class="col s12"><p>Review submitted by: {{ review.added_by }}</p></div>
             </div>
             <div class="row left">
                 <div class="col s3"><i class="material-icons">thumb_up</i></div>
@@ -87,5 +87,8 @@
     </div>
 
     <hr>
+    
+    <div>Comments section tbc</div>
+    
 </div>
 {% endblock %}

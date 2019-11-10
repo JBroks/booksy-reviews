@@ -57,6 +57,7 @@ nav .nav-wrapper {
 .btn-large,
 .btn-small {
     background-color: #c0b283;
+    margin: 20px 0;
 }
 
 /* Hover effect and focus color overwritting materialize default */
@@ -174,6 +175,12 @@ main {
     text-transform: uppercase;
     font-weight: 700;
     color: #848482;
+}
+
+/* Collapsible margin increased */
+
+.collapsible {
+    margin: 1.5rem 0;
 }
 
 
@@ -331,12 +338,10 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     font-size: 1.2rem;
 }
 
-#upvote_total, #thumb_up {
-    color: #88bd5d
-}
-
-#downvote_total, #thumb_down {
-    color: #cb4e40;
+#view-review-container p {
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+    margin: 0;
 }
 
 /* MEDIA QUERIES */
@@ -345,5 +350,13 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     .image-collection {
         width: 60%;
         height: 60%;
+    }
+
+    .content-container {
+        padding: 20px 20px;
+    }
+    
+    main {
+        padding-top: 140px;
     }
 }
