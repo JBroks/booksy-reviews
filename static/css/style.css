@@ -344,7 +344,7 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     margin: 0;
 }
 
-/* Style link in the login container */
+/* Style link in the login and register container */
 
 #login-container a,
 #register-container a {
@@ -355,6 +355,12 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 #login-container a:hover,
 #register-container a:hover {
     text-decoration: underline;
+}
+
+/* Rgister container missing info messages */
+
+#register-container .error {
+    color: #fd5050;
 }
 
 /* Style flash messages */
