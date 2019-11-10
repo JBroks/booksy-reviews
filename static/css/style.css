@@ -299,6 +299,7 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 .back-to-top-container {
     background-color: #292826;
     padding: 10px 0;
+    margin-top: 100px;
 }
 
 .back-to-top-container a {
@@ -311,4 +312,14 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 .back-to-top-container a:hover {
     letter-spacing: 0.3em;
     color: #fff;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 750px) {
+    .image-collection {
+        width: 60%;
+        height: 60%;
+    }
 }
