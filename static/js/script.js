@@ -1,3 +1,7 @@
+$(window).on('load', function () {
+		$("#overlay").delay(1000).fadeOut("slow");
+});
+
 $(document).ready(function() {
             $('.collapsible').collapsible();
             $('select').material_select();
@@ -19,3 +23,5 @@ $(document).ready(function() {
   });
 
 });
+
+

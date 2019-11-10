@@ -261,3 +261,31 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 .dropdown-content li>span {
     color: #a99c72;
 }
+
+
+/* Overlay styled to dim the background for loader */
+
+#overlay {
+    z-index: 98;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+/* Position loader in the center */
+.preloader-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Set color for the loader */
+.spinner-layer {
+    border-color: #fff;
+}

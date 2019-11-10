@@ -21,6 +21,22 @@
 </head>
 
 <body>
+    <div id="overlay">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header>
         <nav class="">
             {% if current_user.is_authenticated %}
@@ -47,7 +63,7 @@
                 </div>
                 <div class="col l3 s12">
                     <div class="row center search-bar">
-                        <form action="{{ url_for('search') }}" method="POST" class="col s12">
+                        <form action="{{ url_for('search_results') }}" method="POST" class="col s12">
                             <div class="row valign-wrapper">
                                 <div class="col s12">
                                     <div class="input-field" id="search-input-field">
