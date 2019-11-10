@@ -50,15 +50,15 @@
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
                         <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
-                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                         <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
                         <li><a href="{{url_for('index')}}">Home</a></li>
                         <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
                         <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
-                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                         <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                     </ul>
                 </div>
                 <div class="col l3 s12">
@@ -68,7 +68,7 @@
                                 <div class="col s12">
                                     <div class="input-field" id="search-input-field">
                                         <label for="search-input-field"><i class="material-icons prefix">search</i></label>
-                                        <input class="submit_on_enter" type="text" name="search_input" id="search_input" placeholder="Search by title, author, genre or type">
+                                        <input class="submit_on_enter" type="text" name="search_input" id="search_input" placeholder="Enter title, author or genre...">
                                     </div>
                                 </div>
                                 <!--
@@ -106,7 +106,7 @@
             {% with messages = get_flashed_messages() %} {% if messages %}
             <ul>
                 {% for message in messages %}
-                <li>{{ message }}</li>
+                <li id="flash-messages">{{ message }}</li>
                 {% endfor %}
             </ul>
             {% endif %} {% endwith %} {% block content %} {% endblock %}
