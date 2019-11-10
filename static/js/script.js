@@ -1,5 +1,5 @@
 $(window).on('load', function () {
-		$("#overlay").delay(1000).fadeOut("slow");
+		$("#overlay").fadeOut("slow");
 });
 
 $(document).ready(function() {
