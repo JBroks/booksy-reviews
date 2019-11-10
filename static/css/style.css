@@ -315,6 +315,29 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     color: #fff;
 }
 
+/* Book info styling - collection */
+
+#book-info-container div {
+    font-size: 1.4rem;
+}
+
+#book-info-container .title {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+#book-info-container .added_by {
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+#upvote_total, #thumb_up {
+    color: #88bd5d
+}
+
+#downvote_total, #thumb_down {
+    color: #cb4e40;
+}
 
 /* MEDIA QUERIES */
 
