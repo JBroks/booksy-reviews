@@ -222,7 +222,7 @@ def update_review(review_id):
     return redirect(url_for('show_collection'))
 
 # Function that sends user input (comment) to the comments collection - activated when user clicks "post" button  
-@app.route('/insert_comment/<review_id>', methods=['POST'])
+@app.route('/insert_comment/<review_id>', methods=['POST', 'GET'])
 @login_required
 def insert_comment(review_id):
     username = current_user.username
@@ -232,8 +232,8 @@ def insert_comment(review_id):
         'username': username,
         'review_id': ObjectId(review_id)
     })
-    
-    return redirect(url_for('index'))
+    flash("Your comment has been now posted!")
+    return redirect(url_for('view_review', review_id=review_id))
 
 ''' Define general functions that will add or remove vote from username list and vote total 
 and set variable for keys upvote/downvote and upvote_total/downvote_total
