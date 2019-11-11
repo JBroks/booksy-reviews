@@ -21,6 +21,7 @@ body,
 
 .page-footer {
     background: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+    padding-top: 0;
 }
 
 /* Navbar gradient effect and skew shape. Tutorial used: https://css-tricks.com/creating-non-rectangular-headers/ */
@@ -42,7 +43,7 @@ nav:before {
 /* Padding added to main to accomodate the skew navbar effect */
 
 main {
-    padding-top: 180px;
+    padding-top: 170px;
 }
 
 /* Navbar padding */
@@ -76,7 +77,7 @@ nav .nav-wrapper {
 .content-container {
     background-color: rgba(228, 224, 211, 0.9);
     padding: 20px 50px;
-    margin: 30px 0;
+    margin: 30px 0 100px;
 }
 
 /* Index page container settings and h1 styling */
@@ -84,7 +85,7 @@ nav .nav-wrapper {
 .homepage-container {
     background-color: rgba(228, 224, 211, 0.8);
     padding: 20px 50px;
-    margin: 30px 0 60px;
+    margin: 30px 0 100px;
 }
 
 .homepage-container h1 {
@@ -307,7 +308,6 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 .back-to-top-container {
     background-color: #292826;
     padding: 10px 0;
-    margin-top: 100px;
 }
 
 .back-to-top-container a {
@@ -348,7 +348,7 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 
 #login-container a,
 #register-container a {
-    color: #c0b283;
+    color: #a99c72;
     padding-left: 20px;
 }
 
