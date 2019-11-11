@@ -189,14 +189,16 @@ main {
 
 /* Search bar box */
 
-nav .input-field input[type=search]:valid {
+.nav-wrapper .input-field input[type=search] {
     background-color: #fff;
     color: #373737;
     height: 2rem;
+    width: calc(100% - 35px);
     box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
     margin: 15px 0 0 0;
+    padding: 0 0 0 35px;
 }
-
+ 
 /* place search icon inside the input box */
 
 .search-bar .input-field .prefix  {
@@ -215,18 +217,6 @@ nav .input-field input[type=search]:valid {
     height: 2rem;
 }
 */
-
-/* Adjust input text and placeholder padding to accommodate the search symbol 
-
-#search-input-field>input {
-    padding-left: 40px;
-}
-*/
-/* Adjust the input field  width to take into account padding added to accommodate the search symbol 
-
-#search-input-field {
-    width: calc(100% - 40px);
-}*/
 
 /* Remove border bottom and edit shadow */
 
