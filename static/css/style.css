@@ -325,17 +325,17 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 /* Book info styling - collection */
 
 #book-info-container div {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 #book-info-container .title {
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 #book-info-container .added-by {
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 #view-review-container p {

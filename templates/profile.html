@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %}
 <div class="content-container">
-    <h2>Hello, {{ user.username }}</h2>
+    <h3>Hello, {{ user.username }}</h3>
     <hr>
     <div class="row">
         <div class="col s12">Username: {{ user.username }}</div>
@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col s12">
-            <h3>{{ user.username }}'s reviews</h3>
+            <h4>{{ user.username }}'s reviews</h4>
         </div>
     </div>
     <hr> {% for review in reviews %}
