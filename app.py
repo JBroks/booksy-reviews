@@ -185,7 +185,8 @@ def show_collection():
 @login_required
 def view_review(review_id):
     the_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
-    return render_template('viewreview.html', review=the_review)
+    review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)]).limit(1)
+    return render_template('viewreview.html', review=the_review, comments=review_comments)
 
 # Function that deletes review
 @app.route('/delete_review/<review_id>')
@@ -235,6 +236,15 @@ def insert_comment(review_id):
     flash("Your comment has been now posted!")
     return redirect(url_for('view_review', review_id=review_id))
 
+'''# Function that displays relevant comments
+@app.route('view_comments/<review_id>')
+@login_required
+def view_comments(review_id):
+    
+    review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)])
+    
+    return redirect(url_for('view_review', review_id=review_id, comments=review_comments))
+ '''   
 ''' Define general functions that will add or remove vote from username list and vote total 
 and set variable for keys upvote/downvote and upvote_total/downvote_total
 '''

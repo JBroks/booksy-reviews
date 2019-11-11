@@ -377,6 +377,10 @@ textarea.comments-textarea:focus:not([readonly]) {
 }
 
 
+#view-comment:focus {
+    outline: none;
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 750px) {
