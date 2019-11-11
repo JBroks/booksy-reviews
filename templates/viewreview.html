@@ -117,19 +117,17 @@
     </div>
 
     <!-- Latest comment -->
+
     {% for comment in comments %}
+
     <div class="row">
-        <form class="col s12 comment-form">
-            <div class="row">
-                <div class="input-field col m8 offset-m4 s12 center-on-small-only">
-                    <textarea name="comment" id="view-comment" class="comments-textarea" readonly required>{{ comment.comment }}</textarea>
-                    <label for="view-comment">{{ comment.username }}</label>
-                </div>
-            </div>
-        </form>
+        <div class="comment-box col m8 offset-m4 s12">
+            <div>{{ comment.username }} says:</div>
+            <textarea name="comment" id="view-comment" class="comments-textarea" readonly required>{{ comment.comment }}</textarea>
+        </div>
     </div>
 
-    
+
     {% endfor %}
 
     <!-- Insert comment -->
