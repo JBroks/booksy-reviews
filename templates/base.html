@@ -61,21 +61,20 @@
                         <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
                     </ul>
                 </div>
-                <div class="col l3 s12">
+                <div class="col l3 s12 search-bar">
                     <div class="row center search-bar">
-                        <form action="{{ url_for('search_results') }}" method="POST" class="col s12">
-                            <div class="row valign-wrapper">
+                        <form action="{{ url_for('search') }}" method="POST" class="col s12">
+                            <div class="row">
                                 <div class="col s12">
                                     <div class="input-field" id="search-input-field">
                                         <label for="search-input-field"><i class="material-icons prefix">search</i></label>
-                                        <input class="submit_on_enter" type="text" name="search_input" id="search_input" placeholder="Enter title, author or genre...">
+                                        <input class="submit_on_enter" type="search" name="search_input" id="search_input" placeholder="Enter title, author or genre...">
                                     </div>
                                 </div>
                                 <!--
                                 <div class="col s2 left-align" >
                                     <a type="submit" id="search-button" class="btn waves-effect waves-light"><i class="material-icons" id="search-icon">search</i></a>
-                                </div>
-                                -->
+                                </div>-->
                             </div>
                         </form>
                     </div>

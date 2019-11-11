@@ -189,50 +189,48 @@ main {
 
 /* Search bar box */
 
-nav .input-field input[type=text]:valid {
+nav .input-field input[type=search]:valid {
     background-color: #fff;
     color: #373737;
     height: 2rem;
     box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
-    margin: 0;
+    margin: 15px 0 0 0;
 }
 
 /* place search icon inside the input box */
 
-.search-bar .input-field label:not(.label-icon).active {
-    transform: translateY(9px) scale(0.7);
+.search-bar .input-field .prefix  {
+    transform: translateY(9px) scale(0.9);
     transform-origin: 0 0;
 }
 
 /* Edit search button styling 
-
 #search-icon {
     font-size: 20px;
     height: 30px;
     line-height: 30px;
 }
-
 #search-button {
     padding: 0 0.5rem;
     height: 2rem;
 }
 */
 
-/* Adjust input text and placeholder padding to accommodate the search symbol */
+/* Adjust input text and placeholder padding to accommodate the search symbol 
 
 #search-input-field>input {
     padding-left: 40px;
 }
-
-/* Adjust the input field  width to take into account padding added to accommodate the search symbol */
+*/
+/* Adjust the input field  width to take into account padding added to accommodate the search symbol 
 
 #search-input-field {
     width: calc(100% - 40px);
-}
+}*/
 
 /* Remove border bottom and edit shadow */
 
-.search-bar input[type=text]:not(.browser-default):focus:not([readonly]) {
+.search-bar input[type=search]:not(.browser-default):focus:not([readonly]) {
     border-bottom: none;
     box-shadow: 2px 2px 10px 2px rgba(124, 114, 82, 0.75)
 }
