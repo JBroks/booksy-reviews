@@ -221,6 +221,19 @@ def update_review(review_id):
     })
     return redirect(url_for('show_collection'))
 
+# Function that sends user input (comment) to the comments collection - activated when user clicks "post" button  
+@app.route('/insert_comment/<review_id>', methods=['POST'])
+@login_required
+def insert_comment(review_id):
+    username = current_user.username
+    comments = mongo.db.comments
+    comments.insert_one({
+        'comment': request.form['comment'],
+        'username': username,
+        'review_id': ObjectId(review_id)
+    })
+    
+    return redirect(url_for('index'))
 
 ''' Define general functions that will add or remove vote from username list and vote total 
 and set variable for keys upvote/downvote and upvote_total/downvote_total
@@ -313,9 +326,9 @@ def downvote(review_id):
 
 @app.route('/search', methods=['POST'])
 def search():
+    search_input=request.form.get("search_input")
+    mongo.db.reviews.create_index([('$**', 'text')])
     if request.method=='POST':
-        search_input=request.form.get("search_input")
-        mongo.db.reviews.create_index([('$**', 'text')])
         search_results = mongo.db.reviews.find({ "$text": { "$search": search_input }})
     return render_template('searchresults.html', reviews=search_results)
     
