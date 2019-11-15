@@ -244,15 +244,19 @@ def insert_comment(review_id):
 #    return render_template('viewreview.html', comment=the_comment)
     
 # Function that submits user input to the database
-@app.route('/update_comment/<comment_id>', methods=["POST"])
+@app.route('/update_comment/<review_id>/<comment_id>', methods=["POST"])
 @login_required
 def update_comment(comment_id, review_id):
+    username = current_user.username
     comments = mongo.db.comments
-    comments.update({
-        'comment': request.form['comment']
+    comments.update({'_id': ObjectId(comment_id)},
+        {
+        'comment': request.form['comment'],
+        'username': username,
+        'review_id': ObjectId(review_id)
     })
     flash("Your comment has been now updated!")
-    return redirect(url_for('view_review', review_id=review_id))
+    return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
 
 ''' Define general functions that will add or remove vote from username list and vote total 
 and set variable for keys upvote/downvote and upvote_total/downvote_total

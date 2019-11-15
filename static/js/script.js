@@ -29,3 +29,26 @@ $("a[href='#back-to-top']").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
 });
+
+/* When user clicks edit the comment disabled attribute is set to false */
+document.getElementById('edit').addEventListener('click', function(){
+    document.getElementById('textarea-posted').disabled = false;
+});
+
+/* When user clicks cancel make comment non-editable */
+document.getElementById('cancel').addEventListener('click', function(){
+    document.getElementById('textarea-posted').disabled = true;
+});
+
+
+/* When clicking on textarea to edit/cancel comment show update button */
+$('#edit').on('click', function(){
+    $('#update.hide').removeClass('hide');
+    $('#cancel.hide').removeClass('hide');
+});
+
+/* After updating hide buttons */
+$('#update').on('click', function(){
+    $('#update').addClass('hide');
+    $('#cancel').addClass('hide');
+});
