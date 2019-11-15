@@ -381,7 +381,7 @@ textarea.comments-textarea:focus:not([readonly]) {
 }
 
 /* Break words in a card if too long */
-#card-container {
+#card-container, #view-review-container p {
     overflow-wrap: break-word;
 }
 

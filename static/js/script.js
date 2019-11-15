@@ -30,25 +30,14 @@ $("a[href='#back-to-top']").click(function() {
   return false;
 });
 
-/* When user clicks edit the comment disabled attribute is set to false */
-document.getElementById('edit').addEventListener('click', function(){
-    document.getElementById('textarea-posted').disabled = false;
-});
-
-/* When user clicks cancel make comment non-editable */
-document.getElementById('cancel').addEventListener('click', function(){
-    document.getElementById('textarea-posted').disabled = true;
-});
 
 
-/* When clicking on textarea to edit/cancel comment show update button */
-$('#edit').on('click', function(){
-    $('#update.hide').removeClass('hide');
-    $('#cancel.hide').removeClass('hide');
-});
+/* Hide all (update) form as a default */
 
-/* After updating hide buttons */
-$('#update').on('click', function(){
-    $('#update').addClass('hide');
-    $('#cancel').addClass('hide');
-});
+$('.posted-form').hide()
+
+/* Display only the comment form which user choosed to update */
+document.getElementById('edit').addEventListener('click', function() {
+  document.getElementById('posted-form').style.display = 'block';
+  document.getElementById('card-content').style.display = 'none';
+})

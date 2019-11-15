@@ -154,21 +154,26 @@
                             <div class="col s12">
                                 <span class="card-title">{{ comment.username }} says:</span></div>
                         </div>
-                        <!--<div id="card-container">{{ comment.comment }}</div>-->
                         <div class="row">
+                            <div class="col s12">
+                                <p id="card-content">{{ comment.comment }}</p>
+                            </div>
+                        </div>
+                        <!--<div id="card-container">{{ comment.comment }}</div>-->
+                        <div class="row posted-form" id="posted-form">
                             <div class="col s12">
                                 <form action="{{ url_for('update_comment', _anchor='comments-section', comment_id=comment._id, review_id=review._id ) }}" method="POST" class="col s12">
                                     <div class="row">
                                         <div class="input-field s12 center">
-                                            <textarea name="comment" id="textarea-posted" class="posted-textarea" data-length="10000" disabled required>{{ comment.comment }}</textarea>
+                                            <textarea name="comment" id="textarea-posted" class="posted-textarea" data-length="10000" required>{{ comment.comment }}</textarea>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col s3 offset-s6 center">
-                                            <button type="submit" name="action" id="update" class="hide">Update</button>
+                                            <button type="submit" name="action" id="update">Update</button>
                                         </div>
                                         <div class="col s3 center">
-                                            <button id="cancel" class="hide">Cancel</button>
+                                            <button href="" id="cancel">Cancel</button>
                                         </div>
                                     </div>
                                 </form>
