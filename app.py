@@ -185,7 +185,7 @@ def show_collection():
 @login_required
 def view_review(review_id):
     the_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
-    review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)]).limit(1)
+    review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)])
     return render_template('viewreview.html', review=the_review, comments=review_comments)
 
 # Function that deletes review
@@ -233,18 +233,27 @@ def insert_comment(review_id):
         'username': username,
         'review_id': ObjectId(review_id)
     })
-    flash("Your comment has been now posted!")
+    return redirect(url_for('view_review', _anchor='comments-section', review_id=review_id))
+
+
+# Function that renders edit comment template i.e. displays edit comment form to the user 
+#@app.route('/edit_comment/<comment_id>')
+#@login_required
+#def edit_comment(comment_id):
+#    the_comment =  mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
+#    return render_template('viewreview.html', comment=the_comment)
+    
+# Function that submits user input to the database
+@app.route('/update_comment/<comment_id>', methods=["POST"])
+@login_required
+def update_comment(comment_id, review_id):
+    comments = mongo.db.comments
+    comments.update({
+        'comment': request.form['comment']
+    })
+    flash("Your comment has been now updated!")
     return redirect(url_for('view_review', review_id=review_id))
 
-'''# Function that displays relevant comments
-@app.route('view_comments/<review_id>')
-@login_required
-def view_comments(review_id):
-    
-    review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)])
-    
-    return redirect(url_for('view_review', review_id=review_id, comments=review_comments))
- '''   
 ''' Define general functions that will add or remove vote from username list and vote total 
 and set variable for keys upvote/downvote and upvote_total/downvote_total
 '''

@@ -115,7 +115,7 @@
 </section>
 
     <!-- Comments heading -->
-    <section id="comment-section">
+    <section id="comments-section">
         <div class="row">
             <h5><i class="small material-icons">forum</i>Comments</h5>
         </div>
@@ -123,7 +123,7 @@
         <!-- Insert comment -->
 
         <div class="row">
-            <form action="{{ url_for('insert_comment', review_id=review._id ) }}" method="POST" class="col s12 comment-form">
+            <form action="{{ url_for('insert_comment', _anchor='comments-section', review_id=review._id ) }}" method="POST" class="col s12 comment-form">
                 <div class="row">
                     <div class="input-field col m8 offset-m4 s12 center-on-small-only">
                         <textarea name="comment" id="textarea-comment" class="comments-textarea" placeholder="Please leave a comment..." data-length="10000" required></textarea>
