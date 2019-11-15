@@ -39,9 +39,10 @@
 
     </div>
 
-    {% if loop.index == (loop.length - 1) %}
+    {% if (loop.index - loop.length) %}
 
     <hr> 
+    
     {% endif %} {% endfor %} {{ pagination.info }} {{ pagination.links }}
     
 </div>
