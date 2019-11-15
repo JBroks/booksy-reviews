@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="content-container" id="view-review-container">
-
+    
+<section id="book-info-section">
+    
     <!-- Selected book title -->
 
     <h3>{{ review.title }}</h3>
@@ -109,48 +111,64 @@
     </div>
 
     <hr>
+    
+</section>
 
     <!-- Comments heading -->
-
-    <div class="row">
-        <h5><i class="small material-icons">forum</i>Comments</h5>
-    </div>
-
-    <!-- Latest comment -->
-
-    {% for comment in comments %}
-
-    <div class="row">
-        <div class="comment-box col m8 offset-m4 s12">
-            <div>{{ comment.username }} says:</div>
-            <textarea name="comment" id="view-comment" class="comments-textarea" readonly required>{{ comment.comment }}</textarea>
+    <section id="comment-section">
+        <div class="row">
+            <h5><i class="small material-icons">forum</i>Comments</h5>
         </div>
-    </div>
 
+        <!-- Insert comment -->
 
-    {% endfor %}
-
-    <!-- Insert comment -->
-
-    <div class="row">
-        <form action="{{ url_for('insert_comment', review_id=review._id ) }}" method="POST" class="col s12 comment-form">
-            <div class="row">
-                <div class="input-field col m8 offset-m4 s12 center-on-small-only">
-                    <textarea name="comment" id="textarea-comment" class="comments-textarea" placeholder="Please leave a comment..." data-length="2500" required></textarea>
-                    <label for="textarea-comment">Leave a comment</label>
+        <div class="row">
+            <form action="{{ url_for('insert_comment', review_id=review._id ) }}" method="POST" class="col s12 comment-form">
+                <div class="row">
+                    <div class="input-field col m8 offset-m4 s12 center-on-small-only">
+                        <textarea name="comment" id="textarea-comment" class="comments-textarea" placeholder="Please leave a comment..." data-length="10000" required></textarea>
+                        <label for="textarea-comment">Leave a comment</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col m8 offset-m4 right-align s12 center-on-small-only">
-                    <button type="submit" name="action" class="btn waves-effect waves-light">Post
+                <div class="row">
+                    <div class="col m8 offset-m4 right-align s12 center-on-small-only">
+                        <button type="submit" name="action" class="btn waves-effect waves-light">Post
                 <i class="material-icons right">comment</i>
              </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+        <!-- Latest comment -->
+
+        {% for comment in comments %}
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">{{ comment.username }} says:</span>
+                        <div id="card-container">{{ comment.comment }}</div>
+                    </div>
+                    
+                    {% if current_user.username == comment.username %}
+                    <div class="card-action">
+                        <div class="row right-align">
+                            <div class="col s3 offset-s6"><a href="" class="">Edit</a></div>
+                            <div class="col s3"><a href="" class="">Delete</a></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    
+        {% endfor %}
 
-
-
+    </section>
 </div>
 {% endblock %}

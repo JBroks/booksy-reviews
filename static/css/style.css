@@ -376,9 +376,26 @@ textarea.comments-textarea:focus:not([readonly]) {
     outline: none;
 }
 
+#commented-by {
+    font-weight: 700;
+}
 
-#view-comment:focus {
-    outline: none;
+/* Break words in a card if too long */
+#card-container {
+    overflow-wrap: break-word;
+}
+
+/* Card background color set to the same as comment textarea */
+
+.card {
+    background-color: #f5f5f5;
+}
+
+/* Card title font size decreased */
+
+.card .card-title {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 /* MEDIA QUERIES */
