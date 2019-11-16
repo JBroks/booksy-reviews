@@ -255,7 +255,7 @@ def update_comment(comment_id, review_id):
         'username': username,
         'review_id': ObjectId(review_id)
     })
-    flash("Your comment has been now updated!")
+    
     return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
 
 ''' Define general functions that will add or remove vote from username list and vote total 
