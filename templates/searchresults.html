@@ -7,9 +7,6 @@
 
     {% for review in reviews %}
     
-    <!-- {% if loop.length == 0 %}
-    <p>No results found!</p> {% endif %} -->
-    
     <div class="row">
         
         <div class="col l4 m4 s12 center-on-small-only"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
@@ -39,6 +36,13 @@
         <div class="col l3 m4 s12 center-on-small-only"><a class="btn waves-effect waves-light" href="{{url_for('view_review', review_id=review._id)}}"><i class="material-icons right">local_library</i>View</a></div>
    
     </div> 
+    
+    {% if (loop.index - loop.length) %}
+
+    <hr> 
+    
+    {% endif %} 
+    
 {% endfor %}
 
 </div>
