@@ -38,6 +38,7 @@ $(document).ready(function() {
   $('.edit').click(function() {
     $(this).parents('div.card-action').prevAll('.card-text').hide();
     $(this).parents('div.card-action').prevAll('.posted-form').show();
+    $(this).parents('div.card-action').hide();
   });
 });
 

@@ -398,6 +398,33 @@ textarea.comments-textarea:focus:not([readonly]) {
     font-weight: 400;
 }
 
+/* Update comment form buttons edit on focus state */
+
+button:focus, button {
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+}
+
+/* Update comment buttons container margin to prevent overlapping with character counter */
+
+.buttons-container {
+    margin: 20px 0;
+}
+
+/* Card-action buttons + update comment buttons color styling and hover state */
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), button {
+    color: #292826;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, button:hover {
+    cursor: pointer;
+    color: #c0b283;
+}
+
+
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 750px) {
