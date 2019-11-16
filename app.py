@@ -235,14 +235,6 @@ def insert_comment(review_id):
     })
     return redirect(url_for('view_review', _anchor='comments-section', review_id=review_id))
 
-
-# Function that renders edit comment template i.e. displays edit comment form to the user 
-#@app.route('/edit_comment/<comment_id>')
-#@login_required
-#def edit_comment(comment_id):
-#    the_comment =  mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
-#    return render_template('viewreview.html', comment=the_comment)
-    
 # Function that submits user input to the database
 @app.route('/update_comment/<review_id>/<comment_id>', methods=["POST"])
 @login_required
@@ -255,6 +247,14 @@ def update_comment(comment_id, review_id):
         'username': username,
         'review_id': ObjectId(review_id)
     })
+    
+    return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
+
+# Function that deletes comment
+@app.route('/delete_comment/<review_id>/<comment_id>')
+@login_required
+def delete_comment(comment_id, review_id):
+    mongo.db.comments.remove({'_id': ObjectId(comment_id)})
     
     return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
 
