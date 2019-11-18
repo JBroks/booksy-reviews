@@ -1,4 +1,5 @@
 import os
+import logging
 # Import Flask functionality in order to set up the application for use
 from flask import Flask, render_template, flash, redirect, request, url_for, session
 from flask_paginate import Pagination, get_page_args, get_page_parameter
@@ -386,34 +387,31 @@ def downvote(review_id):
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     
-    search_input=request.form.get("search_input")
+    search_input = request.form.get("search_input")
     search_string = str(search_input)
     mongo.db.reviews.create_index([('$**', 'text')])
     
     search_results = mongo.db.reviews.find({ "$text": { "$search": search_string }})
+    results_count = mongo.db.reviews.count_documents({ "$text": { "$search": search_string }})
+    
     
     if request.method == 'POST':
+        logging.error('Entering the POST if')
         if search_string == '':
-            search_results = mongo.db.reviews.find()
+            logging.error('Entering the empty string if')
+            flash('You have not provided any search input!')
+            return redirect('/search')
             
-        elif not search_results:
+        elif results_count == 0:
+            logging.error('Entering no results if')
             flash('No results found!')
             return redirect('/search')
             
         else:
+            logging.error('Entering results exist if')
             search_results
             
     return render_template('searchresults.html', reviews=search_results)
-
-'''
-@app.route('/search', methods=['POST'])
-def search():
-    search_input=request.form.get("search_input")
-    mongo.db.reviews.create_index([('$**', 'text')])
-    if request.method=='POST':
-        search_results = mongo.db.reviews.find({ "$text": { "$search": search_input }})
-    return render_template('searchresults.html', reviews=search_results)
-'''
 
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
