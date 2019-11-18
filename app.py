@@ -341,17 +341,13 @@ def upvote(review_id):
 
 
     if match_count_upvote > 0:
-        print("not equal to 0")
-        
         remove_vote('upvote', 'upvote_total', review_id, username)
                                             
     elif match_count_downvote > 0:
-        
         add_vote('upvote', 'upvote_total', review_id, username)
         remove_vote('downvote', 'downvote_total', review_id, username)
                                             
     else:
-        print("equal to 0")
         add_vote('upvote', 'upvote_total', review_id, username)
 
     return redirect(url_for('view_review', review_id=review_id))
@@ -387,7 +383,29 @@ def downvote(review_id):
     return redirect(url_for('view_review', review_id=review_id))
 
 # Search function
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    
+    search_input=request.form.get("search_input")
+    search_string = str(search_input)
+    mongo.db.reviews.create_index([('$**', 'text')])
+    
+    search_results = mongo.db.reviews.find({ "$text": { "$search": search_string }})
+    
+    if request.method == 'POST':
+        if search_string == '':
+            search_results = mongo.db.reviews.find()
+            
+        elif not search_results:
+            flash('No results found!')
+            return redirect('/search')
+            
+        else:
+            search_results
+            
+    return render_template('searchresults.html', reviews=search_results)
 
+'''
 @app.route('/search', methods=['POST'])
 def search():
     search_input=request.form.get("search_input")
@@ -395,7 +413,8 @@ def search():
     if request.method=='POST':
         search_results = mongo.db.reviews.find({ "$text": { "$search": search_input }})
     return render_template('searchresults.html', reviews=search_results)
-    
+'''
+
 # Set up IP address and port number so that AWS how to run and where to run the application 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
