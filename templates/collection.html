@@ -4,12 +4,10 @@
 
     <h3 class="center">Collection</h3>
 
-    <div>{{ pagination.links }}</div>
 
     {% for review in reviews %}
 
-    <div>{{ loop.index + pagination.skip }}</div>
-
+    
     <div class="row">
 
         <div class="col l4 m4 s12 center-on-small-only"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
@@ -43,7 +41,8 @@
 
     <hr> 
     
-    {% endif %} {% endfor %} {{ pagination.info }} {{ pagination.links }}
+    {% endif %}
+    {% endfor %}
     
 </div>
 
