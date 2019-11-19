@@ -1,6 +1,6 @@
 /* Import fonts */
 
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne|Alegreya:400,500,700,800&display=swap');
 
 /* Remove margin from rows */
 
@@ -15,6 +15,16 @@ body,
 #profile-review-title a {
     font-family: "Lato", sans-serif;
     color: #373737;
+}
+
+h3 {
+    font-family: "Alegreya", sans-serif;
+    font-weight: 700;
+}
+
+h4 {
+    font-family: "Alegreya", sans-serif;
+    font-weight: 500;
 }
 
 /* Footer gradient color effect */
@@ -320,6 +330,7 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 
 #book-info-container .title {
     font-weight: 700;
+    font-family: "Alegreya", sans-serif;
     font-size: 1.8rem;
 }
 
@@ -453,24 +464,28 @@ button#cancel:hover {
     #book-info-container div {
         font-size: 1rem;
     }
-    
+
     #book-info-container .added-by {
         font-size: 0.9rem;
     }
-    
+
     h1 {
         font-size: 3.5rem;
     }
-    
+
     h2 {
         font-size: 3rem;
     }
-    
+
     h3 {
         font-size: 2rem;
     }
-    
+
     h4 {
         font-size: 1.9rem;
+    }
+
+    nav:before {
+        height: 160px;
     }
 }
