@@ -266,8 +266,10 @@ def edit_review(review_id):
 @login_required
 def update_review(review_id):
     reviews = mongo.db.reviews
+
     reviews.update({'_id': ObjectId(review_id)},
-    {
+    { '$set':
+        {
         'title':request.form.get('title').title(),
         'author':request.form.get('author').title(),
         'publication_year': request.form.get('publication_year'),
@@ -277,8 +279,9 @@ def update_review(review_id):
         'summary': request.form.get('summary'),
         'review': request.form.get('review'),
         'added_by': request.form.get('added_by')
+        }
     })
-    return redirect(url_for('show_collection'))
+    return redirect(url_for('show_collection')) 
 
 # Function that sends user input (comment) to the comments collection - activated when user clicks "post" button  
 @app.route('/insert_comment/<review_id>', methods=['POST', 'GET'])
