@@ -199,10 +199,10 @@ main {
     margin: 15px 0 0 0;
     padding: 0 0 0 35px;
 }
- 
+
 /* place search icon inside the input box */
 
-.search-bar .input-field .prefix  {
+.search-bar .input-field .prefix {
     transform: translateY(9px) scale(0.9);
     transform-origin: 0 0;
 }
@@ -381,7 +381,9 @@ textarea.comments-textarea:focus:not([readonly]) {
 }
 
 /* Break words in a card if too long */
-#card-container, #view-review-container p {
+
+#card-container,
+#view-review-container p {
     overflow-wrap: break-word;
 }
 
@@ -400,7 +402,8 @@ textarea.comments-textarea:focus:not([readonly]) {
 
 /* Update comment form buttons edit on focus state */
 
-button:focus, button {
+button:focus,
+button {
     background-color: transparent;
     border: none;
     text-transform: uppercase;
@@ -414,11 +417,15 @@ button:focus, button {
 
 /* Card-action buttons + update comment buttons color styling and hover state */
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), button#update, button#cancel {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating),
+button#update,
+button#cancel {
     color: #292826;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, button#update:hover, button#cancel:hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover,
+button#update:hover,
+button#cancel:hover {
     cursor: pointer;
     color: #c0b283;
 }
@@ -427,8 +434,8 @@ button:focus, button {
 
 @media only screen and (max-width: 750px) {
     .image-collection {
-        width: 60%;
-        height: 60%;
+        width: 40%;
+        height: 40%;
     }
 
     .content-container {
@@ -437,5 +444,33 @@ button:focus, button {
 
     main {
         padding-top: 140px;
+    }
+
+    #book-info-container .title {
+        font-size: 1.2rem;
+    }
+
+    #book-info-container div {
+        font-size: 1rem;
+    }
+    
+    #book-info-container .added-by {
+        font-size: 0.9rem;
+    }
+    
+    h1 {
+        font-size: 3.5rem;
+    }
+    
+    h2 {
+        font-size: 3rem;
+    }
+    
+    h3 {
+        font-size: 2rem;
+    }
+    
+    h4 {
+        font-size: 1.9rem;
     }
 }
