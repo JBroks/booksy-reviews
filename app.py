@@ -1,4 +1,5 @@
 import os
+import json
 import logging
 # Import Flask functionality in order to set up the application for use
 from flask import Flask, render_template, flash, redirect, request, url_for, session
@@ -175,48 +176,21 @@ def insert_review():
     
 # Reviews collection
 
+'''
 @app.route('/show_collection')
 def show_collection():
     
     reviews = mongo.db.reviews.find().sort([("_id", -1)])
     
     return render_template('collection.html', reviews=reviews, title='Collection')
-    
-
-'''
-@app.route('/show_collection')
-@login_required
-def show_collection():
-    
-    review = mongo.db.reviews.find()
-    
-    offset = int(request.args['offset'])
-    limit = int(request.args['limit'])
-    
-    starting_id = review.find.sort([("_id", -1)])
-    last_id = starting_id[offset]['_id']
-    
-    reviews = review.find({ '_id': { '$lte': last_id } }).sort([("_id", -1)]).limit(limit)
-    
-    output = []
-    
-    for i in reviews:
-        output.append({ 'review' : i['review'] })
-        
-    next_url = '/show_collection?limit=' + str(limit) + '&offset=' + str(offset + limit)
-    prev_url = '/show_collection?limit=' + str(limit) + '&offset=' + str(offset - limit)
-    
-    return render_template('collection.html',
-                            reviews=reviews,
 '''
 
-'''
 reviews = mongo.db.reviews.find().sort([("_id", -1)])
 
-
-def get_reviews(offset=0, per_page=3):
-   
-    return reviews[offset: offset + per_page]
+def get_reviews(offset=0, per_page=5):
+    reviews_list = list(reviews)
+    
+    return reviews_list[ offset: offset + per_page ]
 
 @app.route('/show_collection')
 @login_required
@@ -224,19 +198,21 @@ def show_collection():
     
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
-                                           
+   # import pdb; pdb.set_trace()  
+    
     total = mongo.db.reviews.count_documents({})
     
     paginated_reviews = get_reviews(offset=offset, per_page=per_page)
+    
     pagination = Pagination(page=page, per_page=per_page, total=total)
     
     return render_template('collection.html',
                             reviews=paginated_reviews,
+                            len=total,
                             page=page,
                             per_page=per_page,
                             pagination=pagination)
-                             next_url=next_url, prev_url=prev_url)
-''' 
+
 
 # Function that renders view review template of a selected by user review
 @app.route('/view/<review_id>')

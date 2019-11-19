@@ -3,11 +3,18 @@
 <div class="content-container">
 
     <h3 class="center">Collection</h3>
-
-
-    {% for review in reviews %}
-
+    <div>{{ pagination.links }}</div>
     
+    {% for review in range(0,len) %}
+  
+    <li>{{ review.title }}</li> 
+    
+    {% endfor %}
+    
+    {% for review in review %}
+ 
+  <!--  <div>{{ loop.index + pagination.skip }}</div> -->
+
     <div class="row">
 
         <div class="col l4 m4 s12 center-on-small-only"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
@@ -39,11 +46,9 @@
 
     {% if (loop.index - loop.length) %}
 
-    <hr> 
-    
-    {% endif %}
-    {% endfor %}
-    
+    <hr> {% endif %} {% endfor %} {{ pagination.info }} {{ pagination.links }}
+
+
 </div>
 
 {% endblock %}
