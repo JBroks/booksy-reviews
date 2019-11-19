@@ -141,11 +141,11 @@ def add_review(username):
 def insert_review():
     reviews = mongo.db.reviews
     reviews.insert_one({
-        'title': request.form['title'],
-        'author': request.form['author'],
+        'title': request.form['title'].capitalize(),
+        'author': request.form['author'].capitalize(),
         'publication_year': request.form['publication_year'],
         'type': request.form['type'],
-        'genre': request.form['genre'],
+        'genre': request.form['genre'].capitalize(),
         'cover': request.form['cover'],
         'summary': request.form['summary'],
         'review': request.form['review'],
@@ -194,7 +194,9 @@ def show_collection():
     
     return render_template('collection.html',
                             reviews=reviews,
+'''
 
+'''
 reviews = mongo.db.reviews.find().sort([("_id", -1)])
 
 
@@ -252,11 +254,11 @@ def update_review(review_id):
     reviews = mongo.db.reviews
     reviews.update({'_id': ObjectId(review_id)},
     {
-        'title':request.form.get('title'),
-        'author':request.form.get('author'),
+        'title':request.form.get('title').capitalize(),
+        'author':request.form.get('author').capitalize(),
         'publication_year': request.form.get('publication_year'),
         'type': request.form.get('type'),
-        'genre': request.form.get('genre'),
+        'genre': request.form.get('genre').capitalize(),
         'cover': request.form.get('cover'),
         'summary': request.form.get('summary'),
         'review': request.form.get('review'),
