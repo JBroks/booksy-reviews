@@ -139,23 +139,37 @@ def add_review(username):
 @app.route('/insert_review', methods=['POST'])
 @login_required
 def insert_review():
+    
     reviews = mongo.db.reviews
-    reviews.insert_one({
-        'title': request.form['title'].capitalize(),
-        'author': request.form['author'].capitalize(),
-        'publication_year': request.form['publication_year'],
-        'type': request.form['type'],
-        'genre': request.form['genre'].capitalize(),
-        'cover': request.form['cover'],
-        'summary': request.form['summary'],
-        'review': request.form['review'],
-        'added_by': request.form['added_by'],
-        'upvote': [],
-        'downvote': [],
-        'upvote_total': 0,
-        'downvote_total': 0
-        
+    author = request.form['author'].title()
+    title = request.form['title'].title()
+    
+    existing_review = mongo.db.reviews.count_documents({ '$and': 
+        [{ 'author' : author },
+        { 'title': title }] 
     })
+        
+    if existing_review == 0:
+        
+        reviews.insert_one({
+            'title': request.form['title'].title(),
+            'author': request.form['author'].title(),
+            'publication_year': request.form['publication_year'],
+            'type': request.form['type'],
+            'genre': request.form['genre'].title(),
+            'cover': request.form['cover'],
+            'summary': request.form['summary'],
+            'review': request.form['review'],
+            'added_by': request.form['added_by'],
+            'upvote': [],
+            'downvote': [],
+            'upvote_total': 0,
+            'downvote_total': 0
+        
+        })
+        
+    else: 
+        flash('Book with the same title and author already exists in our collection')
     
     return redirect(url_for('show_collection'))
     
@@ -254,11 +268,11 @@ def update_review(review_id):
     reviews = mongo.db.reviews
     reviews.update({'_id': ObjectId(review_id)},
     {
-        'title':request.form.get('title').capitalize(),
-        'author':request.form.get('author').capitalize(),
+        'title':request.form.get('title').title(),
+        'author':request.form.get('author').title(),
         'publication_year': request.form.get('publication_year'),
         'type': request.form.get('type'),
-        'genre': request.form.get('genre').capitalize(),
+        'genre': request.form.get('genre').title(),
         'cover': request.form.get('cover'),
         'summary': request.form.get('summary'),
         'review': request.form.get('review'),
