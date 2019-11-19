@@ -303,11 +303,9 @@ def update_comment(comment_id, review_id):
     username = current_user.username
     comments = mongo.db.comments
     comments.update({'_id': ObjectId(comment_id)},
-        {
-        'comment': request.form['comment'],
-        'username': username,
-        'review_id': ObjectId(review_id)
-    })
+        { '$set': 
+            { 'comment': request.form['comment'] }
+        })
     
     return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
 
