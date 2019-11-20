@@ -4,8 +4,8 @@
 
     <h3 class="center">Collection</h3>
     <div>{{ pagination.links }}</div>
-
-    {%- for review in review %}
+    
+    {% for review in reviews %}
 
     <!-- Print order number of the review -->
     <div>{{ loop.index + pagination.skip }}</div>
