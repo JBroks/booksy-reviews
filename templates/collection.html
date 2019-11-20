@@ -4,16 +4,11 @@
 
     <h3 class="center">Collection</h3>
     <div>{{ pagination.links }}</div>
-    
-    {% for review in range(0,len) %}
-  
-    <li>{{ review.title }}</li> 
-    
-    {% endfor %}
-    
-    {% for review in review %}
- 
-  <!--  <div>{{ loop.index + pagination.skip }}</div> -->
+
+    {%- for review in review %}
+
+    <!-- Print order number of the review -->
+    <div>{{ loop.index + pagination.skip }}</div>
 
     <div class="row">
 

@@ -176,15 +176,6 @@ def insert_review():
     
 # Reviews collection
 
-'''
-@app.route('/show_collection')
-def show_collection():
-    
-    reviews = mongo.db.reviews.find().sort([("_id", -1)])
-    
-    return render_template('collection.html', reviews=reviews, title='Collection')
-'''
-
 reviews = mongo.db.reviews.find().sort([("_id", -1)])
 
 def get_reviews(offset=0, per_page=5):
@@ -198,7 +189,6 @@ def show_collection():
     
     page, per_page, offset = get_page_args(page_parameter='page',
                                            per_page_parameter='per_page')
-   # import pdb; pdb.set_trace()  
     
     total = mongo.db.reviews.count_documents({})
     
@@ -208,7 +198,6 @@ def show_collection():
     
     return render_template('collection.html',
                             reviews=paginated_reviews,
-                            len=total,
                             page=page,
                             per_page=per_page,
                             pagination=pagination)
