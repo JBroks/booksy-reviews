@@ -176,9 +176,9 @@ def insert_review():
     
 # Reviews collection
 
-reviews = mongo.db.reviews.find().sort([("_id", -1)])
+def get_reviews(offset=0, per_page=10):
+    reviews = mongo.db.reviews.find().sort([("_id", -1)])
 
-def get_reviews(offset=0, per_page=5):
     reviews_list = list(reviews)
     
     return reviews_list[ offset: offset + per_page ]
@@ -367,6 +367,7 @@ def downvote(review_id):
 
 # Search function
 @app.route('/search', methods=['GET', 'POST'])
+@login_required
 def search():
     
     search_input = request.form.get("search_input")

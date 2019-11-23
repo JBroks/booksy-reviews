@@ -7,9 +7,6 @@
     
     {% for review in reviews %}
 
-    <!-- Print order number of the review -->
-    <div>{{ loop.index + pagination.skip }}</div>
-
     <div class="row">
 
         <div class="col l4 m4 s12 center-on-small-only"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
