@@ -27,6 +27,16 @@ h4 {
     font-weight: 500;
 }
 
+/* Logo styling */
+
+.brand-logo {
+    font-family: "Parisienne", sans-serif;
+}
+
+nav .brand-logo {
+    font-size: 2.5rem;
+}
+
 /* Footer gradient color effect */
 
 .page-footer {
