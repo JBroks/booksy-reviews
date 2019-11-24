@@ -42,4 +42,35 @@ $(document).ready(function() {
   });
 });
 
+function confirmation(ev) {
+  ev.preventDefault();
+
+  swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+    showLoaderOnConfirm: true,
+    preConfirm: function() {
+      return new Promise(function(resolve) {
+        $.ajax({
+            url: $(".delete-btn a").attr('href'),
+            success: function(result) {
+              window.location.replace('/show_collection');
+            }
+          })
+          .done(function(response) {
+            swal.fire('Deleted!', response.message, response.status);
+          })
+          .fail(function() {
+            swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+          });
+      });
+    },
+    allowOutsideClick: false
+  });
+}
 
