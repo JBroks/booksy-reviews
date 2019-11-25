@@ -135,7 +135,9 @@ def generate_amazon_link(title, author):
     
 	base_link = 'https://www.amazon.co.uk/s?k='
 	
-	amazon_link = base_link + title.replace(' ', '+') + "+" + author.replace(' ', '+')
+	amazon_concat = base_link + title.replace(' ', '+') + "+" + author.replace(' ', '+')
+	
+	amazon_link = amazon_concat.replace('&', 'and')
 	
 	return amazon_link
 
@@ -244,7 +246,11 @@ def edit_review(review_id):
 @login_required
 def update_review(review_id):
     reviews = mongo.db.reviews
-
+    
+    author = request.form['author'].title()
+    title = request.form['title'].title()
+    amazon_link = generate_amazon_link(title, author)
+    
     reviews.update({'_id': ObjectId(review_id)},
     { '$set':
         {
@@ -255,7 +261,8 @@ def update_review(review_id):
         'genre': request.form.get('genre').title(),
         'cover': request.form.get('cover'),
         'summary': request.form.get('summary'),
-        'review': request.form.get('review')
+        'review': request.form.get('review'),
+        'amazon': amazon_link
         }
     })
     return redirect(url_for('show_collection')) 

@@ -115,18 +115,14 @@
 
     <section id="comments-section">
 
-        {% for comment in comments %}
-
-        <!-- Comments counter -->
-
-        {% if loop.index == (loop.first) %}
-        <div class="row">
-            <h5><i class="small material-icons">forum</i>Comments ({{ loop.length }})</h5>
+        <!-- Comments section heading -->
+        <div class="row center">
+            <h4>Please comment and join the discussion</h4>
         </div>
 
         <!-- Insert comment -->
 
-        <div class="row">
+        <div class="row insert-comment">
             <form action="{{ url_for('insert_comment', _anchor='comments-section', review_id=review._id ) }}" method="POST" class="col s12 comment-form">
                 <div class="row">
                     <div class="input-field col m8 offset-m4 s12 center-on-small-only">
@@ -143,6 +139,16 @@
                 </div>
             </form>
         </div>
+
+        {% for comment in comments %}
+
+        <!-- Comments counter -->
+
+        {% if loop.index == (loop.first) %}
+        <div class="row">
+            <h5><i class="small material-icons">forum</i>Comments ({{ loop.length }})</h5>
+        </div>
+
 
         {%endif%}
 

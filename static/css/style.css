@@ -383,6 +383,10 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     font-weight: 300;
 }
 
+.insert-comment {
+    margin-top: 20px;
+}
+
 /* Style comment textarea box */
 
 textarea.posted-textarea {
