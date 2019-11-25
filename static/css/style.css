@@ -217,7 +217,7 @@ main {
     border-radius: 10px;
     box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
     margin: 15px 0 0 0;
-    padding: 0 0 0 35px;
+    padding: 7px 0 7px 30px;
 }
 
 /* place search icon inside the input box */
@@ -251,6 +251,7 @@ main {
 .search-bar .input-field .prefix {
     color: #a99c72;
     padding-left: 10px;
+    padding-top: 7px;
 }
 
 
@@ -500,8 +501,5 @@ a#cancel:hover {
     h4 {
         font-size: 1.9rem;
     }
-
-    nav:before {
-        height: 160px;
-    }
+    
 }
