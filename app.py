@@ -28,7 +28,6 @@ mongo = PyMongo(app)
 loginM = LoginManager(app)
 loginM.login_view = 'login'
 
-
 # Function with a route in it that will direct you to the landing site / home page
 @app.route('/')
 @app.route('/index')
@@ -46,9 +45,9 @@ def register():
         existing_user = mongo.db.users.find_one({"username": form.username.data}, {"email": form.email.data})
         if existing_user is None:
             password = generate_password_hash(request.form['password'])
-            mongo.db.users.insert_one({'username': request.form['username'],'email': request.form['email'],
+            mongo.db.users.insert_one({'username': request.form['username'].lower(),'email': request.form['email'],
                              'password': password})
-            flash(f'Congratulations {form.username.data}, you are now a registered user!')
+            flash(f'Congratulations {form.username.data.lower()}, you are now a registered user!')
             return redirect(url_for('login'))
         else:
             flash('Username or email that you provided already exists', 'danger')
@@ -67,11 +66,11 @@ def load_user(username):
 def login():
     form = LoginForm()
     if request.method == 'POST' and form.validate_on_submit():
-        user = mongo.db.users.find_one({"username": form.username.data})
+        user = mongo.db.users.find_one({"username": form.username.data.lower()})
         if user and User.check_password(user['password'], form.password.data):
             user_obj = User(user['username'])
             login_user(user_obj)
-            flash(f'Hello {form.username.data}, you have successfully logged into your account', 'success')
+            flash(f'Hello {form.username.data.lower()}, you have successfully logged into your account', 'success')
             return redirect(request.args.get("next") or url_for("index"))
         flash("Wrong username or password", 'error')
     return render_template('login.html', title='Sign In', form=form)
