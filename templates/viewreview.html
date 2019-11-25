@@ -114,13 +114,18 @@
 
     </section>
 
-    <!-- Comments heading -->
-    <section id="comments-section">
-        
-        <div class="row">
-            <h5><i class="small material-icons">forum</i>Comments</h5>
-        </div>
 
+    <section id="comments-section">
+
+        {% for comment in comments %}
+
+        <!-- Comments counter -->
+        
+        {% if loop.index == (loop.first) %}
+        <div class="row">
+            <h5><i class="small material-icons">forum</i>Comments ({{ loop.length }})</h5>
+        </div>
+        
         <!-- Insert comment -->
 
         <div class="row">
@@ -140,38 +145,36 @@
                 </div>
             </form>
         </div>
-        
-        <!-- Latest comment -->
 
-        {% for comment in comments %}
+        {%endif%}
 
         <div class="row">
-            
+
             <div class="col s12">
-                
+
                 <div id="card" class="card">
-                    
+
                     <!-- Card content -->
-                    
+
                     <div class="card-content">
-                        
+
                         <!-- Comment author -->
-                        
+
                         <div class="row">
                             <div class="col s12">
                                 <span class="card-title">{{ comment.username }} says:</span></div>
                         </div>
-                        
+
                         <!-- Comment displayed: not editable -->
-                        
+
                         <div class="row card-text">
                             <div class="col s12">
                                 <p>{{ comment.comment }}</p>
                             </div>
                         </div>
-            
+
                         <!-- Comment form: editable -->
-                        
+
                         <div class="row posted-form">
                             <div class="col s12">
                                 <form action="{{ url_for('update_comment', _anchor='comments-section', comment_id=comment._id, review_id=review._id ) }}" method="POST" class="col s12">
@@ -195,25 +198,25 @@
                         <!-- Edit and delete buttons displayed only for the user that is an author of the comment -->
 
                         {% if current_user.username == comment.username %}
-                        
+
                         <div class="card-action">
                             <div class="row right-align">
                                 <div class="col s3 offset-s6"><a class="edit">Edit</a></div>
                                 <div class="col s3"><a href="{{ url_for('delete_comment', _anchor='comments-section', comment_id=comment._id, review_id=review._id) }}" class="delete">Delete</a></div>
                             </div>
                         </div>
-                        
+
                         {% endif %}
 
                     </div>
                 </div>
             </div>
         </div>
-        
+
         {% endfor %}
 
     </section>
-    
+
 </div>
 
 {% endblock %}
