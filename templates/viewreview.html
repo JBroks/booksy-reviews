@@ -58,9 +58,7 @@
                 <!-- Buy online button -->
 
                 <div class="row">
-                    <div class="col s12 center-on-small-only"><button class="btn waves-effect waves-light"><a href="http://www.google.com/search?q={{ review.title }}" target="_new"></a>Buy online
-                <i class="material-icons right">add_shopping_cart</i>
-             </button></div>
+                    <div class="col s12 center-on-small-only"><a href="{{ review.amazon }}" target="_blank" class="waves-effect waves-light btn btn_small">Buy online<i class="material-icons right">add_shopping_cart</i></a></div>
                 </div>
 
             </div>
@@ -120,12 +118,12 @@
         {% for comment in comments %}
 
         <!-- Comments counter -->
-        
+
         {% if loop.index == (loop.first) %}
         <div class="row">
             <h5><i class="small material-icons">forum</i>Comments ({{ loop.length }})</h5>
         </div>
-        
+
         <!-- Insert comment -->
 
         <div class="row">

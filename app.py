@@ -129,6 +129,16 @@ def delete_account(user_id):
     flash('We are sorry to see you go, please note that your account has been pernamently deleted.')
     return redirect(url_for('index'))
 
+# Generate amazon search on amazon 
+
+def generate_amazon_link(title, author):
+    
+	base_link = 'https://www.amazon.co.uk/s?k='
+	
+	amazon_link = base_link + title.replace(' ', '+') + "+" + author.replace(' ', '+')
+	
+	return amazon_link
+
 # Function that renders add review template. Form request imput from the user. Function activated when user clicks "add review" in the navbar 
 @app.route('/add_review/<username>')
 @login_required
@@ -141,11 +151,11 @@ def add_review(username):
 @login_required
 def insert_review():
     
-    
     reviews = mongo.db.reviews
     author = request.form['author'].title()
     title = request.form['title'].title()
     username = current_user.username
+    amazon_link = generate_amazon_link(title, author)
     
     existing_review = mongo.db.reviews.count_documents({ '$and': 
         [{ 'author' : author },
@@ -163,6 +173,7 @@ def insert_review():
             'cover': request.form['cover'],
             'summary': request.form['summary'],
             'review': request.form['review'],
+            'amazon': amazon_link,
             'added_by': username,
             'upvote': [],
             'downvote': [],
@@ -278,7 +289,6 @@ def update_comment(comment_id, review_id):
 @app.route('/cancel_comment/<review_id>')
 @login_required
 def cancel_comment(review_id):
-
     return redirect(url_for('view_review', _anchor='comments-section', review_id=review_id))
 
 # Function that deletes comment
