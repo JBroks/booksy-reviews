@@ -8,8 +8,8 @@ from flask_pymongo import PyMongo
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required
 from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm
-from werkzeug.urls import url_parse
 from werkzeug.security import generate_password_hash, check_password_hash
+from user import User
 from datetime import datetime
 
 # Create an instance of Flask / Flask app and store it in the app variable
@@ -28,29 +28,6 @@ mongo = PyMongo(app)
 loginM = LoginManager(app)
 loginM.login_view = 'login'
 
-# User class
-class User:
-    def __init__(self, username):
-        self.username = username
-
-    @staticmethod
-    def is_authenticated():
-        return True
-
-    @staticmethod
-    def is_active():
-        return True
-
-    @staticmethod
-    def is_anonymous():
-        return False
-
-    def get_id(self):
-        return self.username
-
-    @staticmethod
-    def check_password(password_hash, password):
-        return check_password_hash(password_hash, password)
 
 # Function with a route in it that will direct you to the landing site / home page
 @app.route('/')
