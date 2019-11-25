@@ -10,7 +10,7 @@ from bson.objectid import ObjectId
 from forms import LoginForm, RegistrationForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from user import User
-from datetime import datetime
+from datetime import datetime, date
 
 # Create an instance of Flask / Flask app and store it in the app variable
 app = Flask(__name__)
@@ -85,7 +85,7 @@ def logout():
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
+        current_user.last_seen = datetime.utcnow().strftime("%A, %d. %B %Y %I:%M%p")
         username = current_user.get_id()
         mongo.db.users.find_one_and_update({'username': username}, {'$set': {'last_seen': current_user.last_seen}})
 
