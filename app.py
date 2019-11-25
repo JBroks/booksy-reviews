@@ -141,9 +141,11 @@ def add_review(username):
 @login_required
 def insert_review():
     
+    
     reviews = mongo.db.reviews
     author = request.form['author'].title()
     title = request.form['title'].title()
+    username = current_user.username
     
     existing_review = mongo.db.reviews.count_documents({ '$and': 
         [{ 'author' : author },
@@ -161,7 +163,7 @@ def insert_review():
             'cover': request.form['cover'],
             'summary': request.form['summary'],
             'review': request.form['review'],
-            'added_by': request.form['added_by'],
+            'added_by': username,
             'upvote': [],
             'downvote': [],
             'upvote_total': 0,
@@ -242,8 +244,7 @@ def update_review(review_id):
         'genre': request.form.get('genre').title(),
         'cover': request.form.get('cover'),
         'summary': request.form.get('summary'),
-        'review': request.form.get('review'),
-        'added_by': request.form.get('added_by')
+        'review': request.form.get('review')
         }
     })
     return redirect(url_for('show_collection')) 
