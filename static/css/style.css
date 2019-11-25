@@ -384,7 +384,13 @@ textarea.materialize-textarea:focus:not([readonly])+label,
 
 /* Style comment textarea box */
 
+textarea.posted-textarea {
+    resize: none;
+}
+
 textarea.comments-textarea {
+    resize: none;
+    height: 7rem;
     border: #d2d1d1 solid 1px;
     background-color: #f5f5f5;
     box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
@@ -424,7 +430,7 @@ textarea.comments-textarea:focus:not([readonly]) {
 /* Update comment form buttons edit on focus state */
 
 button:focus,
-button {
+button, a#cancel {
     background-color: transparent;
     border: none;
     text-transform: uppercase;
@@ -440,13 +446,13 @@ button {
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating),
 button#update,
-button#cancel {
+a#cancel {
     color: #292826;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover,
 button#update:hover,
-button#cancel:hover {
+a#cancel:hover {
     cursor: pointer;
     color: #c0b283;
 }

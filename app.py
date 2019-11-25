@@ -266,7 +266,6 @@ def insert_comment(review_id):
 @app.route('/update_comment/<review_id>/<comment_id>', methods=["POST"])
 @login_required
 def update_comment(comment_id, review_id):
-    username = current_user.username
     comments = mongo.db.comments
     comments.update({'_id': ObjectId(comment_id)},
         { '$set': 
@@ -274,6 +273,13 @@ def update_comment(comment_id, review_id):
         })
     
     return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
+
+# Function that submits user input to the database
+@app.route('/cancel_comment/<review_id>')
+@login_required
+def cancel_comment(review_id):
+
+    return redirect(url_for('view_review', _anchor='comments-section', review_id=review_id))
 
 # Function that deletes comment
 @app.route('/delete_comment/<review_id>/<comment_id>')
