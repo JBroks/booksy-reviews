@@ -383,6 +383,8 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     font-weight: 300;
 }
 
+/* Add space between section heading and post comment */
+
 .insert-comment {
     margin-top: 20px;
 }

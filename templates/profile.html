@@ -7,7 +7,7 @@
         <div class="col s12">Last seen: {{ user.last_seen }}</div>
     </div>
     <div class="row">
-        <div class="col s12 center-on-small-only"><a class="btn waves-effect waves-light red darken-1" href="{{url_for('delete_account', user_id=user._id)}}">Delete account<i class="material-icons right">delete_forever</i></a></div>
+        <div class="col s12 center-on-small-only delete-acc"><a onclick="confirmationAcc(event)" class="btn waves-effect waves-light red darken-1" href="{{url_for('delete_account', user_id=user._id)}}" href-return="/index">Delete account<i class="material-icons right">delete_forever</i></a></div>
     </div>
 
     <div class="row">
@@ -20,7 +20,7 @@
         <div class="col m2 s4 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
         <div class="col m6 s8 center-on-small-only" id="profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
         <div class="col m2 s6 center hide-on-small-only user-reviews"><a href="{{url_for('edit_review', review_id=review._id)}}">Edit</a></div>
-        <div class="col m2 s6 center hide-on-small-only user-reviews"><a href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
+        <div class="col m2 s6 center hide-on-small-only user-reviews delete-btn"><a onclick="confirmation(event)" href="{{url_for('delete_review', review_id=review._id)}}" href-return="/user/{{ user.username }}">Delete</a></div>
     </div>
 
     {% endfor %}

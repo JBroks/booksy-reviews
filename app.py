@@ -102,7 +102,6 @@ def profile(username):
 @login_required
 def delete_account(user_id):
     mongo.db.users.remove({'_id': ObjectId(user_id)})
-    flash('We are sorry to see you go, please note that your account has been pernamently deleted.')
     return redirect(url_for('index'))
 
 # Generate amazon search on amazon 
@@ -207,7 +206,6 @@ def view_review(review_id):
 @login_required
 def delete_review(review_id):
     mongo.db.reviews.remove({'_id': ObjectId(review_id)})
-    flash('Your review has now been pernamently deleted from our collection.')
     return redirect(url_for('show_collection'))
  
 # Function that renders edit review template i.e. displays edit review form to the user 

@@ -42,6 +42,8 @@ $(document).ready(function() {
   });
 });
 
+/* Function confirming deletion of the review */
+
 function confirmation(ev) {
   ev.preventDefault();
 
@@ -50,27 +52,68 @@ function confirmation(ev) {
     text: "You won't be able to revert this!",
     type: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
     confirmButtonText: 'Yes, delete it!',
     showLoaderOnConfirm: true,
     preConfirm: function() {
       return new Promise(function(resolve) {
-        $.ajax({
+           $.ajax({
             url: $(".delete-btn a").attr('href'),
             success: function(result) {
-              window.location.replace('/show_collection');
+              window.location.replace($(".delete-btn a").attr('href-return'));
             }
           })
           .done(function(response) {
-            swal.fire('Deleted!', response.message, response.status);
+           swal.fire('Review was deleted!', response.message, response.status);
           })
+          
           .fail(function() {
             swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
           });
+        
       });
     },
     allowOutsideClick: false
   });
 }
 
+/* Function confirming deletion of the account */
+
+function confirmationAcc(ev) {
+  ev.preventDefault();
+
+  swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!',
+    showLoaderOnConfirm: true,
+    preConfirm: function() {
+      return new Promise(function(resolve) {
+           $.ajax({
+            url: $(".delete-acc a").attr('href'),
+            success: function(result) {
+              window.location.replace($(".delete-acc a").attr('href-return'));
+            }
+          })
+          .done(function(response) {
+           swal.fire('Your account has been pernamently deleted!', response.message, response.status);
+          })
+          
+          .fail(function() {
+            swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+          });
+        
+      });
+    },
+    allowOutsideClick: false
+  });
+}
+
+
+/* Comment counter */
+document.getElementById('counter').innerHTML = document.getElementsByClassName("card").length;
