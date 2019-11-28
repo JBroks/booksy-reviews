@@ -375,14 +375,6 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     color: #fd5050;
 }
 
-/* Style flash messages */
-
-#flash-messages {
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-
 /* Add space between section heading and post comment */
 
 .insert-comment {
