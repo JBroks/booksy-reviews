@@ -101,7 +101,28 @@ def profile(username):
 @app.route('/delete_account/<user_id>')
 @login_required
 def delete_account(user_id):
+    username = current_user.username
+    
+    # remove votes for a given user
+    mongo.db.reviews.update_many(
+    { 'upvote': {'username': username} },
+    { '$pull': { 'upvote': {'username': username}  } })
+    
+    mongo.db.reviews.update_many(
+    { 'downvote': {'username': username}  },
+    { '$pull': { 'downvote': {'username': username}  } })
+    
+    # Recalculate total upvotes and downvotes
+   # mongo.db.reviews.aggregate([{'$project': { 'upvote_total': { '$size':"$upvote" }}}])
+   # mongo.db.reviews.aggregate([{'$project': { 'downvote_total': { '$size':"$downvote" }}}])
+    
+    # remove all reviews and comments added by the user
+    mongo.db.reviews.remove({'added_by': username })
+    mongo.db.comments.remove({'username': username })
+    
+    # remove user
     mongo.db.users.remove({'_id': ObjectId(user_id)})
+    
     return redirect(url_for('index'))
 
 # Generate amazon search on amazon 
