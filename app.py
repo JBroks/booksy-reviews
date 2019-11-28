@@ -101,26 +101,36 @@ def profile(username):
 @app.route('/delete_account/<user_id>')
 @login_required
 def delete_account(user_id):
+    
     username = current_user.username
     
-    # remove votes for a given user
+    # Recalculate total upvotes and downvotes
+    # Remove votes for a given user from all reviews they voted for (deduct from total count)
+    
     mongo.db.reviews.update_many(
     { 'upvote': {'username': username} },
-    { '$pull': { 'upvote': {'username': username}  } })
+    {'$inc': { 'upvote_total' : -1} } )
     
     mongo.db.reviews.update_many(
     { 'downvote': {'username': username}  },
-    { '$pull': { 'downvote': {'username': username}  } })
+    {'$inc': { 'downvote_total' : -1} } )
     
-    # Recalculate total upvotes and downvotes
-   # mongo.db.reviews.aggregate([{'$project': { 'upvote_total': { '$size':"$upvote" }}}])
-   # mongo.db.reviews.aggregate([{'$project': { 'downvote_total': { '$size':"$downvote" }}}])
+    # Remove username from all reviews that user voted for
+    # Remove votes for a given user from all reviews they voted for (remove username from array)
     
-    # remove all reviews and comments added by the user
+    mongo.db.reviews.update_many(
+    { 'upvote': {'username': username} },
+    { '$pull': { 'upvote': {'username': username}  } } )
+    
+    mongo.db.reviews.update_many(
+    { 'downvote': {'username': username}  },
+    { '$pull': { 'downvote': {'username': username}  } } )
+   
+    # Remove all reviews and comments added by the user
     mongo.db.reviews.remove({'added_by': username })
     mongo.db.comments.remove({'username': username })
     
-    # remove user
+    # Remove user
     mongo.db.users.remove({'_id': ObjectId(user_id)})
     
     return redirect(url_for('index'))
