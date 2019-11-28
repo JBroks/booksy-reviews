@@ -11,10 +11,12 @@ from forms import LoginForm, RegistrationForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from user import User
 from datetime import datetime, date
+from flask_toastr import Toastr
 
 # Create an instance of Flask / Flask app and store it in the app variable
 app = Flask(__name__)
-
+toastr = Toastr(app)
+        
 # Configure MONGO_DBNAME and MONGO_URI and pass it via os environment
 app.config['MONGO_DBNAME'] = 'booksyDB'
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
@@ -47,10 +49,10 @@ def register():
             password = generate_password_hash(request.form['password'])
             mongo.db.users.insert_one({'username': request.form['username'].lower(),'email': request.form['email'],
                              'password': password})
-            flash(f'Congratulations {form.username.data.lower()}, you are now a registered user!')
+            flash(f'Congratulations {form.username.data.lower()}, <br/>you are now a registered user!', 'success')
             return redirect(url_for('login'))
         else:
-            flash('Username or email that you provided already exists', 'danger')
+            flash('Username or email that you provided already exists', 'warning')
             
     return render_template('register.html', title='Sign Up', form=form)
 
@@ -70,7 +72,7 @@ def login():
         if user and User.check_password(user['password'], form.password.data):
             user_obj = User(user['username'])
             login_user(user_obj)
-            flash(f'Hello {form.username.data.lower()}, you have successfully logged into your account', 'success')
+            flash(f'Hello {form.username.data.lower()},<br/> you have successfully logged into your account', 'success')
             return redirect(request.args.get("next") or url_for("index"))
         flash("Wrong username or password", 'error')
     return render_template('login.html', title='Sign In', form=form)
@@ -191,7 +193,7 @@ def insert_review():
         })
         
     else: 
-        flash('Book with the same title and author already exists in our collection')
+        flash('Book with the same title and author already exists in our collection', 'warning')
     
     return redirect(url_for('show_collection'))
     
@@ -411,12 +413,12 @@ def search():
         logging.error('Entering the POST if')
         if search_string == '':
             logging.error('Entering the empty string if')
-            flash('You have not provided any search input!')
+            flash('You have not provided any search input!', 'warning')
             return redirect('/search')
             
         elif results_count == 0:
             logging.error('Entering no results if')
-            flash('No results found!')
+            flash('No results found!', 'info')
             return redirect('/search')
             
         else:
