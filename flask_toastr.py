@@ -32,14 +32,6 @@ class _toastr(object):
 </style> %s''' % css)
 
     @staticmethod
-    def include_jquery(version=None):
-        if version is None:
-            version = current_app.config.get('TOASTR_JQUERY_VERSION')
-        js = ('<script src="//code.jquery.com/' +
-              'jquery-%s.min.js"></script>') % version
-        return Markup(js)
-
-    @staticmethod
     def message():
         toastr_options = 'toastr.options.closeButton = %s; \
         toastr.options.timeOut = %s; \
@@ -79,7 +71,6 @@ class _toastr(object):
             get_flashed_messages=get_flashed_messages,
             toastr_options=toastr_options))
 
-
 class Toastr(object):
     def __init__(self, app=None):
         if app is not None:
@@ -97,9 +88,9 @@ class Toastr(object):
         app.config.setdefault('TOASTR_JS_FILENAME', 'toastr.min.js')
 
         app.config.setdefault('TOASTR_CLOSE_BUTTON', 'false')
-        app.config.setdefault('TOASTR_TIMEOUT', 10000)
+        app.config.setdefault('TOASTR_TIMEOUT', 50000)
         app.config.setdefault('TOASTR_EXTENDED_TIMEOUT', 1000)
-        app.config.setdefault('TOASTR_POSITION_CLASS', 'toast-top-center')
+        app.config.setdefault('TOASTR_POSITION_CLASS', 'toast-top-left')
         app.config.setdefault('TOASTR_PREVENT_DUPLICATES', 'false')
         app.config.setdefault('TOASTR_NEWS_ON_TOP', 'false')
         app.config.setdefault('TOASTR_PROGRESS_BAR', 'true')

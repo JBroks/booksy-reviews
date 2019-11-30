@@ -18,9 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 
-    {{ toastr.include_jquery() }}
     {{ toastr.include_toastr_css() }}
-    {{ toastr.message() }}
+    
     
 </head>
 
@@ -139,8 +138,10 @@
 
     <!-- Loading scripts -->
     
-    {{ toastr.include_toastr_js() }}
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {{ toastr.message() }}
+    {{ toastr.include_toastr_js() }}
     <script src="{{url_for('static', filename='js/libraries/sweetalert2.all.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="{{url_for('static', filename='js/script.js')}}" type="text/javascript"></script>

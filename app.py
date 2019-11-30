@@ -40,7 +40,7 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        flash('You are currently logged in!', 'success')
+        flash('You are currently logged in!', 'info')
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -49,7 +49,7 @@ def register():
             password = generate_password_hash(request.form['password'])
             mongo.db.users.insert_one({'username': request.form['username'].lower(),'email': request.form['email'],
                              'password': password})
-            flash(f'Congratulations {form.username.data.lower()}, <br/>you are now a registered user!', 'success')
+            flash(f'Congratulations {form.username.data.lower()}, you are now a registered user!', 'success')
             return redirect(url_for('login'))
         else:
             flash('Username or email that you provided already exists', 'warning')
@@ -72,7 +72,7 @@ def login():
         if user and User.check_password(user['password'], form.password.data):
             user_obj = User(user['username'])
             login_user(user_obj)
-            flash(f'Hello {form.username.data.lower()},<br/> you have successfully logged into your account', 'success')
+            flash(f'Hello {form.username.data.lower()}, you have successfully logged into your account', 'success')
             return redirect(request.args.get("next") or url_for("index"))
         flash("Wrong username or password", 'error')
     return render_template('login.html', title='Sign In', form=form)
@@ -193,7 +193,7 @@ def insert_review():
         })
         
     else: 
-        flash('Book with the same title and author already exists in our collection', 'warning')
+        flash('Book with the same title and author already exists in our collection', 'error')
     
     return redirect(url_for('show_collection'))
     

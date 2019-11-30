@@ -413,6 +413,13 @@ textarea.comments-textarea:focus:not([readonly]) {
     overflow-wrap: break-word;
 }
 
+
+/* Fixes word breaks in toast messages */
+
+.toast-message {
+    word-break: normal !important;
+}
+
 /* Card background color set to the same as comment textarea */
 
 .card {
@@ -429,7 +436,8 @@ textarea.comments-textarea:focus:not([readonly]) {
 /* Update comment form buttons edit on focus state */
 
 button:focus,
-button, a#cancel {
+button,
+a#cancel {
     background-color: transparent;
     border: none;
     text-transform: uppercase;
@@ -454,6 +462,12 @@ button#update:hover,
 a#cancel:hover {
     cursor: pointer;
     color: #c0b283;
+}
+
+/* Offset toast messages */
+
+#toast-container {
+    top: 10%;
 }
 
 /* MEDIA QUERIES */
@@ -499,5 +513,9 @@ a#cancel:hover {
     h4 {
         font-size: 1.9rem;
     }
-    
+
+    #toast-container {
+        top: 25%;
+    }
+
 }

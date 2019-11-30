@@ -114,6 +114,5 @@ function confirmationAcc(ev) {
   });
 }
 
-
 /* Comment counter */
 document.getElementById('counter').innerHTML = document.getElementsByClassName("card").length;
