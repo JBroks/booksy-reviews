@@ -464,10 +464,9 @@ a#cancel:hover {
     color: #c0b283;
 }
 
-/* Offset toast messages */
-
-#toast-container {
-    top: 10%;
+/* Fix issue with the close button not being placed after the message */
+#toast-container>div {
+    display: block;
 }
 
 /* MEDIA QUERIES */
@@ -512,10 +511,6 @@ a#cancel:hover {
 
     h4 {
         font-size: 1.9rem;
-    }
-
-    #toast-container {
-        top: 25%;
     }
 
 }
