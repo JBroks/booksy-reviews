@@ -1,17 +1,32 @@
+// SPINNER OVERLAY
+
+/**
+ * Function fading out loading spinner overlay 
+ **/
+
 $(window).on('load', function() {
   $("#overlay").fadeOut("slow");
 });
 
+// INITIALIZE MATERIALIZE
+
+/** 
+ * Function that initializes materialize side navbar, accordion collapsible
+ * and select menu
+ **/
+
 $(document).ready(function() {
   $('.collapsible').collapsible();
   $('select').material_select();
-  $(".button-collapse").sideNav();
-});
-$(document).ready(function() {
-  $('select').material_select();
+  $('.button-collapse').sideNav();
 });
 
-/* Submit search input on enter */
+// SEARCH BAR
+
+/** 
+ * Function that submits search input when user presses enter
+ **/
+ 
 $(document).ready(function() {
 
   $('.submit_on_enter').keydown(function(event) {
@@ -24,16 +39,26 @@ $(document).ready(function() {
 
 });
 
-/* Back to top button */
+// BACK TO TOP BUTTON
+
+/**
+ * Function implements smooth scrolling back to top after clicking the button
+ */
+ 
 $("a[href='#back-to-top']").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
 });
 
-/* Display only the comment form which user choosed to update */
+/** 
+ * Function that displays only the comment form which user choosed to update.
+ * Function is initiated on edit button click.
+ * When users clicks 'edit' button card view is hidden and editable comment is
+ * being displayed
+ **/
 
 $(document).ready(function() {
-  /*Hide all (update) form as a default*/
+  // Hide all (update) form as a default
   $('.posted-form').hide();
   $('.edit').click(function() {
     $(this).parents('div.card-action').prevAll('.card-text').hide();
@@ -42,7 +67,13 @@ $(document).ready(function() {
   });
 });
 
-/* Function confirming deletion of the review */
+// DELETE CONFIRMATION
+
+/** 
+ * Function confirming deletion of a review.
+ * When user presses the delete button window requesting a confirmation pops up.
+ * User can then confirm deletion or cancel it.
+ **/
 
 function confirmation(ev) {
   ev.preventDefault();
@@ -78,7 +109,11 @@ function confirmation(ev) {
   });
 }
 
-/* Function confirming deletion of the account */
+/** 
+ * Function confirming deletion of an account.
+ * When user presses the delete button window requesting a confirmation pops up.
+ * User can then confirm deletion or cancel it.
+ **/
 
 function confirmationAcc(ev) {
   ev.preventDefault();
@@ -114,7 +149,13 @@ function confirmationAcc(ev) {
   });
 }
 
-/* Comment counter */
+// COMMENT COUNTER
+
+/**
+ * Function that counts an amount of comments posted for a given review.
+ * Commment count is then displayed next to the 'Comments' heading.
+ **/
+
 $(document).ready(function() {
   $('#counter').html($(".card").length);
 });
