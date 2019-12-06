@@ -1,12 +1,8 @@
+/* FONTS AND TEXT STYLING */
+
 /* Import fonts */
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Parisienne|Alegreya:400,500,700,800&display=swap');
-
-/* Remove margin from rows */
-
-.row {
-    margin: 0;
-}
 
 /* Font settings */
 
@@ -27,6 +23,11 @@ h4 {
     font-weight: 500;
 }
 
+.homepage-container h1 {
+    color: #bdaa6c;
+    font-family: "Parisienne", sans-serif;
+}
+
 /* Logo styling */
 
 .brand-logo {
@@ -37,300 +38,28 @@ nav .brand-logo {
     font-size: 2.5rem;
 }
 
-/* Footer gradient color effect */
+/* Break words in a card if too long */
 
-.page-footer {
-    background: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
-    padding-top: 0;
+#card-container,
+#view-review-container p {
+    overflow-wrap: break-word;
 }
 
-/* Navbar gradient effect and skew shape. Tutorial used: https://css-tricks.com/creating-non-rectangular-headers/ */
+/* Card background color set to the same as comment textarea */
 
-nav:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background-image: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
-    transform: skewY(-4deg);
-    transform-origin: top left;
+.card {
+    background-color: #f5f5f5;
 }
 
-/* Padding added to main to accomodate the skew navbar effect */
+/* Card title font size decreased */
 
-main {
-    padding-top: 170px;
-}
-
-/* Navbar padding */
-
-nav .nav-wrapper {
-    padding: 0 30px;
-}
-
-/* Button color changed from default to gold */
-
-.btn,
-.btn-large,
-.btn-small {
-    background-color: #c0b283;
-    margin: 20px 0;
-}
-
-/* Hover effect and focus color overwritting materialize default */
-
-.btn:focus,
-.btn-large:focus,
-.btn-small:focus,
-.btn:hover,
-.btn-large:hover,
-.btn-small:hover {
-    background-color: #a99c72;
-}
-
-/* Overlay created for forms and text in content-containers */
-
-.content-container {
-    background-color: rgba(228, 224, 211, 0.9);
-    padding: 20px 50px;
-    margin: 30px 0 100px;
-}
-
-/* Index page container settings and h1 styling */
-
-.homepage-container {
-    background-color: rgba(228, 224, 211, 0.8);
-    padding: 20px 50px;
-    margin: 30px 0 100px;
-}
-
-.homepage-container h1 {
-    color: #bdaa6c;
-    font-family: "Parisienne", sans-serif;
-}
-
-/* Set size for images in the collection page */
-
-.image-collection {
-    width: 100%;
-    height: 100%;
-    max-width: 250px;
-    max-height: 350px;
-}
-
-/* Make image smaller for the profile page display */
-
-.image-profile {
-    max-width: 50%;
-}
-
-/* Background photo for home page*/
-
-main {
-    background: url('../images/open-book.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-/* Materialize sticky footer */
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    flex: 1 0 auto;
-}
-
-/* Footer link underline */
-
-.footer-copyright a:hover {
-    text-decoration: underline;
-}
-
-/* Link hover effect. Source: https://codepen.io/jstn/pen/zuDst */
-
-.user-reviews a {
-    color: #373737;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.10em;
-
-    display: inline-block;
-    padding: 3px 12px;
-    position: relative;
-}
-
-.user-reviews a:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    background: #373737;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-}
-
-.user-reviews a:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-#profile-review-title a:hover {
-    color: #a99c72;
-}
-
-/* Accordion header background color and font styling */
-
-.collapsible-header {
-    background-color: #dcd8ca;
-    border-bottom: 1px solid #b5b5b3;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #848482;
-}
-
-/* Collapsible margin increased */
-
-.collapsible {
-    margin: 1.5rem 0;
-}
-
-
-/* SEARCH BAR*/
-
-/* Search bar box */
-
-.nav-wrapper .input-field input[type=search] {
-    background-color: #fff;
-    color: #373737;
-    height: 2rem;
-    width: calc(100% - 35px);
-    border-radius: 10px;
-    box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
-    margin: 15px 0 0 0;
-    padding: 7px 0 7px 30px;
-}
-
-/* place search icon inside the input box */
-
-.search-bar .input-field .prefix {
-    transform: translateY(9px) scale(0.9);
-    transform-origin: 0 0;
-}
-
-/* Edit search button styling 
-#search-icon {
+.card .card-title {
     font-size: 20px;
-    height: 30px;
-    line-height: 30px;
-}
-#search-button {
-    padding: 0 0.5rem;
-    height: 2rem;
-}
-*/
-
-/* Remove border bottom and edit shadow */
-
-.search-bar input[type=search]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: none;
-    box-shadow: 2px 2px 10px 2px rgba(124, 114, 82, 0.75)
+    font-weight: 400;
 }
 
-/* Search icon color */
-
-.search-bar .input-field .prefix {
-    color: #a99c72;
-    padding-left: 10px;
-    padding-top: 7px;
-}
-
-
-/* Remove padding for search bar */
-
-#search-input-field,
-.search-bar .col {
-    padding: 0;
-}
-
-
-/* Style colors for form input fileds when active */
-
-input[type=text]:not(.browser-default):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid #a99c72;
-    box-shadow: none;
-}
-
-input[type=text]:not(.browser-default):focus:not([readonly])+label,
-textarea.materialize-textarea:focus:not([readonly])+label,
-.input-field label:not(.label-icon).active {
-    color: #a99c72;
-    font-size: 1.3rem;
-}
-
-.input-field .prefix.active,
-.dropdown-content li>span {
-    color: #a99c72;
-}
-
-
-/* Overlay styled to dim the background for loader */
-
-#overlay {
-    z-index: 98;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, .5);
-}
-
-/* Position loader in the center */
-
-.preloader-wrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-
-/* Set color for the loader */
-
-.spinner-layer {
-    border-color: #fff;
-}
-
-/* Back to top button */
-
-.back-to-top-container {
-    background-color: #292826;
-    padding: 10px 0;
-}
-
-.back-to-top-container a {
-    color: #a99c72;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: letter-spacing 1.5s ease-in-out;
-}
-
-.back-to-top-container a:hover {
-    letter-spacing: 0.3em;
-    color: #fff;
+#commented-by {
+    font-weight: 700;
 }
 
 /* Book info styling - collection */
@@ -369,16 +98,307 @@ textarea.materialize-textarea:focus:not([readonly])+label,
     text-decoration: underline;
 }
 
-/* Rgister container missing info messages */
+/* Reister container missing info messages */
 
 #register-container .error {
     color: #fd5050;
 }
 
-/* Add space between section heading and post comment */
+/* GENERAL PADDING AND MARGIN SETTING */
 
-.insert-comment {
-    margin-top: 20px;
+/* Remove margin from rows */
+
+.row {
+    margin: 0;
+}
+
+/* Padding added to main to accomodate the skew navbar effect */
+
+main {
+    padding-top: 170px;
+}
+
+/* NAVBAR */
+
+/* Navbar gradient effect and skew shape. Tutorial used: https://css-tricks.com/creating-non-rectangular-headers/ */
+
+nav:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-image: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+    transform: skewY(-4deg);
+    transform-origin: top left;
+}
+
+/* Navbar padding */
+
+nav .nav-wrapper {
+    padding: 0 30px;
+}
+
+/* SEARCH BAR*/
+
+/* Search bar box */
+
+.nav-wrapper .input-field input[type=search] {
+    background-color: #fff;
+    color: #373737;
+    height: 2rem;
+    width: calc(100% - 35px);
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 0px rgba(124, 114, 82, 0.95);
+    margin: 15px 0 0 0;
+    padding: 7px 0 7px 30px;
+}
+
+/* Place search icon inside the input box */
+
+.search-bar .input-field .prefix {
+    transform: translateY(9px) scale(0.9);
+    transform-origin: 0 0;
+}
+
+/* Remove border bottom and edit shadow */
+
+.search-bar input[type=search]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: none;
+    box-shadow: 2px 2px 10px 2px rgba(124, 114, 82, 0.75)
+}
+
+/* Search icon color */
+
+.search-bar .input-field .prefix {
+    color: #a99c72;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+/* Remove padding for search bar */
+
+#search-input-field,
+.search-bar .col {
+    padding: 0;
+}
+
+/* TOAST MESSAGES */
+
+/* Fixes word breaks in toast messages */
+
+.toast-message {
+    word-break: normal !important;
+}
+
+/* Fix issue with the close button not being placed after the message */
+#toast-container>div {
+    display: block;
+}
+
+/* LOADING SPINNER */
+
+/* Overlay styled to dim the background for loader */
+
+#overlay {
+    z-index: 98;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+/* Position loader in the center */
+
+.preloader-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* Set color for the loader */
+
+.spinner-layer {
+    border-color: #fff;
+}
+
+/* CONTAINERS */
+
+/* Update comment buttons container margin to prevent overlapping with character counter */
+
+.buttons-container {
+    margin: 20px 0;
+}
+
+/* Overlay created for forms and text in content-containers */
+
+.content-container {
+    background-color: rgba(228, 224, 211, 0.9);
+    padding: 20px 50px;
+    margin: 30px 0 100px;
+}
+
+/* Index page container settings and h1 styling */
+
+.homepage-container {
+    background-color: rgba(228, 224, 211, 0.8);
+    padding: 20px 50px;
+    margin: 30px 0 100px;
+}
+
+/* BUTTONS AND LINKS*/
+
+/* Button color changed from default to gold */
+
+.btn,
+.btn-large,
+.btn-small {
+    background-color: #c0b283;
+    margin: 20px 0;
+}
+
+/* Hover effect and focus color overwritting materialize default */
+
+.btn:focus,
+.btn-large:focus,
+.btn-small:focus,
+.btn:hover,
+.btn-large:hover,
+.btn-small:hover {
+    background-color: #a99c72;
+}
+
+/* Link hover effect. Source: https://codepen.io/jstn/pen/zuDst */
+
+.user-reviews a {
+    color: #373737;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.10em;
+
+    display: inline-block;
+    padding: 3px 12px;
+    position: relative;
+}
+
+.user-reviews a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #373737;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.user-reviews a:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+#profile-review-title a:hover {
+    color: #a99c72;
+}
+
+/* Update comment form buttons edit on focus state */
+
+button:focus,
+button,
+a#cancel {
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+}
+
+/* Card-action buttons + update comment buttons color styling and hover state */
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating),
+button#update,
+a#cancel {
+    color: #292826;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover,
+button#update:hover,
+a#cancel:hover {
+    cursor: pointer;
+    color: #c0b283;
+}
+
+/* IMAGES */
+
+/* Set size for images in the collection page */
+
+.image-collection {
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 350px;
+}
+
+/* Make image smaller for the profile page display */
+
+.image-profile {
+    max-width: 50%;
+}
+
+/* Background photo for home page*/
+
+main {
+    background: url('../images/open-book.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ACCODRION */
+
+/* Accordion header background color and font styling */
+
+.collapsible-header {
+    background-color: #dcd8ca;
+    border-bottom: 1px solid #b5b5b3;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #848482;
+}
+
+/* Collapsible margin increased */
+
+.collapsible {
+    margin: 1.5rem 0;
+}
+
+/* INPUT FIELDS */
+
+/* Style colors for form input fileds when active */
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #a99c72;
+    box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label,
+.input-field label:not(.label-icon).active {
+    color: #a99c72;
+    font-size: 1.3rem;
+}
+
+.input-field .prefix.active,
+.dropdown-content li>span {
+    color: #a99c72;
 }
 
 /* Style comment textarea box */
@@ -402,80 +422,72 @@ textarea.comments-textarea:focus:not([readonly]) {
     outline: none;
 }
 
-#commented-by {
-    font-weight: 700;
+/* Add space between section heading and post comment */
+
+.insert-comment {
+    margin-top: 20px;
 }
 
-/* Break words in a card if too long */
+/* BACK TO BUTTON */
 
-#card-container,
-#view-review-container p {
-    overflow-wrap: break-word;
+/* Back to top button */
+
+.back-to-top-container {
+    background-color: #292826;
+    padding: 10px 0;
 }
 
-
-/* Fixes word breaks in toast messages */
-
-.toast-message {
-    word-break: normal !important;
-}
-
-/* Card background color set to the same as comment textarea */
-
-.card {
-    background-color: #f5f5f5;
-}
-
-/* Card title font size decreased */
-
-.card .card-title {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-/* Update comment form buttons edit on focus state */
-
-button:focus,
-button,
-a#cancel {
-    background-color: transparent;
-    border: none;
+.back-to-top-container a {
+    color: #a99c72;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: letter-spacing 1.5s ease-in-out;
 }
 
-/* Update comment buttons container margin to prevent overlapping with character counter */
-
-.buttons-container {
-    margin: 20px 0;
+.back-to-top-container a:hover {
+    letter-spacing: 0.3em;
+    color: #fff;
 }
 
-/* Card-action buttons + update comment buttons color styling and hover state */
+/* FOOTER */
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating),
-button#update,
-a#cancel {
-    color: #292826;
+/* Footer gradient color effect */
+
+.page-footer {
+    background: linear-gradient(90deg, #a99c72, #c0b283, #e4d29b);
+    padding-top: 0;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover,
-button#update:hover,
-a#cancel:hover {
-    cursor: pointer;
-    color: #c0b283;
+/* Materialize sticky footer */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-/* Fix issue with the close button not being placed after the message */
-#toast-container>div {
-    display: block;
+main {
+    flex: 1 0 auto;
+}
+
+/* Footer link underline */
+
+.footer-copyright a:hover {
+    text-decoration: underline;
 }
 
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 750px) {
+    
+/* Image in collection view - size adjustment */
+
     .image-collection {
         width: 40%;
         height: 40%;
     }
+
+/* Padding for content containers and main adjustment */
 
     .content-container {
         padding: 20px 20px;
@@ -484,6 +496,8 @@ a#cancel:hover {
     main {
         padding-top: 140px;
     }
+    
+/* Book information font size adjustments */
 
     #book-info-container .title {
         font-size: 1.2rem;
@@ -496,6 +510,8 @@ a#cancel:hover {
     #book-info-container .added-by {
         font-size: 0.9rem;
     }
+
+/* Headings size adjustments on smaller displays */
 
     h1 {
         font-size: 3.5rem;
