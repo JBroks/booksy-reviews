@@ -65,7 +65,7 @@
 
         </div>
 
-        <!-- Accordion element containing summery and review -->
+        <!-- Accordion element containing summary and review -->
 
         <div class="row">
             <div class="col s12">
@@ -103,8 +103,8 @@
             <div class="col s6"><a href="{{url_for('edit_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Edit<i class="material-icons right">edit</i></a></div>
             <div class="col s6 delete-btn"><a onclick="confirmation(event)" href="{{url_for('delete_review', review_id=review._id)}}" href-return="/show_collection" class="waves-effect waves-light btn btn_small red darken-1">Delete<i class="material-icons right">delete</i></a></div>
             {% else %}
-            <div class="col s6"><a href="{{ url_for('upvote', review_id=review._id ) }}" class="waves-effect waves-light btn btn_small">Like<i class="material-icons right">thumb_up</i></a></div>
-            <div class="col s6"><a href="{{ url_for('downvote', review_id=review._id ) }}" class="waves-effect waves-light btn btn_small">Dislike<i class="material-icons right">thumb_down</i></a></div>
+            <div class="col s6"><a href="{{ url_for('upvote', review_id=review._id) }}" class="waves-effect waves-light btn btn_small">{{ like }}<i class="material-icons right">thumb_up</i></a></div>
+            <div class="col s6"><a href="{{ url_for('downvote', review_id=review._id) }}" class="waves-effect waves-light btn btn_small">{{ dislike }}<i class="material-icons right">thumb_down</i></a></div>
             {% endif %}
         </div>
 

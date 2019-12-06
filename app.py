@@ -225,14 +225,36 @@ def show_collection():
                             per_page=per_page,
                             pagination=pagination)
 
-
 # Function that renders view review template of a selected by user review
 @app.route('/view/<review_id>')
 @login_required
 def view_review(review_id):
     the_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
     review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)])
-    return render_template('viewreview.html', review=the_review, comments=review_comments)
+    
+    username = current_user.username
+    
+    match_count_upvote = mongo.db.reviews.count_documents({
+        '_id' : ObjectId(review_id),
+        'upvote': {'$elemMatch': { "username": username}},
+    })
+    
+    match_count_downvote = mongo.db.reviews.count_documents({
+        '_id' : ObjectId(review_id),
+        'downvote': {'$elemMatch': { "username": username}},
+    })
+    
+    if match_count_upvote > 0:
+        like_btn = "un-like"
+        dislike_btn = "dislike"
+    elif match_count_downvote > 0:
+        like_btn = "like"
+        dislike_btn = "un-dislike"
+    else:
+        like_btn = "like"
+        dislike_btn = "dislike"
+    
+    return render_template('viewreview.html', review=the_review, comments=review_comments, like=like_btn, dislike=dislike_btn)
 
 # Function that deletes review
 @app.route('/delete_review/<review_id>')
@@ -353,17 +375,16 @@ def upvote(review_id):
         'downvote': {'$elemMatch': { "username": username}},
     })
 
-
     if match_count_upvote > 0:
         remove_vote('upvote', 'upvote_total', review_id, username)
-                                            
+    
     elif match_count_downvote > 0:
         add_vote('upvote', 'upvote_total', review_id, username)
         remove_vote('downvote', 'downvote_total', review_id, username)
-                                            
+        
     else:
         add_vote('upvote', 'upvote_total', review_id, username)
-
+        
     return redirect(url_for('view_review', review_id=review_id))
       
 # Functions that allows downvoting and adds increment of 1 to the review table
@@ -383,17 +404,17 @@ def downvote(review_id):
         '_id' : ObjectId(review_id),
         'downvote': {'$elemMatch': { "username": username}},
     })
-
+    
     if match_count_downvote > 0:
         remove_vote('downvote', 'downvote_total', review_id, username)
                                             
     elif match_count_upvote > 0:
         add_vote('downvote', 'downvote_total', review_id, username)
         remove_vote('upvote', 'upvote_total', review_id, username)
-        
+    
     else:
         add_vote('downvote', 'downvote_total', review_id, username)
-    
+        
     return redirect(url_for('view_review', review_id=review_id))
 
 # Search function
