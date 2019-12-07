@@ -135,7 +135,7 @@ def before_request():
 # USER PROFILE
 '''
 Function that displays user name in his/her profile and displays all reviews
-added by the user
+added, liked / disliked and commented on by the user
 '''
 
 @app.route('/user/<username>')
@@ -143,9 +143,29 @@ added by the user
 def profile(username):
     
     user = mongo.db.users.find_one({'username': username})
+    
+    # Find all reviews added by the user
     user_review = mongo.db.reviews.find({'added_by': username }).sort([("_id", -1)])
     
-    return render_template('profile.html', user=user, reviews=user_review, title='Profile')
+    # Find all reviews liked by the user
+    user_upvotes = mongo.db.reviews.find({ 'upvote': {'username': username} }).sort([("_id", -1)])
+    
+    # Find all reviews disliked by the user
+    user_downvotes = mongo.db.reviews.find({ 'downvote': {'username': username} }).sort([("_id", -1)])
+    
+    # Find all reviews commented on by the user
+    user_comments = mongo.db.reviews.aggregate([
+        { '$lookup': { 'from': 'comments',
+                       'localField': '_id',
+                       'foreignField': 'review_id',
+                       'as': 'commentsData'} },
+        { '$unwind': { 'path': "$commentsData"} },
+        { '$match': { 'commentsData.username': username } },
+    ]);
+    
+    return render_template('profile.html', user=user, reviews=user_review, 
+                            upvotes=user_upvotes, downvotes=user_downvotes, 
+                            comments=user_comments, title='Profile')
 
 # DELETE ACCOUNT
 '''
@@ -596,8 +616,8 @@ def search():
     if request.method == 'POST':
         
         logging.error('Entering the POST if')
-        # If no search input flash the message
         
+        # If no search input flash the message
         if search_string == '':
             
             logging.error('Entering the empty string if')
@@ -606,7 +626,6 @@ def search():
             return redirect('/search')
         
         # If no results display info message     
-        
         elif results_count == 0:
             
             logging.error('Entering no results if')
