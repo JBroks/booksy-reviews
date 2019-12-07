@@ -1,80 +1,128 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="content-container">
+    
+    <!-- Edit review form heading -->
     <h3  class="center">Edit Review</h3>
+    
+    <!-- Form container -->
     <div class="row">
+        
+        <!-- Form -->
         <form action="{{ url_for('update_review', review_id=review._id) }}" method="POST" class="col s12">
+            
+            <!-- Book title -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">title</i>
                     <input id="title" name="title" type="text" value="{{ review.title }}" required>
                     <label for="icon_prefix">Book Title</label>
                 </div>
+                
             </div>
+            
+            <!-- Book author -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">person</i>
                     <input id="author" name="author" type="text" value="{{ review.author }}" required>
                     <label for="icon_prefix">Author</label>
                 </div>
+                
             </div>
+            
+            <!-- Book publication year -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">today</i>
                     <input id="publication_year" name="publication_year" type="text" value="{{ review.publication_year }}" required>
                     <label for="icon_prefix">Publication year</label>
                 </div>
+                
             </div>
-
+            
+            <!-- Book type select menu -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">poll</i>
                     <select required id="type" name="type">
-                  <option value="" disabled>Select type</option>
-                  <option value="{{ review.type }}" selected>{{ review.type }}</option>
-                  <option value="{{ review.type }}">{{ review.type }}</option>
-                </select>
+                      <option value="" disabled>Select type</option>
+                      <option value="{{ review.type }}" selected>{{ review.type }}</option>
+                      <option value="{{ review.type }}">{{ review.type }}</option>
+                    </select>
                     <label>Book Type</label>
                 </div>
+                
             </div>
-            <div class="row">
+            
+            <!-- Book genre -->
+            <div class="row"> 
+            
                 <div class="input-field col s12">
                     <i class="material-icons prefix">book</i>
                     <input id="genre" name="genre" type="text" value="{{ review.genre }}" required>
                     <label for="icon_prefix">Book genre</label>
-                </div>
+                </div>  
+                
             </div>
+            
+            <!-- Book cover image link -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">image</i>
                     <input id="cover" name="cover" type="text" value="{{ review.cover }}" required>
                     <label for="icon_prefix">Link to book cover image</label>
                 </div>
+                
             </div>
+            
+            <!-- Book summary -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">subject</i>
                     <textarea name="summary" id="summary" class="materialize-textarea" data-length="10000" required>{{ review.summary }}</textarea>
                     <label for="icon_telephone">Book Summary</label>
                 </div>
+                
             </div>
+            
+            <!-- Book review -->
             <div class="row">
+                
                 <div class="input-field col s12">
                     <i class="material-icons prefix">subject</i>
                     <textarea name="review" id="review" class="materialize-textarea" data-length="10000" required>{{ review.review }}</textarea>
                     <label for="icon_telephone">Book Review</label>
                 </div>
+                
             </div>
+            
+            <!-- Buttons -->
             <div class="row center">
+                
+                <!-- Submit updates button -->
                 <div class="col s6">
                     <button class="btn waves-effect waves-light" type="submit" name="action">Update review
-                <i class="material-icons right">update</i>
-             </button>
+                        <i class="material-icons right">update</i></button>
                 </div>
+                
+                <!-- Cancel updates button -->
                 <div class="col s6">
                     <a class="btn waves-effect waves-light" href="{{url_for('view_review', review_id=review._id)}}">Cancel edit<i class="material-icons right">cancel</i></a>
                 </div>
+                
             </div>
+            
         </form>
+        
     </div>
+    
 </div>
+
 {% endblock %}
