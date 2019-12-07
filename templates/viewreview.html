@@ -2,14 +2,13 @@
 
 <div class="content-container" id="view-review-container">
 
+    <!-- Book information section -->
     <section id="book-info-section">
 
         <!-- Selected book title -->
-
         <h3>{{ review.title }}</h3>
 
         <!-- Selected book info container -->
-
         <div class="row">
             <div class="col s12">
                 <p>By {{ review.author }}</p>
@@ -19,46 +18,62 @@
         <div class="row">
 
             <!-- Book cover image -->
-
             <div class="col l4 m4 s12"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
 
             <!-- Book information -->
-
             <div class="col l8 m8 s12">
+                
+                <!-- Book type -->
                 <div class="row">
+                    
                     <div class="col s12">
                         <p>Type: {{ review.type }}</p>
                     </div>
+                    
                 </div>
+                
+                <!-- Book genre -->
                 <div class="row">
+                    
                     <div class="col s12">
                         <p>Genre: {{ review.genre }}</p>
                     </div>
+                    
                 </div>
+                
+                <!-- Book publication year -->
                 <div class="row">
+                    
                     <div class="col s12">
                         <p>Published: {{ review.publication_year }}</p>
                     </div>
+                    
                 </div>
+                
+                <!-- Book added by information -->
                 <div class="row">
+                    
                     <div class="col s12">
                         <p>Review submitted by: {{ review.added_by }}</p>
                     </div>
+                    
                 </div>
 
-                <!-- Like /dislike section -->
-
+                <!-- Like / dislike totals -->
                 <div class="row left">
+                    
                     <div class="col s3"><i class="material-icons">thumb_up</i></div>
                     <div class="col s2"><span>{{ review.upvote_total }}</span></div>
                     <div class="col s3"><i class="material-icons">thumb_down</i></div>
                     <div class="col s2"><span>{{ review.downvote_total }}</span></div>
+                
                 </div>
 
-                <!-- Buy online button -->
-
+                <!-- Buy online button that redirects to search on amazon website-->
                 <div class="row">
+                    
                     <div class="col s12 center-on-small-only"><a href="{{ review.amazon }}" target="_blank" class="waves-effect waves-light btn btn_small">Buy online<i class="material-icons right">add_shopping_cart</i></a></div>
+                
                 </div>
 
             </div>
@@ -66,8 +81,8 @@
         </div>
 
         <!-- Accordion element containing summary and review -->
-
         <div class="row">
+            
             <div class="col s12">
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
@@ -75,10 +90,10 @@
                             <div class="accordion_header">
                                 <i class="material-icons left">expand_more</i>Summary</div>
                         </div>
+                        
+                        <!-- Book summary -->
                         <div class="collapsible-body">
-                            <span>
-                    {{review.summary}} 
-                </span>
+                            <span>{{review.summary}}</span>
                         </div>
                     </li>
                     <li>
@@ -86,19 +101,20 @@
                             <div class="accordion_header">
                                 <i class="material-icons left">expand_more</i>Review</div>
                         </div>
+                        
+                        <!-- Book review -->
                         <div class="collapsible-body">
-                            <span>
-                    {{review.review}} 
-                </span>
+                            <span>{{review.review}}</span>
                         </div>
                     </li>
                 </ul>
             </div>
+            
         </div>
 
-        <!-- Likes and like, Delete and Edit buttons -->
-
+        <!-- Likes and Dislike, Delete and Edit buttons -->
         <div class="row center">
+            
             {% if current_user.username == review.added_by %}
             <div class="col s6"><a href="{{url_for('edit_review', review_id=review._id)}}" class="waves-effect waves-light btn btn_small">Edit<i class="material-icons right">edit</i></a></div>
             <div class="col s6 delete-btn"><a onclick="confirmation(event)" href="{{url_for('delete_review', review_id=review._id)}}" href-return="/show_collection" class="waves-effect waves-light btn btn_small red darken-1">Delete<i class="material-icons right">delete</i></a></div>
@@ -106,114 +122,148 @@
             <div class="col s6"><a href="{{ url_for('upvote', review_id=review._id) }}" class="waves-effect waves-light btn btn_small">{{ like }}<i class="material-icons right">thumb_up</i></a></div>
             <div class="col s6"><a href="{{ url_for('downvote', review_id=review._id) }}" class="waves-effect waves-light btn btn_small">{{ dislike }}<i class="material-icons right">thumb_down</i></a></div>
             {% endif %}
+            
         </div>
 
         <hr>
 
     </section>
 
-
+    <!-- Comments section -->
     <section id="comments-section">
 
         <!-- Comments section heading -->
         <div class="row center">
+            
             <h4>Please comment and join the discussion</h4>
+            
         </div>
 
         <!-- Insert comment -->
-
         <div class="row insert-comment">
+            
             <form action="{{ url_for('insert_comment', _anchor='comments-section', review_id=review._id ) }}" method="POST" class="col s12 comment-form">
+                
                 <div class="row">
+                    
+                    <!-- Comment input field -->
                     <div class="input-field col m8 offset-m4 s12 center-on-small-only">
                         <textarea name="comment" id="textarea-comment" class="comments-textarea" placeholder="Please leave a comment..." data-length="10000" required></textarea>
                         <label for="textarea-comment">Leave a comment</label>
                     </div>
+                    
                 </div>
+                
+                <!-- Post comment button -->
                 <div class="row">
+                    
                     <div class="col m8 offset-m4 right-align s12 center-on-small-only">
                         <button type="submit" name="action" class="btn waves-effect waves-light">Post
-                <i class="material-icons right">comment</i>
-             </button>
+                            <i class="material-icons right">comment</i></button>
                     </div>
+                    
                 </div>
+                
             </form>
+            
         </div>
 
         <!-- Comments counter -->
         <div class="row">
+            
             <h5><i class="small material-icons">forum</i>Comments (<span id="counter"></span>)</h5>
+            
         </div>
 
+        <!-- List of all comments -->
         {% for comment in comments %}
 
         <div class="row">
 
             <div class="col s12">
-
                 <div id="card" class="card">
 
                     <!-- Card content -->
-
                     <div class="card-content">
 
                         <!-- Comment author -->
-
                         <div class="row">
+                            
                             <div class="col s12">
                                 <span class="card-title">{{ comment.username }} says:</span></div>
+                                
                         </div>
 
                         <!-- Comment displayed: not editable -->
-
                         <div class="row card-text">
+                            
                             <div class="col s12">
                                 <p>{{ comment.comment }}</p>
                             </div>
+                            
                         </div>
 
                         <!-- Comment form: editable -->
-
                         <div class="row posted-form">
+                            
                             <div class="col s12">
+                                
                                 <form action="{{ url_for('update_comment', _anchor='comments-section', comment_id=comment._id, review_id=review._id ) }}" method="POST" class="col s12">
+                                    
+                                    <!-- Comment input field -->
                                     <div class="row">
                                         <div class="input-field s12 center">
                                             <textarea name="comment" id="textarea-posted" class="posted-textarea" data-length="10000" required>{{ comment.comment }}</textarea>
                                         </div>
                                     </div>
+                                    
+                                    <!-- Update comment form buttons -->
                                     <div class="row right-align buttons-container">
+                                        
+                                        <!-- Update button -->
                                         <div class="col m3 offset-m6 s6">
                                             <button type="submit" name="action" id="update">Update</button>
                                         </div>
+                                        
+                                        <!-- Cancel button -->
                                         <div class="col m3 s6">
                                             <a href="{{url_for('cancel_comment', _anchor='comments-section', review_id=review._id)}}" id="cancel">Cancel</a>
                                         </div>
+                                        
                                     </div>
+                                    
                                 </form>
+                                
                             </div>
+                            
                         </div>
 
                         <!-- Edit and delete buttons displayed only for the user that is an author of the comment -->
-
                         {% if current_user.username == comment.username %}
 
                         <div class="card-action">
+                            
                             <div class="row right-align">
+                                
                                 <div class="col s3 offset-s6"><a class="edit">Edit</a></div>
                                 <div class="col s3"><a href="{{ url_for('delete_comment', _anchor='comments-section', comment_id=comment._id, review_id=review._id) }}" class="delete">Delete</a></div>
+                            
                             </div>
+                            
                         </div>
 
                         {% endif %}
 
                     </div>
+                    
                 </div>
             </div>
+            
         </div>
-
+        
+        <!-- If no comments for the review display paragraph with information about it -->
         {% else %}
-
+        
         <p>No comments yet. Be the first to comment.</p>
         
         {% endfor %}
