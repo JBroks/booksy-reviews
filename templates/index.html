@@ -1,53 +1,51 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- Homepage container -->
-<div class="homepage-container">
-    
-        <!-- Homepage quote heading -->
-        <div>
-            <h1>To read or not to read...that is a silly question!</h1>
-        </div>
-    
+<section class="homepage-container">
+
+    <!-- Homepage quote heading -->
+    <h1>To read or not to read...that is a silly question!</h1>
+
     <!-- Homepage welcome section -->
     <div class="welcome-section">
-        
+
         <h2>Welcome to Booksy</h2>
         <p>New Way to Explore Books</p>
         <p>Read Reviews, Find New Books and Share Opinions</p>
-        
+
     </div>
 
     {% if current_user.is_authenticated %}
-    
+
     <!-- Authenticated user buttons-->
     <div class="row">
-        
+
         <!-- See collection button -->
         <div class="col s12">
             <a class="btn waves-effect waves-light" href="{{ url_for('show_collection') }}">See our collection</a>
         </div>
-        
+
     </div>
-    
+
     {% else %}
-    
+
     <!-- Non-authenticated user buttons-->
     <div class="row center-on-small-only">
-        
+
         <!-- Sign up button-->
         <div class="col m6 s12">
             <a class="btn waves-effect waves-light" href="{{ url_for('register') }}">Sign Up</a>
         </div>
-        
+
         <!-- Sign in button-->
         <div class="col m6 s12">
             <a class="btn waves-effect waves-light" href="{{ url_for('login') }}">Sign In</a>
         </div>
-        
+
     </div>
-    
+
     {% endif %}
-    
-</div>
+
+</section>
 
 {% endblock %}

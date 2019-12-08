@@ -1,96 +1,75 @@
 {% extends 'base.html' %} {% block content %}
 
 <!-- Content container -->
-<div class="content-container" id="register-container">
+<section class="content-container" id="register-container">
 
-    <div class="row">
+    <!-- Section heading -->
 
-        <!-- Section heading -->
+    <h3 class="center">Sign up for Booksy</h3>
+    <p class="center">Sign up to add your reviews, leave comments, get book recommendations, and join our community of readers.</p>
+
+    <!-- Register form -->
+    <form action="" method="post" class="col s12" novalidate>
+
+        {{ form.hidden_tag() }}
+
+        <!-- Username input -->
         <div class="row">
 
-            <div class="col s12 center-align">
-                <h3>Sign up for Booksy</h3>
-                <p>Sign up to add your reviews, leave comments, get book recommendations, and join our community of readers.</p>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">person</i> {{ form.username.label }}<br> {{ form.username(size=32) }} {% for error in form.username.errors %}
+                <span class="error-msg">{{ error }}</span> {% endfor %}
+
             </div>
 
         </div>
 
-        <!-- Register form -->
-        <form action="" method="post" class="col s12" novalidate>
-            
-            {{ form.hidden_tag() }}
-            
-            <!-- Username input -->
-            <div class="row">
-                
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">person</i> {{ form.username.label }}<br> {{ form.username(size=32) }}
-                    
-                    {% for error in form.username.errors %}
-                    <span class="error-msg">{{ error }}</span>
-                    {% endfor %}
-                    
-                </div>
-                
+        <!-- Email input -->
+        <div class="row">
+
+            <div class="input-field col s12">
+                <i class="material-icons prefix">send</i> {{ form.email.label }}<br> {{ form.email(size=32) }} {% for error in form.email.errors %}
+                <span class="error-msg">{{ error }}</span> {% endfor %}
+
             </div>
 
-            <!-- Email input -->
-            <div class="row">
-                
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">send</i> {{ form.email.label }}<br> {{ form.email(size=32) }} 
-                    
-                    {% for error in form.email.errors %}
-                    <span class="error-msg">{{ error }}</span>
-                    {% endfor %}
-                
-                </div>
-                
-            </div>
-            
-            <!-- Password input -->
-            <div class="row">
-                
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">lock</i> {{ form.password.label }}<br> {{ form.password(size=32) }}
-                    
-                    {% for error in form.password.errors %}
-                    <span class="error-msg">{{ error }}</span> 
-                    {% endfor %}
-                    
-                </div>
-                
-            </div>
-            
-            <!-- Repeat password input -->
-            <div class="row">
-                
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">lock_open</i> {{ form.password2.label }}<br> {{ form.password2(size=32) }} 
-                    
-                    {% for error in form.password2.errors %}
-                    <span class="error-msg">{{ error }}</span> 
-                    {% endfor %}
-                    
-                </div>
-                
-            </div>
-    
-            <!-- Button container -->
-            <div class="row valign-wrapper">
-                
-                <!-- Submit button -->
-                <div class="col s12 m6 l6 center-align"><button class="btn waves-effect waves-light">{{ form.submit() }}</button></div>
-                
-                <!-- Link to login form -->
-                <div class="col s12 m6 l6 center-align"><span>Already a member?<a href="{{ url_for('login') }}">Sign In</a></span></div>
-            
-            </div>
-            
-        </form>
+        </div>
 
-    </div>
+        <!-- Password input -->
+        <div class="row">
 
-</div>
+            <div class="input-field col s12">
+                <i class="material-icons prefix">lock</i> {{ form.password.label }}<br> {{ form.password(size=32) }} {% for error in form.password.errors %}
+                <span class="error-msg">{{ error }}</span> {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Repeat password input -->
+        <div class="row">
+
+            <div class="input-field col s12">
+                <i class="material-icons prefix">lock_open</i> {{ form.password2.label }}<br> {{ form.password2(size=32) }} {% for error in form.password2.errors %}
+                <span class="error-msg">{{ error }}</span> {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Button container -->
+        <div class="row valign-wrapper">
+
+            <!-- Submit button -->
+            <div class="col s12 m6 l6 center-align"><button class="btn waves-effect waves-light">{{ form.submit() }}</button></div>
+
+            <!-- Link to login form -->
+            <div class="col s12 m6 l6 center-align"><span>Already a member?<a href="{{ url_for('login') }}">Sign In</a></span></div>
+
+        </div>
+
+    </form>
+
+</section>
 
 {% endblock %}
