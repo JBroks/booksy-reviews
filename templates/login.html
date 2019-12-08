@@ -1,33 +1,69 @@
 {% extends 'base.html' %} {% block content %}
+
+<!-- Content container -->
 <div class="content-container" id="login-container">
+
     <div class="row">
-        <div class="col s12 center-align">
-            <h3>Sign in to Booksy</h3>
+        
+        <!-- Section heading -->
+        <div class="row">
+            
+            <div class="col s12 center-align">
+                <h3>Sign in to Booksy</h3>
+            </div>
+            
         </div>
-
+        
+        <!-- Login form -->
         <form action="" method="post" class="col s12" novalidate>
+
             {{ form.hidden_tag() }}
-
+            
+            <!-- Username input -->
             <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">person</i> {{ form.username.label }}<br> {{ form.username(size=32) }} {% for error in form.username.errors %}
-                    <span>[{{ error }}]</span> {% endfor %}
-                </div>
-            </div>
 
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">person</i> {{ form.username.label }}<br> {{ form.username(size=32) }}
+                    
+                    <!-- Error message -->
+                    {% for error in form.username.errors %}
+                    <span class="error-msg">{{ error }}</span>
+                    {% endfor %}
+                    
+                </div>
+
+            </div>
+            
+            <!-- Password input -->
             <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">lock</i> {{ form.password.label }}<br> {{ form.password(size=32) }} {% for error in form.password.errors %}
-                    <span>[{{ error }}]</span> {% endfor %}
-                </div>
-            </div>
 
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock</i> {{ form.password.label }}<br> {{ form.password(size=32) }}
+                    
+                    <!-- Error message -->
+                    {% for error in form.password.errors %}
+                    <span class="error-msg">{{ error }}</span>
+                    {% endfor %}
+                    
+                </div>
+
+            </div>
+            
+            <!-- Button container -->
             <div class="row valign-wrapper">
-
+                
+                <!-- Submit button -->
                 <div class="col s12 m6 l6 center-align"><button class="btn waves-effect waves-light">{{ form.submit() }}</button></div>
+                
+                <!-- Link to register form -->
                 <div class="col s12 m6 l6 center-align"><span>Not a member?<a href="{{ url_for('register') }}">Sign Up</a></span></div>
+
             </div>
+
         </form>
+
     </div>
+
 </div>
+
 {% endblock %}
