@@ -98,10 +98,12 @@ nav .brand-logo {
     text-decoration: underline;
 }
 
-/* Reister container missing info messages */
+/* Login and register form error messages */
 
-#register-container .error {
-    color: #fd5050;
+span.error-msg {
+    color: #e64a1e;
+    padding-left: 45px;
+    font-weight: 300;
 }
 
 /* GENERAL PADDING AND MARGIN SETTING */
