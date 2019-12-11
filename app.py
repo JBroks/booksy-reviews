@@ -158,8 +158,7 @@ def profile(username):
                        'localField': '_id',
                        'foreignField': 'review_id',
                        'as': 'commentsData'} },
-        { '$unwind': { 'path': "$commentsData"} },
-        { '$match': { 'commentsData.username': username } },
+        { '$match': { 'commentsData.username': username }}
     ]);
     
     return render_template('profile.html', user=user, reviews=user_review, 
