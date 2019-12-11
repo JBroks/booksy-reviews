@@ -17,6 +17,5 @@ class TestApp(unittest.TestCase):
         self.assertEqual(link2, 'https://www.amazon.co.uk/s?k=Once+upon+and+time+John+Smith')
         self.assertNotEqual(link3, 'https://www.amazon.co.uk/s?k=Once+upon+a+time+John+Smith')
 
-
 if __name__ == '__main__':
     unittest.main()
