@@ -1,5 +1,4 @@
 import os
-import json
 import logging
 from flask import Flask, render_template, flash, redirect, request, url_for, session
 from flask_paginate import Pagination, get_page_args, get_page_parameter
