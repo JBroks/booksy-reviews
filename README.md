@@ -36,11 +36,13 @@ Project consists of the following sections:
 - [Credits](#credits)
 
 <a name="demo"/>
+
 ## Demo
 
 Website demo is available [here](https://booksy-reviews.herokuapp.com/ "booksy-reviews").
 
 <a name="ux"/>
+
 ## UX
 
 ### UX Design
@@ -67,11 +69,13 @@ The following user stories were used to design this project:
 ..........
 
 <a name="database"/>
+
 ## Database
 
 ### Database Design
 
 <a name="features"/>
+
 ## Features
 
 ### Existing Features
@@ -87,6 +91,7 @@ List of features to be implemented in the future:
 ...........
 
 <a name="technologies-used"/>
+
 ## Technologies used
 
 ### Programming languages
@@ -122,6 +127,7 @@ List of features to be implemented in the future:
 - [MockFlow WireframePro](https://www.mockflow.com/) - Online tool that was used to create wireframes.
 
 <a name="testing"/>
+
 ## Testing
 
 ### Code validation
@@ -203,6 +209,7 @@ The website is fully responsive and working well on mobile devices.
 - Solution:
 
 <a name="deployment"/>
+
 ## Deployment
 
 The site was developed using AWS Cloud 9. To keep records of different versions of all project files git version control system was used. 
@@ -218,6 +225,7 @@ Using `git push` command all changes from the local repository were pushed to th
 .............
 
 <a name="credits"/>
+
 ## Credits
 
 ### Content
