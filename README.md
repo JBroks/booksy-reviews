@@ -62,17 +62,45 @@ The main objective of the website is to provide a user with a tool that will ena
 
 The following user stories were used to design this project:
 
-**User Story 1:** As a user I would like to explore different holliday destination options so I can decide which one is the most suitable for me.
+**User Story 1:** As a user I would like to create an account to access reviews available in the app.
+
+**User Story 2:** As a user I would like to be able to delete my account and all content added by me at any point.
+
+**User Story 3:** As a user I would like to have an option to login and logout of my account so nobody else can access it.
+
+**User Story 4:** As a user I would like to explore different books to decide which book I will read next.
+
+**User Story 5:** As a user I would like to be able to add my own reviews and share them with other app users.
+
+**User Story 6:** As a user I would like to be able to go back to any review added by me and edit information about it.
+
+**User Story 7:** As a user I would like to be able to delete any contet added by me (i.e. reviews, comments, votes).
+
+**User Story 8:** As a user I would like to be able to like or dislike any review in order to share my opinion.
+
+**User Story 9:** As a user I would like to be able to interact with other users and share my views and opinions about various books.
+
+**User Story 10:** As a user I would like to see all my inputs within the app (i.e. comments, reviews, votes) in case I would like to edit or delete them.
+
+**User Story 11:** As a user I would like to search any particular book quickly using e.g. book title, author, genre etc.
+
+**User Story 12:** As a user I would like to be sure that no other user is able to edit or delete my input.
+
+**User Story 13:** As a user I would like to see all collection of reviews in an organised, easy to navigate way.
 
 ### Mockups & Wireframes
 
-..........
+The following [wireframe](..........) sketches were created to design the project layout options for large, medium and mobile displays.
 
 <a name="database"/>
 
 ## Database
 
+### Database Type
+
 ### Database Design
+
+### Database Scheme
 
 <a name="features"/>
 
