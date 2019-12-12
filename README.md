@@ -98,9 +98,17 @@ The following [wireframe](..........) sketches were created to design the projec
 
 ### Database Type
 
+For this project I used document-oriented cloud database called **MongoDB Atlas**.
+
+My database consists of three collections, namely : users, reviews, comments.
+
+Users collection contains information about each user who signed up for the app. Reviews collection contains information about each book, person who added it and voting information. Comments collection contains comment text, username of person who added it, and id of the review about commented review.
+
 ### Database Design
 
-### Database Scheme
+Picture below presents the database schema outlining structure of each collection and relationship between each collection.
+
+![alt text](https://github.com/JBroks/booksy-reviews/tree/master/database_schema/database_schema.pdf "database_schema")
 
 <a name="features"/>
 
@@ -146,6 +154,14 @@ List of features to be implemented in the future:
 
 - [Materialize]() - ......
 
+- [Flask]() - ....
+
+- [Flask-toastr]() - .....
+
+### Database
+
+- [MongoDB Atlas]() - ....
+
 ### Other
 
 - [Gifox](https://gifox.io/) - Tool was used to record the gif presented in the demo secion of this README files;
@@ -181,6 +197,8 @@ JavaScript code was validated using [JSHint](https://jshint.com/).
 #### Python
 
 ...........
+
+Python code was tested using unittest and flask_testing.
 
 ### Features testing
 
