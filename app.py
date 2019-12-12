@@ -55,13 +55,19 @@ def register():
     
     if form.validate_on_submit():
         
-        existing_user = mongo.db.users.find_one({"username": form.username.data}, {"email": form.email.data})
+        existing_user = mongo.db.users.find_one(
+            {"username": form.username.data},
+            {"email": form.email.data})
         
         if existing_user is None:
             
             password = generate_password_hash(request.form['password'])
-            mongo.db.users.insert_one({'username': request.form['username'].lower(),'email': request.form['email'],
-                             'password': password})
+            mongo.db.users.insert_one({
+                                'username': request.form['username'].lower(),
+                                'email': request.form['email'],
+                                'password': password
+            })
+            
             flash(f'Congratulations {form.username.data.lower()}, you are now a registered user!', 'success')
             
             return redirect(url_for('login'))
@@ -129,7 +135,8 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow().strftime("%A, %d. %B %Y %I:%M%p")
         username = current_user.get_id()
-        mongo.db.users.find_one_and_update({'username': username}, {'$set': {'last_seen': current_user.last_seen}})
+        mongo.db.users.find_one_and_update({'username': username},
+                            {'$set': {'last_seen': current_user.last_seen}})
 
 # USER PROFILE
 '''
@@ -144,13 +151,16 @@ def profile(username):
     user = mongo.db.users.find_one({'username': username})
     
     # Find all reviews added by the user
-    user_review = mongo.db.reviews.find({'added_by': username }).sort([("_id", -1)])
+    user_review = mongo.db.reviews.find(
+        {'added_by': username}).sort([("_id", -1)])
     
     # Find all reviews liked by the user
-    user_upvotes = mongo.db.reviews.find({ 'upvote': {'username': username} }).sort([("_id", -1)])
+    user_upvotes = mongo.db.reviews.find(
+        {'upvote': {'username': username}}).sort([("_id", -1)])
     
     # Find all reviews disliked by the user
-    user_downvotes = mongo.db.reviews.find({ 'downvote': {'username': username} }).sort([("_id", -1)])
+    user_downvotes = mongo.db.reviews.find(
+        {'downvote': {'username': username}}).sort([("_id", -1)])
     
     # Find all reviews commented on by the user
     user_comments = mongo.db.reviews.aggregate([
@@ -183,11 +193,11 @@ def delete_account(user_id):
     # Deduct user voted from total count
     
     mongo.db.reviews.update_many(
-    { 'upvote': {'username': username} },
+    {'upvote': {'username': username} },
     {'$inc': { 'upvote_total' : -1} } )
     
     mongo.db.reviews.update_many(
-    { 'downvote': {'username': username}  },
+    {'downvote': {'username': username}  },
     {'$inc': { 'downvote_total' : -1} } )
     
     # Remove username from all reviews that user voted for
@@ -195,12 +205,12 @@ def delete_account(user_id):
     # Remove username from upvote /downvote array
     
     mongo.db.reviews.update_many(
-    { 'upvote': {'username': username} },
-    { '$pull': { 'upvote': {'username': username}  } } )
+    {'upvote': {'username': username} },
+    {'$pull': {'upvote': {'username': username}  } } )
     
     mongo.db.reviews.update_many(
-    { 'downvote': {'username': username}  },
-    { '$pull': { 'downvote': {'username': username}  } } )
+    {'downvote': {'username': username}  },
+    {'$pull': {'downvote': {'username': username}  } } )
    
     # Remove all reviews and comments added by the user
     mongo.db.reviews.remove({'added_by': username })
@@ -262,9 +272,9 @@ def insert_review():
     amazon_link = generate_amazon_link(title, author)
     
     # Check if review with a given author and title already exists
-    existing_review = mongo.db.reviews.count_documents({ '$and': 
-        [{ 'author' : author },
-        { 'title': title }] 
+    existing_review = mongo.db.reviews.count_documents({'$and': 
+        [{'author' : author },
+        {'title': title }] 
     })
     
     # If review does not exist in the collection insert it    
@@ -336,20 +346,21 @@ def view_review(review_id):
     the_review = mongo.db.reviews.find_one({'_id': ObjectId(review_id)})
     
     # Display all comments for the review
-    review_comments = mongo.db.comments.find({ "review_id": ObjectId(review_id) }).sort([("_id", -1)])
+    review_comments = mongo.db.comments.find({ 
+        "review_id": ObjectId(review_id) }).sort([("_id", -1)])
     
     username = current_user.username
     
     # Check if given user upvoted the review
     match_count_upvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
-        'upvote': {'$elemMatch': { "username": username}},
+        'upvote': {'$elemMatch': {"username": username}},
     })
     
     # Check if given user downvoted the review
     match_count_downvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
-        'downvote': {'$elemMatch': { "username": username}},
+        'downvote': {'$elemMatch': {"username": username}},
     })
     
     # Check if user liked / disliked the review to change button's text
@@ -369,7 +380,11 @@ def view_review(review_id):
         like_btn = "like"
         dislike_btn = "dislike"
     
-    return render_template('viewreview.html', review=the_review, comments=review_comments, like=like_btn, dislike=dislike_btn)
+    return render_template('viewreview.html', 
+                            review=the_review, 
+                            comments=review_comments, 
+                            like=like_btn, 
+                            dislike=dislike_btn)
 
 # DELETE REVIEW
 # Function that deletes review from the review collection
@@ -394,7 +409,8 @@ def edit_review(review_id):
     
     the_review =  mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     
-    return render_template('editreview.html', review=the_review)
+    return render_template('editreview.html', 
+                            review=the_review)
 
 # UPDATE REVIEW
 '''
@@ -452,7 +468,9 @@ def insert_comment(review_id):
         'review_id': ObjectId(review_id)
     })
     
-    return redirect(url_for('view_review', _anchor='comments-section', review_id=review_id))
+    return redirect(url_for('view_review',
+                    _anchor='comments-section', 
+                    review_id=review_id))
 
 # UPDATE COMMENT
 # Function that submits user input to comment collection
@@ -464,11 +482,13 @@ def update_comment(comment_id, review_id):
     comments = mongo.db.comments
     
     comments.update({'_id': ObjectId(comment_id)},
-        { '$set': 
-            { 'comment': request.form['comment'] }
+        {'$set': 
+            {'comment': request.form['comment'] }
         })
     
-    return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
+    return redirect(url_for('view_review',
+                    comment_id=comment_id, 
+                    review_id=review_id))
 
 # CANCEL COMMENT
 # Function that cancels comment update
@@ -477,7 +497,9 @@ def update_comment(comment_id, review_id):
 @login_required
 def cancel_comment(review_id):
     
-    return redirect(url_for('view_review', _anchor='comments-section', review_id=review_id))
+    return redirect(url_for('view_review', 
+                    _anchor='comments-section', 
+                    review_id=review_id))
 
 # DELETE COMMENT
 # Function that deletes the comment
@@ -488,18 +510,21 @@ def delete_comment(comment_id, review_id):
     
     mongo.db.comments.remove({'_id': ObjectId(comment_id)})
     
-    return redirect(url_for('view_review', comment_id=comment_id, review_id=review_id))
+    return redirect(url_for('view_review', 
+                    comment_id=comment_id, 
+                    review_id=review_id))
 
 # ADD / REMOVE VOTE FUNCTION
 
-''' Define general functions that will add or remove vote from username list and vote total 
-and set variable for keys upvote/downvote and upvote_total/downvote_total
+''' Define general functions that will add or remove vote from 
+    username list and vote total 
+    and set variable for keys upvote/downvote and upvote_total/downvote_total 
 '''
  
 def add_vote(vote_type, vote_type_total, review_id, username):
     
     mongo.db.reviews.update({ "_id": ObjectId(review_id) },
-                                        { '$push':
+                                        {'$push':
                                             { vote_type:
                                             {'username': username}  } } )
                                             
@@ -509,7 +534,7 @@ def add_vote(vote_type, vote_type_total, review_id, username):
 def remove_vote(vote_type, vote_type_total, review_id, username):
     
     mongo.db.reviews.update({ "_id": ObjectId(review_id) },
-                                        { '$pull':
+                                        {'$pull':
                                             { vote_type:
                                             {'username': username}  } } )
                                             
@@ -528,13 +553,13 @@ def upvote(review_id):
     # Check if given user upvoted the review
     match_count_upvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
-        'upvote': {'$elemMatch': { "username": username}},
+        'upvote': {'$elemMatch': {"username": username}},
     })
     
     # Check if given user downvoted the review
     match_count_downvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
-        'downvote': {'$elemMatch': { "username": username}},
+        'downvote': {'$elemMatch': {"username": username}},
     })
     
     # If user already liked the review then remove his/her upvote
@@ -567,13 +592,13 @@ def downvote(review_id):
     # Check if given user upvoted the review
     match_count_upvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
-        'upvote': {'$elemMatch': { "username": username}},
+        'upvote': {'$elemMatch': {"username": username}},
     })
     
     # Check if given user downvoted the review
     match_count_downvote = mongo.db.reviews.count_documents({
         '_id' : ObjectId(review_id),
-        'downvote': {'$elemMatch': { "username": username}},
+        'downvote': {'$elemMatch': {"username": username}},
     })
     
     # If user already disliked the review then remove his/her downvote
@@ -607,8 +632,10 @@ def search():
     search_string = str(search_input)
     mongo.db.reviews.create_index([('$**', 'text')])
     
-    search_results = mongo.db.reviews.find({ "$text": { "$search": search_string }})
-    results_count = mongo.db.reviews.count_documents({ "$text": { "$search": search_string }})
+    search_results = mongo.db.reviews.find(
+        {"$text": {"$search": search_string}})
+    results_count = mongo.db.reviews.count_documents(
+        {"$text": {"$search": search_string}})
     
     
     if request.method == 'POST':
@@ -639,7 +666,11 @@ def search():
             
     return render_template('searchresults.html', reviews=search_results)
 
-# Set up IP address and port number so that AWS how to run and where to run the application 
+'''
+Set up IP address and port number so that AWS how to run
+and where to run the application
+'''
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')),
