@@ -6,8 +6,6 @@ Stream Three Project: Data Centric Development - Milestone Project
 
 This project is part of the 'Data Centric Development' module of the Code Institute Full Stack Software Development course.
 
-The project i
-
 Project consists of the following sections:
 
 1. Homepage - Containing 'sign up' and 'sign in' button when user is not authenticated and 'See our collection' button when user is logged into his / her account.
@@ -26,28 +24,54 @@ Project consists of the following sections:
 
 8. Profile - Page containing user information, such as username, last seen (date and time), and all reviews that a given user added, commented and voted for.
 
+## Table of Contents
+
+- [Demo](#demo)
+- [UX](#ux)
+- [Database](#database)
+- [Features](#features)
+- [Technologies used](#technologies-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits)
+
+<a name="demo"/>
 ## Demo
 
 Website demo is available [here](https://booksy-reviews.herokuapp.com/ "booksy-reviews").
 
+<a name="ux"/>
 ## UX
 
 ### UX Design
 
-........
+In this project I was aiming to achieve a simple and user friendly user design, while providing all required information. All sections are arranged in a logical order to provide intuitive user experience.
+
+To create warm and cosy design I used the following colors in my project: white (`#ffffff`), off-white (`#f5f5f5`), light-red (`#e64a1e`), black (`#373737`, `#292826`), grey (`#848482`, `#d2d1d1`), and range of gold / dark-gold colors (`#bdaa6c`, `#a99c72`, `#c0b283`, `#e4d29b`).
 
 ### Target Audience
 
-........
+This application aims to attract people that like to read, look for next book to read, like to share their thoughts on books they have read, and interact with other readers. The website provides user with information about various books and reviews, and enables them to share their own revious and interact with other users. Users are also able to upvote / downvote reviews. 
+
+The main objective of the website is to provide a user with a tool that will enable them to read / add / comment / vote for reviews.
+
 
 ### User Stories
 
-........
+The following user stories were used to design this project:
+
+**User Story 1:** As a user I would like to explore different holliday destination options so I can decide which one is the most suitable for me.
 
 ### Mockups & Wireframes
 
 ..........
 
+<a name="database"/>
+## Database
+
+### Database Design
+
+<a name="features"/>
 ## Features
 
 ### Existing Features
@@ -62,6 +86,7 @@ List of features to be implemented in the future:
 
 ...........
 
+<a name="technologies-used"/>
 ## Technologies used
 
 ### Programming languages
@@ -96,6 +121,7 @@ List of features to be implemented in the future:
 
 - [MockFlow WireframePro](https://www.mockflow.com/) - Online tool that was used to create wireframes.
 
+<a name="testing"/>
 ## Testing
 
 ### Code validation
@@ -176,6 +202,7 @@ The website is fully responsive and working well on mobile devices.
 
 - Solution:
 
+<a name="deployment"/>
 ## Deployment
 
 The site was developed using AWS Cloud 9. To keep records of different versions of all project files git version control system was used. 
@@ -190,6 +217,7 @@ Using `git push` command all changes from the local repository were pushed to th
 
 .............
 
+<a name="credits"/>
 ## Credits
 
 ### Content
