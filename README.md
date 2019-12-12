@@ -108,7 +108,7 @@ Users collection contains information about each user who signed up for the app.
 
 Picture below presents the database schema outlining structure of each collection and relationship between each collection.
 
-![alt text](https://github.com/JBroks/booksy-reviews/tree/master/database_schema/database_schema.pdf "database_schema")
+![alt text](https://github.com/JBroks/booksy-reviews/tree/master/database_schema/database_schema.png "database_schema")
 
 <a name="features"/>
 
