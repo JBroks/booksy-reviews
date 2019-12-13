@@ -70,12 +70,12 @@ $(document).ready(function() {
 // DELETE CONFIRMATION
 
 /** 
- * Function confirming deletion of a review.
+ * Functions confirming deletion of a review.
  * When user presses the delete button window requesting a confirmation pops up.
  * User can then confirm deletion or cancel it.
  **/
 
-function confirmation(ev) {
+function confirmDel(ev) {
   ev.preventDefault();
 
   swal.fire({
@@ -92,7 +92,41 @@ function confirmation(ev) {
            $.ajax({
             url: $(".delete-btn a").attr('href'),
             success: function(result) {
-              window.location.replace($(".delete-btn a").attr('href-return'));
+              window.location.href;
+            }
+          })
+          .done(function(response) {
+           swal.fire('Review was deleted!', response.message, response.status);
+          })
+          
+          .fail(function() {
+            swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+          });
+        
+      });
+    },
+    allowOutsideClick: false
+  });
+}
+
+function confirmDelView(ev) {
+  ev.preventDefault();
+
+  swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!',
+    showLoaderOnConfirm: true,
+    preConfirm: function() {
+      return new Promise(function(resolve) {
+           $.ajax({
+            url: $(".delete-btn-view a").attr('href'),
+            success: function(result) {
+              window.location.href='/show_collection';
             }
           })
           .done(function(response) {
@@ -132,7 +166,7 @@ function confirmationAcc(ev) {
            $.ajax({
             url: $(".delete-acc a").attr('href'),
             success: function(result) {
-              window.location.replace($(".delete-acc a").attr('href-return'));
+              window.location.href='/index';
             }
           })
           .done(function(response) {
