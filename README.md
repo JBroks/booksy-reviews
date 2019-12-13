@@ -188,7 +188,13 @@ The project consists of various features presented below.
 
 List of features to be implemented in the future:
 
-........... add / edit username details, affiliate link for amazon, reset password, improve search function
+- add and edit username details;
+
+- affiliate link for the amazon link;
+
+- reset password option;
+
+- improved search function.
 
 <a name="technologies-used"/>
 
