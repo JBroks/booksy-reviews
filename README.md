@@ -116,15 +116,79 @@ Picture below presents the database schema outlining structure of each collectio
 
 ### Existing Features
 
-The project consists of the following features:
+The project consists of various features presented below.
 
-........
+#### Page loading
+
+- **Spinner** - jQuery method `show()` and `hide()` was used to create spinner showing while page is loading;
+
+- **Overlay** - overlay that fades out the background while page is loading;
+
+#### Buttons
+
+- **Buy online button** - link redirecting a user to amazon search for a given review;
+
+- **Like / Dislike button** - voting buttons enabling user to like or dislike a book review;
+
+- **Edit / Delete buttons* - buttons that enable editing and deleting reviews and comments;
+
+- **See our collection button* - buttons that redirects user from the hompage to the paginated collection page;
+
+- **View review button** - button that is linked to the view review page;
+
+- **Delete account button** - button that performs action of deleting an account and all votes, comments and reviews assocciated with it;
+
+- **Cancel buttons** - button that cancels update review or comment;
+
+- **Add review button** - button that submits the new review into the monngoDB database;
+
+- **Update review button** - button that submits the updated review in to the mongoDb database;
+
+- **Back to top button** - static back to top button was implemented at the bottom of the page so user can go back to the top of the page without scrolling back. The feature is especially useful on mobile devices.
+
+#### Forms
+
+- **Sign up form** - flask register form that enables user to use the app. User input includes username, email address, and password (that has to be repeated);
+
+- **Sign in form** - flask login form that enables user to sig into the user account;
+
+- **Post comment form** - form that enables user to post a comment for a given review;
+
+- **Update comment form** - form that enables user to edit and resubmit the comment;
+
+- **Add review form** - form that enables user to add a new review to the website;
+
+- **Edit review form** - form that pulls information about the existing review and enables the user to edit it;
+
+#### Structure
+
+- **Navbar** - the navbar stays collapsed on medium and small devices. To create Materialize mobile collapsed button `class=sidenav-trigger` was applied. The navbar contains brand logo and links to associated sections i.e. Home, Collection, Add Review, Profile, Sign Out;
+
+- **Footer** - contains disclaimer GitHub link and copyrights information;
+
+#### Alerts
+
+- **Toast messages** - `flask_toastr` extension was used to style flash messages and present them as toast messages to the user;
+
+- **Delete confirmation alerts** - alerts created using **Sweetalert2** framework that asks user to confirm deletion.
+
+#### Other
+
+- **Pagination** - `flask_paginate` extension used to paginate reviews, so users view ten reviews per page;
+
+- **Accordion** - Materialize accordion feature that stores book review and summary;
+
+- **Materialize cards** - feature used to present comments added by users;
+
+- **Search bar** - search bar that enables users to search any book by type, genre, title, author etc.
+
+- **Comment counter** - javascritp function added that re-counts comments.
 
 ### Features left to implement
 
 List of features to be implemented in the future:
 
-...........
+........... add / edit username details, affiliate link for amazon, reset password, improve search function
 
 <a name="technologies-used"/>
 
@@ -169,6 +233,8 @@ List of features to be implemented in the future:
 - [Am I Responsive](http://ami.responsivedesign.is/#) - Online tool was used to display the project on various devices;
 
 - [MockFlow WireframePro](https://www.mockflow.com/) - Online tool that was used to create wireframes.
+- 
+- [DBDiagram](https://dbdiagram.io/home) - A relational database diagram design tool used to create database schema.
 
 <a name="testing"/>
 
