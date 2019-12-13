@@ -116,7 +116,7 @@ Relationships between collections are as follows:
 
 - users and reviews - one to many relationship as one record in user collection can be associated with many records in the reviews collection;
 
-- reviews and comments - one to many relationship as one record in reviews collection can be associated with many records in the comments collection;
+- reviews and comments - one to many relationship as one record in reviews collection can be associated with many records in the comments collection.
 
 <a name="features"/>
 
@@ -264,19 +264,36 @@ List of features to be implemented in the future:
 
 CSS code was validated using the [W3C CSS Validation Service - Jigsaw](https://jigsaw.w3.org/css-validator/).
 
-.........
+While validating CSS code the following warning appeared: 
+
+```
+Imported style sheets are not checked in direct input and file upload modes
+```
+
+This warning remains unresolved as it is only an information stating that validator is not able to validate imported stylesheets.
 
 #### HTML
 
 HTML code was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
 
 ...........
+`The value of the for attribute of the label element must be the ID of a non-hidden form control.` - for add and edit review, base
+
+`Bad value for attribute action on element form: Must be non-empty` for login and registered form - handled by flask
+
+`Duplicate ID profile-review-title` profile template - replaced by classes
+
+`Attribute href-return not allowed on element a at this point.` - profile andview review - jquery ajax amended and href-return removed
+
+` Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - searchresults template. warning ignored as no additional heading required
 
 #### JavaScript
 
 JavaScript code was validated using [JSHint](https://jshint.com/).
 
-.......
+Validator has indicated that there are two unknown / undefined variables, namely `$`, and `Swal`. The warning was ignored as I believe it is due to the fact that these libraries are separated and the validator dose not have access to them.
+
+Three unused variables were flagged, namely confirmDel, confirmDelView, confirmationAcc. The warning was ignored as these functions are activated by onlclick event.
 
 #### Python
 
