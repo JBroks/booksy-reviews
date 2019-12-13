@@ -92,13 +92,13 @@ function confirmDel(ev) {
            $.ajax({
             url: $(".delete-btn a").attr('href'),
             success: function(result) {
-              window.location.href;
+              window.location.reload();
             }
           })
           .done(function(response) {
            swal.fire('Review was deleted!', response.message, response.status);
           })
-          
+        
           .fail(function() {
             swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
           });
