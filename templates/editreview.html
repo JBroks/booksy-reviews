@@ -14,7 +14,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">title</i>
                     <input id="title" name="title" type="text" value="{{ review.title }}" required>
-                    <label for="icon_prefix">Book Title</label>
+                    <label for="title">Book Title</label>
                 </div>
                 
             </div>
@@ -25,7 +25,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">person</i>
                     <input id="author" name="author" type="text" value="{{ review.author }}" required>
-                    <label for="icon_prefix">Author</label>
+                    <label for="author">Author</label>
                 </div>
                 
             </div>
@@ -36,7 +36,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">today</i>
                     <input id="publication_year" name="publication_year" type="text" value="{{ review.publication_year }}" required>
-                    <label for="icon_prefix">Publication year</label>
+                    <label for="publication_year">Publication year</label>
                 </div>
                 
             </div>
@@ -51,7 +51,7 @@
                       <option value="{{ review.type }}" selected>{{ review.type }}</option>
                       <option value="{{ review.type }}">{{ review.type }}</option>
                     </select>
-                    <label>Book Type</label>
+                    <label for="type">Book Type</label>
                 </div>
                 
             </div>
@@ -62,7 +62,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">book</i>
                     <input id="genre" name="genre" type="text" value="{{ review.genre }}" required>
-                    <label for="icon_prefix">Book genre</label>
+                    <label for="genre">Book genre</label>
                 </div>  
                 
             </div>
@@ -73,7 +73,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">image</i>
                     <input id="cover" name="cover" type="text" value="{{ review.cover }}" required>
-                    <label for="icon_prefix">Link to book cover image</label>
+                    <label for="cover">Link to book cover image</label>
                 </div>
                 
             </div>
@@ -84,7 +84,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">subject</i>
                     <textarea name="summary" id="summary" class="materialize-textarea" data-length="10000" required>{{ review.summary }}</textarea>
-                    <label for="icon_telephone">Book Summary</label>
+                    <label for="summary">Book Summary</label>
                 </div>
                 
             </div>
@@ -95,7 +95,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">subject</i>
                     <textarea name="review" id="review" class="materialize-textarea" data-length="10000" required>{{ review.review }}</textarea>
-                    <label for="icon_telephone">Book Review</label>
+                    <label for="review">Book Review</label>
                 </div>
                 
             </div>
