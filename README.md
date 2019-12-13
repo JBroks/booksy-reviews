@@ -208,7 +208,7 @@ List of features to be implemented in the future:
 
 - **JavaScript** - The project used Javascript to implement Maps Javascript API and customize it.
 
-- **Python** - .....
+- **Python** - The project back-end functions are written using Python. Flask and Python is used to build route functions;
 
 ### Libraries
 
@@ -220,17 +220,21 @@ List of features to be implemented in the future:
 
 - [Google Fonts](https://fonts.google.com/) -  Google Fonts library was used to set up font type for the document;
 
-### Frameworks
+### Frameworks & Extensions
 
-- [Materialize]() - ......
+- [Materialize]() - responsive CSS framework based on Material Design by Google. Materialize was used to create grid layout and to style various features such as cards, acordion, buttons, forms, navbar, and footer.
 
-- [Flask]() - ....
+- [Flask]() - web application framework used to create functions with Python that are injected into html templates. Various flask extensions were used to validate login / register form, create routes, paginate reviews, manage login and logout and create toast messages;
 
-- [Flask-toastr]() - .....
+- [Flask-toastr]() - flask extension used to show non-blocking notifications in Flask templates using toastr;
+
+- [Flask-paginate]() - flask extension used to paginate reviews;
+
+- [Flask-login]() - flask extension used to handle the common tasks of logging in, logging out, and remembering users’ sessions;
 
 ### Database
 
-- [MongoDB Atlas]() - ....
+- [MongoDB Atlas]() - a fully-managed cloud database used to store manage and query datasets;
 
 ### Other
 
