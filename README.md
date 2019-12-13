@@ -110,6 +110,14 @@ Picture below presents the database schema outlining structure of each collectio
 
 ![alt text](https://github.com/JBroks/booksy-reviews/blob/master/database_schema/database_schema.png "database_schema")
 
+Relationships between collections are as follows:
+
+- users and comments - one to many relationship as one record in user collection can be associated with many records in the commments collection;
+
+- users and reviews - one to many relationship as one record in user collection can be associated with many records in the reviews collection;
+
+- reviews and comments - one to many relationship as one record in reviews collection can be associated with many records in the comments collection;
+
 <a name="features"/>
 
 ## Features
