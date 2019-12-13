@@ -230,6 +230,8 @@ List of features to be implemented in the future:
 
 - [Flask-login](https://flask-login.readthedocs.io/en/latest/) - flask extension used to handle the common tasks of logging in, logging out, and remembering users’ sessions;
 
+- [Flask-testing](https://readthedocs.org/projects/flask-testing/downloads/pdf/latest/) - flask extension used to test flask routes;
+
 ### Database
 
 - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - a fully-managed cloud database used to store manage and query datasets;
@@ -240,8 +242,8 @@ List of features to be implemented in the future:
 
 - [Am I Responsive](http://ami.responsivedesign.is/#) - Online tool was used to display the project on various devices;
 
-- [MockFlow WireframePro](https://www.mockflow.com/) - Online tool that was used to create wireframes.
-- 
+- [MockFlow WireframePro](https://www.mockflow.com/) - Online tool that was used to create wireframes;
+
 - [DBDiagram](https://dbdiagram.io/home) - A relational database diagram design tool used to create database schema.
 
 <a name="testing"/>
