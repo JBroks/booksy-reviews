@@ -276,16 +276,16 @@ This warning remains unresolved as it is only an information stating that valida
 
 HTML code was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
 
-...........
-`The value of the for attribute of the label element must be the ID of a non-hidden form control.` - for add and edit review, base
+The following issues were captured by the validator:
+- `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the `add_review`, `edit_review` and `base` template and it was resolved by amending `for` attribute;
 
-`Bad value for attribute action on element form: Must be non-empty` for login and registered form - handled by flask
+- `Bad value for attribute action on element form: Must be non-empty` - issue appeared in the `login` and `register` form. `action` attribute was removed as the submit is handled by flask;
 
-`Duplicate ID profile-review-title` profile template - replaced by classes
+- `Duplicate ID profile-review-title` - issue appeared in the `profile` template and it was fixed by replacing id with class;
 
-`Attribute href-return not allowed on element a at this point.` - profile andview review - jquery ajax amended and href-return removed
+- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the `profile` and `view_review` template and was resolved by remooval of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the `view_review` page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the `profile` template;
 
-` Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - searchresults template. warning ignored as no additional heading required
+- ` Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the `search_results` template. This warning was ignored as no additional heading is required.
 
 #### JavaScript
 
