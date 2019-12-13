@@ -66,11 +66,11 @@
 
                     <!-- Navbar for large displays -->
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="{{ url_for('index') }}">Home</a></li>
-                        <li><a href="{{ url_for('show_collection') }}">Collection</a></li>
-                        <li><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
-                        <li><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
-                        <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                        <li {%- if request.path == url_for('index') %} class="active"{% endif %}><a href="{{ url_for('index') }}">Home</a></li>
+                        <li {%- if request.path == url_for('show_collection') %} class="active"{% endif %}><a href="{{ url_for('show_collection') }}">Collection</a></li>
+                        <li {%- if request.path == '/add_review/' + current_user.username %} class="active"{% endif %}><a href="{{ url_for('add_review', username=current_user.username) }}">Add Review</a></li>
+                        <li {%- if request.path == '/user/' + current_user.username %} class="active"{% endif %}><a href="{{ url_for('profile', username=current_user.username) }}">Profile</a></li>
+                        <li {%- if request.path == url_for('logout') %} class="active"{% endif %}><a href="{{ url_for('logout') }}">Sign Out</a></li>
                     </ul>
                     
                     <!-- Navbar for medium and small displays - sidenav -->
@@ -119,14 +119,14 @@
                 
                 <!-- Navbar for large displays -->
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="{{url_for('index')}}">Home</a></li>
-                    <li><a href="{{ url_for('login') }}">Sign In</a></li>
-                    <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+                    <li {%- if request.path == url_for('index') %} class="active"{% endif %}><a href="{{url_for('index')}}">Home</a></li>
+                    <li {%- if request.path == url_for('login') %} class="active"{% endif %}><a href="{{ url_for('login') }}">Sign In</a></li>
+                    <li {%- if request.path == url_for('register') %} class="active"{% endif %}><a href="{{ url_for('register') }}">Sign Up</a></li>
                 </ul>
                 
                 <!-- Navbar for medium and small displays -->
                 <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('login') }}">Sign In</a></li>
                     <li><a href="{{ url_for('register') }}">Sign Up</a></li>
                 </ul>
