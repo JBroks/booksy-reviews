@@ -8,7 +8,7 @@
 
 body,
 .user-reviews a,
-#profile-review-title a {
+.profile-review-title a {
     font-family: "Lato", sans-serif;
     color: #373737;
 }
@@ -309,7 +309,7 @@ nav .nav-wrapper {
     left: 0;
 }
 
-#profile-review-title a:hover {
+.profile-review-title a:hover {
     color: #a99c72;
 }
 
