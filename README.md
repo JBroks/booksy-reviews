@@ -130,9 +130,9 @@ The project consists of various features presented below.
 
 - **Like / Dislike button** - voting buttons enabling user to like or dislike a book review;
 
-- **Edit / Delete buttons* - buttons that enable editing and deleting reviews and comments;
+- **Edit / Delete buttons** - buttons that enable editing and deleting reviews and comments;
 
-- **See our collection button* - buttons that redirects user from the hompage to the paginated collection page;
+- **See our collection button** - buttons that redirects user from the hompage to the paginated collection page;
 
 - **View review button** - button that is linked to the view review page;
 
@@ -202,39 +202,37 @@ List of features to be implemented in the future:
 
 ### Programming languages
 
-- **HTML** - The project used HTML to define structure and layout of the web page;
+- **HTML** - the project used HTML to define structure and layout of the web page;
 
-- **CSS** - The project used CSS stylesheets to specify style of the web document elements;
+- **CSS** - the project used CSS stylesheets to specify style of the web document elements;
 
-- **JavaScript** - The project used Javascript to implement Maps Javascript API and customize it.
+- **JavaScript** - the project used Javascript to implement Maps Javascript API and customize it.
 
-- **Python** - The project back-end functions are written using Python. Flask and Python is used to build route functions;
+- **Python** - the project back-end functions are written using Python. Flask and Python is used to build route functions;
 
 ### Libraries
 
-- [jQuery](https://code.jquery.com/jquery-3.4.1.min.js) - 
+- [jQuery](https://code.jquery.com/jquery-3.4.1.min.js) - used to initialize elements of Materialize framework, to manage spinner overlay (fade out), search bar (submit input on enter), back to top button (smooth scroll), comment counter (re-count comments), and deletion confirmation (with ajax);
 
-- [Sweetalert2](https://sweetalert2.github.io/#download) - 
+- [Sweetalert2](https://sweetalert2.github.io/#download) - it was used to create customizable alert pop up boxes;
 
-- [Font Awesome](https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css) - 
-
-- [Google Fonts](https://fonts.google.com/) -  Google Fonts library was used to set up font type for the document;
+- [Google Fonts](https://fonts.google.com/) - Google Fonts library was used to set up font type for the document;
 
 ### Frameworks & Extensions
 
-- [Materialize]() - responsive CSS framework based on Material Design by Google. Materialize was used to create grid layout and to style various features such as cards, acordion, buttons, forms, navbar, and footer.
+- [Materialize](https://materializecss.com/) - responsive CSS framework based on Material Design by Google. Materialize was used to create grid layout and to style various features such as cards, acordion, buttons, forms, navbar, and footer.
 
-- [Flask]() - web application framework used to create functions with Python that are injected into html templates. Various flask extensions were used to validate login / register form, create routes, paginate reviews, manage login and logout and create toast messages;
+- [Flask](http://flask.palletsprojects.com/en/1.1.x/) - web application framework used to create functions with Python that are injected into html templates. Various flask extensions were used to validate login / register form, create routes, paginate reviews, manage login and logout and create toast messages;
 
-- [Flask-toastr]() - flask extension used to show non-blocking notifications in Flask templates using toastr;
+- [Flask-toastr](https://github.com/wiltonsr/Flask-Toastr) - flask extension used to show non-blocking notifications in Flask templates using toastr;
 
-- [Flask-paginate]() - flask extension used to paginate reviews;
+- [Flask-paginate](https://pythonhosted.org/Flask-paginate/) - flask extension used to paginate reviews;
 
-- [Flask-login]() - flask extension used to handle the common tasks of logging in, logging out, and remembering users’ sessions;
+- [Flask-login](https://flask-login.readthedocs.io/en/latest/) - flask extension used to handle the common tasks of logging in, logging out, and remembering users’ sessions;
 
 ### Database
 
-- [MongoDB Atlas]() - a fully-managed cloud database used to store manage and query datasets;
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - a fully-managed cloud database used to store manage and query datasets;
 
 ### Other
 
