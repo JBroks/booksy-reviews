@@ -197,6 +197,7 @@ nav .nav-wrapper {
 }
 
 /* Fix issue with the close button not being placed after the message */
+
 #toast-container>div {
     display: block;
 }
@@ -481,16 +482,14 @@ main {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 750px) {
-    
-/* Image in collection view - size adjustment */
 
+    /* Image in collection view - size adjustment */
     .image-collection {
-        width: 40%;
-        height: 40%;
+        width: 80%;
+        height: 80%;
     }
 
-/* Padding for content containers and main adjustment */
-
+    /* Padding for content containers and main adjustment */
     .content-container {
         padding: 20px 20px;
     }
@@ -498,9 +497,8 @@ main {
     main {
         padding-top: 140px;
     }
-    
-/* Book information font size adjustments */
 
+    /* Book information font size adjustments */
     #book-info-container .title {
         font-size: 1.2rem;
     }
@@ -513,8 +511,7 @@ main {
         font-size: 0.9rem;
     }
 
-/* Headings size adjustments on smaller displays */
-
+    /* Headings size adjustments on smaller displays */
     h1 {
         font-size: 3.5rem;
     }
@@ -531,4 +528,34 @@ main {
         font-size: 1.9rem;
     }
 
+}
+
+@media only screen and (max-width: 420px) {
+
+    /* Image in collection view - size adjustment */
+    .image-collection {
+        width: 50%;
+        height: 50%;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    /* Smaller font for titles in profile view */
+    .profile-review-title a {
+        font-size: 12px;
+    }
 }
