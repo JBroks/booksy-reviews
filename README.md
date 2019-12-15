@@ -8,7 +8,7 @@ This project is part of the 'Data Centric Development' module of the Code Instit
 
 Project consists of the following sections:
 
-1. Homepage - Containing 'sign up' and 'sign in' button when user is not authenticated and 'See our collection' button when user is logged into his / her account.
+1. Homepage - Containing 'sign up' and 'sign in' button when user is not authenticated and 'All Reviews' button when user is logged into his / her account.
 
 2. Login form - Page containg the form that enables user to log into their account to use the app.
 
@@ -140,7 +140,7 @@ The project consists of various features presented below.
 
 - **Edit / Delete buttons** - buttons that enable editing and deleting reviews and comments;
 
-- **See our collection button** - buttons that redirects user from the hompage to the paginated collection page;
+- **All Reviews button** - buttons that redirects user from the hompage to the paginated collection page;
 
 - **View review button** - button that is linked to the view review page;
 
@@ -285,7 +285,7 @@ The following issues were captured by the validator:
 
 - `Attribute href-return not allowed on element a at this point.` - issue highlighted for the `profile` and `view_review` template and was resolved by remooval of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the `view_review` page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the `profile` template;
 
-- ` Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the `search_results` template. This warning was ignored as no additional heading is required.
+- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the `search_results` template. This warning was ignored as no additional heading is required.
 
 #### JavaScript
 
@@ -299,7 +299,7 @@ Three unused variables were flagged, namely confirmDel, confirmDelView, confirma
 
 In order to debug python code while coding I used logging module (`import logging`) and pdb module (`import pdb`).
 
-Python code was tested using unittest. Flask routes was tested using unittest and flask_testing, the following tests were run:
+Python code was tested using unittest framework. Flask routes was tested using unittest framework and flask_testing extension, the following tests were run:
 
 - test for pages loading correctly without user being authenticated;
 
@@ -317,9 +317,10 @@ All remaining features were tested manually.
 
 ##### Bugs:
 
-#### Feature 2
+#### Search bar
 
 ##### Bugs:
+On Safari search bar placefolder is offset and not visible.
 
 ### Responsivness testing
 
@@ -345,7 +346,7 @@ The website is fully responsive and working well on mobile devices.
 
 #### Bugs:
 
-.....
+No bugs left unresolved.
 
 ### Peer-code-review
 
@@ -359,11 +360,55 @@ The website is fully responsive and working well on mobile devices.
 
 **User Story 1:**
 
-- Solution:
+- Solution: Any user can create their own account by using the register form. User has to provide username, email and password in order to register. After successful registration user can login in using the login form. When logged in user can explor all reviews, add their own reviews, comments and votes.
 
 **User Story 2:**
 
-- Solution:
+- Solution: 'Delete Account' button in the profile page enables user to delete his / her account and all reviews, comments and votes added by that user.
+
+**User Story 3:**
+
+- Solution: Login form enables user to login to his / her account. Whenever user wants to logout he / she can click 'Sign out' located in the navbar menu. When user is not authenticated nobody else can access htei account unless they know username and password of that user.
+
+**User Story 4:**
+
+- Solution: Users are able to use 'All reviews' button on the homepage, 'Collection' option in the navbar menu or search bar to explor reviews added to the application.
+
+**User Story 5:**
+
+- Solution: User can add his / her review to the overall collection by clicking 'Add review' option in the navbar menu. When review is submitted all other users can view, comment and post their votes.
+
+**User Story 6:**
+
+- Solution: User can at any point edit review that he / she added. All reviews added by the user will be listed in the 'Profile' page (along with edit and delete button). Edit and delete function is also available on the 'View review' page. After clicking 'Edit' button all information is presented to the user and can be edited. After user clicks 'Update review' button updated reviews are submitted to the database and displayed in the app.
+
+**User Story 7:**
+
+- Solution: User can at any point delete his / her review (from 'Profile' or 'View review' page), comments (from 'View review' page), and Likes / Dislikes (from 'View review' page). Reviews and comments are removed by clicking 'Delete' button and Likes / Dislikes are removed by clicking Like / Dislike button again.
+
+**User Story 8:**
+
+- Solution: User can Like / Dislike all reviews added by other users (so not his / her own). When e.g. user clicks on the Like button his / her vote is submitted to the database and text displayed on the button changes to the 'Un-like' so the user knows that he / she already voted for a given review. If user wishes to remove the vote he / she can click on the 'Un-like' button, the vote will be removed and button text will turn back to 'Like'.
+
+**User Story 9:**
+
+- Solution: User can comment any review in order to share his / her opinion and interact with other users.
+
+**User Story 10:**
+
+- Solution: User can see all his / her inputs i.e. added reviews, comments and votes on the 'Profile' page. Reviews can be deleted directly from the 'Profile' page. Comments and votes can only be removed from the 'View review' page, however link to all reviews commented / voted for by the user are available on the 'Profile' page. 
+
+**User Story 11:**
+
+- Solution: User can search reviews by typing title, author, genre, type etc in the search bar.
+
+**User Story 12:**
+
+- Solution: Only authenticated user can edit and delete his / her content. 
+
+**User Story 13:**
+
+- Solution: Reviews collection is paginated using flask-paginate extension.
 
 <a name="deployment"/>
 
