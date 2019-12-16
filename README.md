@@ -10,9 +10,9 @@ Project consists of the following sections:
 
 1. Homepage - Containing 'sign up' and 'sign in' button when user is not authenticated and 'All Reviews' button when user is logged into his / her account.
 
-2. Login form - Page containg the form that enables user to log into their account to use the app.
+2. Login form - Page containing the form that enables user to log into their account to use the app.
 
-3. Sign up form - Page containg the form that enables user to sign up for the Booksy app.
+3. Sign up form - Page containing the form that enables user to sign up for the Booksy app.
  
 4. Collection - Page displaying list of paginated reviews.
 
@@ -20,7 +20,7 @@ Project consists of the following sections:
 
 6. Edit review - Page containing the form that pulls a given review that was previously submitted by a user. User is able to amend information and resubmit the review.
 
-7. View review - Page that contacins all information about a given book, including review and summary. Page enables user to edit/delete review, vote and comments on the review.
+7. View review - Page that contains all information about a given book, including review and summary. Page enables user to edit/delete review, vote and comments on the review.
 
 8. Profile - Page containing user information, such as username, last seen (date and time), and all reviews that a given user added, commented and voted for.
 
@@ -53,7 +53,7 @@ To create warm and cosy design I used the following colors in my project: white 
 
 ### Target Audience
 
-This application aims to attract people that like to read, look for next book to read, like to share their thoughts on books they have read, and interact with other readers. The website provides user with information about various books and reviews, and enables them to share their own revious and interact with other users. Users are also able to upvote / downvote reviews. 
+This application aims to attract people that like to read, look for next book to read, like to share their thoughts on books they have read, and interact with other readers. The website provides user with information about various books and reviews, and enables them to share their own reviews and interact with other users. Users are also able to upvote / downvote reviews. 
 
 The main objective of the website is to provide a user with a tool that will enable them to read / add / comment / vote for reviews.
 
@@ -74,7 +74,7 @@ The following user stories were used to design this project:
 
 **User Story 6:** As a user I would like to be able to go back to any review added by me and edit information about it.
 
-**User Story 7:** As a user I would like to be able to delete any contet added by me (i.e. reviews, comments, votes).
+**User Story 7:** As a user I would like to be able to delete any content added by me (i.e. reviews, comments, votes).
 
 **User Story 8:** As a user I would like to be able to like or dislike any review in order to share my opinion.
 
@@ -112,7 +112,7 @@ Picture below presents the database schema outlining structure of each collectio
 
 Relationships between collections are as follows:
 
-- users and comments - one to many relationship as one record in user collection can be associated with many records in the commments collection;
+- users and comments - one to many relationship as one record in user collection can be associated with many records in the comments collection;
 
 - users and reviews - one to many relationship as one record in user collection can be associated with many records in the reviews collection;
 
@@ -140,17 +140,17 @@ The project consists of various features presented below.
 
 - **Edit / Delete buttons** - buttons that enable editing and deleting reviews and comments;
 
-- **All Reviews button** - buttons that redirects user from the hompage to the paginated collection page;
+- **All Reviews button** - buttons that redirects user from the homepage to the paginated collection page;
 
 - **View review button** - button that is linked to the view review page;
 
-- **Delete account button** - button that performs action of deleting an account and all votes, comments and reviews assocciated with it;
+- **Delete account button** - button that performs action of deleting an account and all votes, comments and reviews associated with it;
 
 - **Cancel buttons** - button that cancels update review or comment;
 
-- **Add review button** - button that submits the new review into the monngoDB database;
+- **Add review button** - button that submits the new review into the mongoDB database;
 
-- **Update review button** - button that submits the updated review in to the mongoDb database;
+- **Update review button** - button that submits the updated review in to the mongoDB database;
 
 - **Back to top button** - static back to top button was implemented at the bottom of the page so user can go back to the top of the page without scrolling back. The feature is especially useful on mobile devices.
 
@@ -190,7 +190,7 @@ The project consists of various features presented below.
 
 - **Search bar** - search bar that enables users to search any book by type, genre, title, author etc.
 
-- **Comment counter** - javascritp function added that re-counts comments.
+- **Comment counter** - javascript function added that re-counts comments.
 
 ### Features left to implement
 
@@ -228,7 +228,7 @@ List of features to be implemented in the future:
 
 ### Frameworks & Extensions
 
-- [Materialize](https://materializecss.com/) - responsive CSS framework based on Material Design by Google. Materialize was used to create grid layout and to style various features such as cards, acordion, buttons, forms, navbar, and footer.
+- [Materialize](https://materializecss.com/) - responsive CSS framework based on Material Design by Google. Materialize was used to create grid layout and to style various features such as cards, accordion, buttons, forms, navbar, and footer.
 
 - [Flask](http://flask.palletsprojects.com/en/1.1.x/) - web application framework used to create functions with Python that are injected into html templates. Various flask extensions were used to validate login / register form, create routes, paginate reviews, manage login and logout and create toast messages;
 
@@ -246,7 +246,7 @@ List of features to be implemented in the future:
 
 ### Other
 
-- [Gifox](https://gifox.io/) - Tool was used to record the gif presented in the demo secion of this README files;
+- [Gifox](https://gifox.io/) - Tool was used to record the gif presented in the demo section of this README files;
 
 - [Am I Responsive](http://ami.responsivedesign.is/#) - Online tool was used to display the project on various devices;
 
@@ -277,21 +277,21 @@ This warning remains unresolved as it is only an information stating that valida
 HTML code was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
 
 The following issues were captured by the validator:
-- `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the `add_review`, `edit_review` and `base` template and it was resolved by amending `for` attribute;
+- `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the *add_review*, *edit_review* and *base* template and it was resolved by amending `for` attribute;
 
-- `Bad value for attribute action on element form: Must be non-empty` - issue appeared in the `login` and `register` form. `action` attribute was removed as the submit is handled by flask;
+- `Bad value for attribute action on element form: Must be non-empty` - issue appeared in the login and register form. `action` attribute was removed as the submit is handled by flask;
 
-- `Duplicate ID profile-review-title` - issue appeared in the `profile` template and it was fixed by replacing id with class;
+- `Duplicate ID profile-review-title` - issue appeared in the *profile* template and it was fixed by replacing id with class;
 
-- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the `profile` and `view_review` template and was resolved by remooval of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the `view_review` page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the `profile` template;
+- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the *profile* and *view_review`*template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the *view_review* page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the *profile* template;
 
-- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the `search_results` template. This warning was ignored as no additional heading is required.
+- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the *search_results* template. This warning was ignored as no additional heading is required.
 
 #### JavaScript
 
 JavaScript code was validated using [JSHint](https://jshint.com/).
 
-Validator has indicated that there are two unknown / undefined variables, namely `$`, and `Swal`. The warning was ignored as I believe it is due to the fact that these libraries are separated and the validator dose not have access to them.
+Validator has indicated that there are two unknown / undefined variables, namely `$`, and `Swal`. The warning was ignored as I believe it is due to the fact that these libraries are separated and the validator does not have access to them.
 
 Three unused variables were flagged, namely confirmDel, confirmDelView, confirmationAcc. The warning was ignored as these functions are activated by onlclick event.
 
@@ -320,9 +320,10 @@ All remaining features were tested manually.
 #### Search bar
 
 ##### Bugs:
-On Safari search bar placefolder is offset and not visible.
 
-### Responsivness testing
+On Safari search bar placeholder is offset and not visible.
+
+### Responsiveness testing
 
 This site was tested across multiple browsers (Google Chrome, Safari, Mozilla Firefox, Opera) and on multiple mobile devices (iPad Mini, iPad, Huawei P20) to ensure compatibility and responsiveness.
 
@@ -368,11 +369,11 @@ No bugs left unresolved.
 
 **User Story 3:**
 
-- Solution: Login form enables user to login to his / her account. Whenever user wants to logout he / she can click 'Sign out' located in the navbar menu. When user is not authenticated nobody else can access htei account unless they know username and password of that user.
+- Solution: Login form enables user to login to his / her account. Whenever user wants to logout he / she can click 'Sign out' located in the navbar menu. When user is not authenticated nobody else can access their account unless they know username and password of that user.
 
 **User Story 4:**
 
-- Solution: Users are able to use 'All reviews' button on the homepage, 'Collection' option in the navbar menu or search bar to explor reviews added to the application.
+- Solution: Users are able to use 'All reviews' button on the homepage, 'Collection' option in the navbar menu or search bar to explore reviews added to the application.
 
 **User Story 5:**
 
@@ -400,7 +401,7 @@ No bugs left unresolved.
 
 **User Story 11:**
 
-- Solution: User can search reviews by typing title, author, genre, type etc in the search bar.
+- Solution: User can search reviews by typing title, author, genre, type etc. in the search bar.
 
 **User Story 12:**
 
