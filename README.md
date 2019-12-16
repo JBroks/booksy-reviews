@@ -283,7 +283,7 @@ The following issues were captured by the validator:
 
 - `Duplicate ID profile-review-title` - issue appeared in the *profile* template and it was fixed by replacing id with class;
 
-- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the *profile* and *view_review`*template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the *view_review* page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the *profile* template;
+- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the *profile* and *view_review* template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the *view_review* page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the *profile* template;
 
 - `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the *search_results* template. This warning was ignored as no additional heading is required.
 
@@ -314,6 +314,12 @@ All remaining features were tested manually.
 ### Features testing
 
 #### Feature 1
+
+##### Bugs:
+
+#### Commment counter
+
+Error `Cannot set property 'innerHTML' of null` resolved with [this](https://stackoverflow.com/questions/18239430/cannot-set-property-innerhtml-of-null) solution.
 
 ##### Bugs:
 
@@ -361,11 +367,11 @@ No bugs left unresolved.
 
 **User Story 1:**
 
-- Solution: Any user can create their own account by using the register form. User has to provide username, email and password in order to register. After successful registration user can login in using the login form. When logged in user can explor all reviews, add their own reviews, comments and votes.
+- Solution: Any user can create their own account by using the register form. User has to provide username, email and password in order to register. After successful registration user can login in using the login form. When logged in user can explore all reviews, add their own reviews, comments and votes.
 
 **User Story 2:**
 
-- Solution: 'Delete Account' button in the profile page enables user to delete his / her account and all reviews, comments and votes added by that user.
+- Solution: 'Delete Account' button in the 'Profile' page enables user to delete his / her account and all reviews, comments and votes added by that user.
 
 **User Story 3:**
 
@@ -459,7 +465,7 @@ To deploy my project I followed these steps:
 
 4. Requirements:
 
-    - In order to run the app Heroku needs to install the required dependencies so make sure that 'requirements.txt' file was created and commited;
+    - In order to run the app Heroku needs to install the required dependencies so make sure that 'requirements.txt' file was created and committed;
     - In order to create 'requirements.txt' file run `$ sudo pip3 freeze --local > requirements.txt` command in the terminal;
 
 5. Procfile:
@@ -469,6 +475,7 @@ To deploy my project I followed these steps:
     - In order to start web processes run `heroku ps:scale web=1` command in the terminal;
 
 5. Deployment: Committed code was deployed to heroku using the following command: `$ git push heroku master`.
+
            
 <a name="credits"/>
 
@@ -476,17 +483,35 @@ To deploy my project I followed these steps:
 
 ### Content
 
-..............
+Reviews, book information and comments are based on two main sources, namely [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) and [Goodreads](https://www.goodreads.com/).
 
 ### Media
 
-Favicon used for the project was download from [here](https://icons8.com/icons/).
+Favicon used for the project was downloaded from [here](https://icons8.com/icons/).
 
-..........
+Image that constitutes the background for all pages was downloaded from [here](https://www.qualtrics.com/m/assets/blog/wp-content/uploads/2018/08/shutterstock_1068141515.jpg)
 
 ### Acknowledgements
 
-............
+While working with MongoDb Atlas I relied heavily on [MongoDB documentation](https://docs.mongodb.com/manual/reference/).
+
+To paginate reviews collection I used [flask-paginate docs](https://pythonhosted.org/Flask-paginate/) and [this](https://github.com/DarilliGames/flaskpaginate) example presented by Stephen Moody (Tutor at Code Institute)
+
+To learn how to create login I used [flask-login docs](https://flask-login.readthedocs.io/en/latest/) and [this](https://stackoverflow.com/questions/54992412/flask-login-usermixin-class-with-a-mongodb) stackoverflow example.
+
+I used [flask-testing docs](https://pythonhosted.org/Flask-Testing/) to learn about testing flask application.
+
+[This](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) tutorial by Miguel Grinberg was also used to learn about elements (e.g. login, registration form etc.). 
+
+[This](https://stackoverflow.com/questions/37194886/does-materialize-css-framework-have-a-container-fluid-equivalent) stackoverflow solution was used to create equivalent to Bootstrap `container-fluid` class.
+
+[This](https://stackoverflow.com/questions/477691/submitting-a-form-by-pressing-enter-without-a-submit-button) stackoverflow discussion when working on search bar submit.
+
+[This](https://stackoverflow.com/questions/45842597/prevall-not-working-in-more-complicated-dom) stackoverflow solution was used to make card with a comment be replaced with the editable comment form.
+
+[This](https://stackoverflow.com/questions/45389140/handling-ajax-return-values-in-sweetalert2) stackoverflow solution inspired functions for delete confirmation using ajax and Sweetalert2.
+
+To learn more about creating Materialize search bar [this](https://www.jquery-az.com/10-examples-learn-creating-materialize-navbar/) tutorial was used.
 
 ### Disclaimer
 
