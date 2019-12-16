@@ -277,15 +277,15 @@ This warning remains unresolved as it is only an information stating that valida
 HTML code was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
 
 The following issues were captured by the validator:
-- `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the *add_review*, *edit_review* and *base* template and it was resolved by amending `for` attribute;
+- `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the **add_review**, **edit_review** and **base** template and it was resolved by amending `for` attribute;
 
 - `Bad value for attribute action on element form: Must be non-empty` - issue appeared in the login and register form. `action` attribute was removed as the submit is handled by flask;
 
-- `Duplicate ID profile-review-title` - issue appeared in the *profile* template and it was fixed by replacing id with class;
+- `Duplicate ID profile-review-title` - issue appeared in the **profile** template and it was fixed by replacing id with class;
 
-- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the *profile* and *view_review* template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the *view_review* page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the *profile* template;
+- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the **profile** and **view_review** template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the 'View review' page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the **profile** template;
 
-- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the *search_results* template. This warning was ignored as no additional heading is required.
+- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the **search_results** template. This warning was ignored as no additional heading is required.
 
 #### JavaScript
 
@@ -425,7 +425,7 @@ No bugs left unresolved.
 
 The site was developed using AWS Cloud 9. To keep records of different versions of all project files git version control system was used. 
 
-To initialize the local repository the command `$ git init` was used. After adding initial files and committing them `$ git remote add origin 'GitHub repo name'` command was used to add new remote repository. Code was then pushed your to the master branch of the remote repository using `$ git push -u origin master`.
+To initialize the local repository the command `$ git init` was used. After adding initial files and committing them `$ git remote add origin 'GitHub repo name'` command was used to add new remote repository. Code was then pushed to the master branch of the remote repository using `$ git push -u origin master`.
 
 In order to track the changes in the local repository the following steps were taken:
 
@@ -493,7 +493,7 @@ Image that constitutes the background for all pages was downloaded from [here](h
 
 ### Acknowledgements
 
-While working with MongoDb Atlas I relied heavily on [MongoDB documentation](https://docs.mongodb.com/manual/reference/).
+While working with MongoDB Atlas I relied heavily on [MongoDB documentation](https://docs.mongodb.com/manual/reference/).
 
 To paginate reviews collection I used [flask-paginate docs](https://pythonhosted.org/Flask-paginate/) and [this](https://github.com/DarilliGames/flaskpaginate) example presented by Stephen Moody (Tutor at Code Institute)
 
@@ -512,6 +512,8 @@ I used [flask-testing docs](https://pythonhosted.org/Flask-Testing/) to learn ab
 [This](https://stackoverflow.com/questions/45389140/handling-ajax-return-values-in-sweetalert2) stackoverflow solution inspired functions for delete confirmation using ajax and Sweetalert2.
 
 To learn more about creating Materialize search bar [this](https://www.jquery-az.com/10-examples-learn-creating-materialize-navbar/) tutorial was used.
+
+Many thanks to my mentor **Maranatha Ilesanmi** for support and advice throughout the project.
 
 ### Disclaimer
 
