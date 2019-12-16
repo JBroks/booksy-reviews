@@ -414,18 +414,61 @@ No bugs left unresolved.
 
 ## Deployment
 
+### GitHub
+
 The site was developed using AWS Cloud 9. To keep records of different versions of all project files git version control system was used. 
+
+To initialize the local repository the command `$ git init` was used. After adding initial files and committing them `$ git remote add origin 'GitHub repo name'` command was used to add new remote repository. Code was then pushed your to the master branch of the remote repository using `$ git push -u origin master`.
 
 In order to track the changes in the local repository the following steps were taken:
 
-- command `git add 'filename'` - to update what will be committed;
+- command `$ git add 'filename'` - to update what will be committed;
 
-- command `git commit` - to commit the changes.
+- command `$ git commit` - to commit the changes.
 
-Using `git push` command all changes from the local repository were pushed to the remote one on GitHub.
+Using `$ git push` command all changes from the local repository were pushed to the remote one on GitHub.
 
-.............
+### Heroku
 
+This project is hosted using Heroku, deployed directly from the `master` branch. 
+
+To deploy my project I followed these steps:
+
+1. Create App: 
+
+     - On Heroku website I logged onto my account and created [my app](https://dashboard.heroku.com/apps/booksy-reviews);
+     - Under the *Settings* tab I clicked button *Reveal Config Vars* and I set the IP to 0.0.0.0 and the PORT to 5000;
+     - At the later stage configuration for the MongoDB database were added, namely 'MONGO URI' and 'SECRET KEY';
+
+2. Install the Heroku CLI: 
+
+     - To install Heroku CLI I typed `$ sudo snap install --classic heroku` command into the terminal; 
+     - In order to log in to the Heroku account I typed `$ heroku login` command into the terminal;
+
+3. Git repository:
+
+     - If repository not created already the following commands should be used in order to initialize a git repository in a new or existing directory: 
+        ```
+        $ cd 'directory-name'/
+        $ git init
+        $ heroku git:remote -a 'app-name''
+        ```
+        
+    - For existing repositories add the heroku remote should be used: `$ heroku git:remote -a 'app-name'`;
+
+4. Requirements:
+
+    - In order to run the app Heroku needs to install the required dependencies so make sure that 'requirements.txt' file was created and commited;
+    - In order to create 'requirements.txt' file run `$ sudo pip3 freeze --local > requirements.txt` command in the terminal;
+
+5. Procfile:
+
+    - Procfile is a Heroku specific type of file that tells Heroku how to run our project;
+    - For the 'Procfile' run `$ echo web: python > Procfile` command in the terminal;
+    - In order to start web processes run `heroku ps:scale web=1` command in the terminal;
+
+5. Deployment: Committed code was deployed to heroku using the following command: `$ git push heroku master`.
+           
 <a name="credits"/>
 
 ## Credits
