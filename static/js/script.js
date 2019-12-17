@@ -51,7 +51,7 @@ $("a[href='#back-to-top']").click(function() {
 });
 
 /** 
- * Function that displays only the comment form which user choosed to update.
+ * Function that displays only the comment form which user chose to update.
  * Function is initiated on edit button click.
  * When users clicks 'edit' button card view is hidden and editable comment is
  * being displayed
