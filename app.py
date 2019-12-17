@@ -223,20 +223,25 @@ def delete_account(user_id):
 
 # AMAZON LINK
 '''
-Generate amazon link that will redirect user to search on amazon website.
+If user did not provide a direct link to the book on amazon
+generate amazon link that will redirect user to search on amazon website.
 Search takes into account book title and author.
-ref added to in the future implement affiliate link.
+ref tag added to in the future implement affiliate link.
 '''
 
-def generate_amazon_link(title, author):
-    
-	base_link = 'https://www.amazon.co.uk/ref=joanna/s?k='
-	
-	amazon_concat = base_link + title.replace(' ', '+') + "+" + author.replace(' ', '+')
-	
-	amazon_link = amazon_concat.replace('&', 'and')
-	
-	return amazon_link
+def generate_amazon_link(title, author, amazon_input):
+        
+    if amazon_input == '':
+        
+	    base_link = 'https://www.amazon.co.uk/ref=joanna/s?k='
+	    amazon_concat = base_link + title.replace(' ', '+') + '+' + author.replace(' ', '+')
+	    amazon_link = amazon_concat.replace('&', 'and')
+        
+    else:
+        
+        amazon_link = amazon_input.replace('ref=(*)', 'ref=joanna')
+        
+    return amazon_link
 
 # ADD REVIEW
 '''
@@ -270,7 +275,8 @@ def insert_review():
     title = request.form['title'].title()
     
     # Generate amazon link
-    amazon_link = generate_amazon_link(title, author)
+    link = request.form['amazon']
+    amazon_link = generate_amazon_link(title, author, link)
     
     # Check if review with a given author and title already exists
     existing_review = mongo.db.reviews.count_documents({'$and': 
@@ -453,7 +459,8 @@ def update_review(review_id):
     title = request.form['title'].title()
     
     # Generate amazon link
-    amazon_link = generate_amazon_link(title, author)
+    link = request.form['amazon']
+    amazon_link = generate_amazon_link(title, author, link)
     
     # Generate cover image link
     cover = generate_cover(request.form.get('cover'))
