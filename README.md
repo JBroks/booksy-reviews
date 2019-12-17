@@ -319,6 +319,8 @@ All the features were tested manually throughout the application development pro
 
 | Feature type                         | Feature                                           | Tests                                           | Bugs                                |
 | ------------------------------------ | ---------------------------- | ------------------------------------------------| ---------------------------------------------------------|
+| Page loading                         | Spinner                      |  - test if spinner appears when page is loading and disappears when the page is ready<br> - test if spinner is on top of the overlay |                                                          |
+|                                      | Overlay                      |  - test if overlay covers page when it is loading and disappears when the page is ready |                                                          |
 | Buttons (including anchor links)     | Buy online button            |  - test if button redirects to amazon<br> - test if search of a given book performed correctly<br> - test if amazon page opens in a new tab |                                                          |
 |                                      | Like / Dislike button        |  - test if button not showing for the user that added a given content (i.e. user who added review should not be able to like it)<br> - test if text on the button changes afer clicking the button<br> - check if vote added to the reviews collection<br> - check if total incremented accordingly after vote has been added<br> - check if 'View review' and 'Collection' page displays correct number of Likes / Dislikes |                                                          |
 |                                      | Delete review button         |  - test if button available only for the content added by the authenticated user<br> -  - test if confirmation message pops up after button has been clicked<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up<br> - test if review deleted pernamentaly from the database after user confirms the deletion<br> - test if page is redirected correctly after deletion |                           |
@@ -330,15 +332,37 @@ All the features were tested manually throughout the application development pro
 |                                      | View review button           |  - test if button redirects user to 'View review' page<br> - test if correct review is being displayed |    |
 |                                      | Cancel button                |  - test if button cancels all actions correctly (i.e. does not submit any changes made to the form)<br> - test if page if redirected correctly (as per template)<br> - In case of the cancel comment update, test if editable form is hidden and card with comment is displayed<br> - - In case of the cancel comment update, test if anchor works and page returns to the comments section |    |
 |                                      | Add review button            |  - test if button submits the data from the form to the reviews collection<br> - test if page if redirected correctly (as per template) |    |
+|                                      | Post comment button          |  - test if button submits the data from the form to the comments collection<br> - test if page if redirected correctly (as per template) and if anchor works |    |
 |                                      | Update review button         |  - test if button submits the data from the form to the reviews collection<br> - test if page if redirected correctly (as per template) |    |
 |                                      | Update comment button        |  - test if button submits the data from the form to the comments collection<br> - test if page if redirected correctly (as per template) and if anchor works (i.e. page redirected to the comments section) |    |
 |                                      | Back to top button           |  - test if clicking the button scrolls the page back to the top |    |
 |                                      | GitHub link                  |  - test if clicking the link redirects user to my repository<br> - test if GitHub page opens in a new tab |    |
+| Forms                                | Sign up form                 |  - test if input validation works correctly for each field<br> - test if there is any field left empty the form cannot be submitted<br> - test if submitted form saves data correctly into the database<br> - test if password hashing works i.e. password saved to database is hashed |    |
+|                                      | Sign in form                 |  - test if input validation works correctly for each field<br> - test if there is any field left empty the form cannot be submitted<br> - test is user can log in using incorrect password |    |
+|                                      | Add review form, Post comment form | - test if input validation works correctly for each field<br> - test if there is any field left empty the form cannot be submitted<br> - test if submitted form saves data correctly into the database |    |
+|                                      | Update comment form, Edit review form | - test if update forms pull data correctly from the database<br> - test if input validation works correctly for each field<br> - test if there is any field left empty the form cannot be submitted<br> - test if submitted form saves data correctly into the database |    |
+| Structure                            | Navbar                       | - test if all navbar menu items redirect user to the appropriate page<br> - test if item that is currently active is highlighted<br> - test if navbar collapses on smaller devices |    |
+|                                      | Footer                       | - test if GitHub link works correctly<br> - test if footer stays at the bottom of the page |    |
+| Alerts                               |                        |   |    |
+
+
+
 
 #### Buttons
 
 Buttons were tested for the following scenarios:
 
+- **Sign up form** - flask register form that enables user to use the app. User input includes username, email address, and password (that has to be repeated);
+
+- **Sign in form** - flask login form that enables user to sig into the user account;
+
+- **Post comment form** - form that enables user to post a comment for a given review;
+
+- **Update comment form** - form that enables user to edit and resubmit the comment;
+
+- **Add review form** - form that enables user to add a new review to the website;
+
+- **Edit review form**
 
 
 
