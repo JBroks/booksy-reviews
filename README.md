@@ -277,6 +277,7 @@ This warning remains unresolved as it is only an information stating that valida
 HTML code was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
 
 The following issues were captured by the validator:
+
 - `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the **add_review**, **edit_review** and **base** template and it was resolved by amending `for` attribute;
 
 - `Bad value for attribute action on element form: Must be non-empty` - issue appeared in the login and register form. `action` attribute was removed as the submit is handled by flask;
@@ -313,7 +314,29 @@ All remaining features were tested manually.
 
 ### Features testing
 
-#### Feature 1
+All the features were tested manually throughout the application development process. Table below outlines all features and tests performed on them, as well as all resolved and remaining bugs associated with tested features.
+
+
+| Feature type                         | Feature                                           | Tests                                           | Bugs                                |
+| ------------------------------------ | ---------------------------- | ------------------------------------------------| ---------------------------------------------------------|
+| Buttons & anchor links               | Buy online button            |  - test if button redirects to amazon<br> - test if search of a given book performed correctly<br> - test if amazon page opens in a new tab |                                                          |
+|                                      | Like / Dislike button        |  - test if text on the button changes afer clicking the button<br> - check if vote added to the reviews collection<br> - check if total incremented accordingly after vote has been added<br> - check if 'View review' and 'Collection' page displays correct number of Likes / Dislikes |                                                          |
+|                                      | Delete review button         |  - test if confirmation message pops up after button has been clicked<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up<br> - test if review deleted pernamentaly from the database after user confirms the deletion<br> - test if page is redirected correctly after deletion |                           |
+|                                      | Delete account button        |  - test if confirmation message pops up after button has been clicked<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up<br> - test if account and all user votes, comments and reviews are deleted pernamentaly from the database after user confirms the deletion<br> - test if page is redirected correctly after deletion |                                                          |
+|                                      | Delete comment button        |    |    |
+|                                      | All reviews button           |  - test if button redirects user to paginated collection<br> - test if button is not displayed when user is not authenticated |    |
+|                                      | View review button & links   |  - test if button redirects user to 'View review' page<br> - test if correct review is being displayed |    |
+|                                      | Cancel button                |  - test if button cancels all actions correctly (i.e. does not submit any changes made to the form)<br> - test if page if redirected correctly (as per template) |    |
+|                                      | Add review button            |  - test if button submits the data from the form to the reviews collection<br> - test if page if redirected correctly (as per template) |    |
+|                                      | Update review button         |  - test if button submits the data from the form to the reviews collection<br> - test if page if redirected correctly (as per template) |    |
+|                                      | Back to top button           |  - test if clicking the button scrolls the page back to the top |    |
+
+#### Buttons
+
+Buttons were tested for the following scenarios:
+
+
+
 
 ##### Bugs:
 
