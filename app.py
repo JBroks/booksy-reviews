@@ -278,6 +278,9 @@ def insert_review():
         {'title': title }] 
     })
     
+     # Generate cover image link
+    cover = generate_cover(request.form.get('cover'))
+    
     # If review does not exist in the collection insert it    
     if existing_review == 0:
         
@@ -287,7 +290,7 @@ def insert_review():
             'publication_year': request.form['publication_year'],
             'type': request.form['type'],
             'genre': request.form['genre'].title(),
-            'cover': request.form['cover'],
+            'cover': cover,
             'summary': request.form['summary'],
             'review': request.form['review'],
             'amazon': amazon_link,
@@ -415,6 +418,23 @@ def edit_review(review_id):
     return render_template('editreview.html', 
                             review=the_review)
 
+# COVER IMAGE
+'''
+Generate cover image placeholder in cases when use does not provide a link
+to the actual image.
+If form input is empty placeholder is pasted instead.
+'''
+
+def generate_cover(cover_input):
+
+    if cover_input == '':
+        cover = "https://via.placeholder.com/250x350.png?text=No+image+available"
+        
+    else:
+        cover = cover_input
+  
+    return cover
+
 # UPDATE REVIEW
 '''
 Function that submits user input to the database
@@ -435,6 +455,9 @@ def update_review(review_id):
     # Generate amazon link
     amazon_link = generate_amazon_link(title, author)
     
+    # Generate cover image link
+    cover = generate_cover(request.form.get('cover'))
+        
     # Update the review
     reviews.update({'_id': ObjectId(review_id)},
     { '$set':
@@ -444,7 +467,7 @@ def update_review(review_id):
         'publication_year': request.form.get('publication_year'),
         'type': request.form.get('type'),
         'genre': request.form.get('genre').title(),
-        'cover': request.form.get('cover'),
+        'cover': cover,
         'summary': request.form.get('summary'),
         'review': request.form.get('review'),
         'amazon': amazon_link
