@@ -225,11 +225,12 @@ def delete_account(user_id):
 '''
 Generate amazon link that will redirect user to search on amazon website.
 Search takes into account book title and author.
+ref added to in the future implement affiliate link.
 '''
 
 def generate_amazon_link(title, author):
     
-	base_link = 'https://www.amazon.co.uk/s?k='
+	base_link = 'https://www.amazon.co.uk/ref=joanna/s?k='
 	
 	amazon_concat = base_link + title.replace(' ', '+') + "+" + author.replace(' ', '+')
 	
@@ -297,6 +298,8 @@ def insert_review():
             'downvote_total': 0
         
         })
+        
+        flash('Your review has now been successfully added to our collection', 'success')
         
     # If review with the same title and author already exists throw an error message
     else: 
@@ -448,7 +451,7 @@ def update_review(review_id):
         }
     })
     
-    return redirect(url_for('show_collection')) 
+    return redirect(url_for('view_review', review_id=review_id)) 
 
 # INSERT COMMENT
 '''
