@@ -323,14 +323,14 @@ All the features were tested manually throughout the application development pro
 |                                      | Overlay                      |  - test if overlay covers page when it is loading and disappears when the page is ready |                                                          |
 | Buttons (including anchor links)     | Buy online button            |  - test if button redirects to amazon<br> - test if search of a given book performed correctly<br> - test if amazon page opens in a new tab |                                                          |
 |                                      | Like / Dislike button        |  - test if button not showing for the user that added a given content (i.e. user who added review should not be able to like it)<br> - test if text on the button changes afer clicking the button<br> - check if vote added to the reviews collection<br> - check if total incremented accordingly after vote has been added<br> - check if 'View review' and 'Collection' page displays correct number of Likes / Dislikes |                                                          |
-|                                      | Delete review button         |  - test if button available only for the content added by the authenticated user<br> -  - test if confirmation message pops up after button has been clicked<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up<br> - test if review deleted pernamentaly from the database after user confirms the deletion<br> - test if page is redirected correctly after deletion |                           |
+|                                      | Delete review button         |  - test if button available only for the content added by the authenticated user<br> - test if confirmation message pops up after button has been clicked<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up<br> - test if review deleted pernamentaly from the database after user confirms the deletion<br> - test if page is redirected correctly after deletion |                           |
 |                                      | Delete account button        |  - test if confirmation message pops up after button has been clicked<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up<br> - test if account and all user votes, comments and reviews are deleted pernamentaly from the database after user confirms the deletion<br> - test if page is redirected correctly after deletion |                                                          |
 |                                      | Delete comment button        |  - test if button available only for the content added by the authenticated user<br> - test if comment deleted from the database correctly<br> - test if comment removed from the display on 'View review page'<br> - check if comment counter adjusted accordingly |    |
 |                                      | Edit review button           |  - test if button available only for the content added by the authenticated user<br> - test if button redirects user to the correct page<br> - check if form displays information about correct review |    |
 |                                      | Edit comment button          |  - test if button available only for the content added by the authenticated user<br> - test if card is replaced with editable form<br> - check if 'Update' and 'Cancel buttons are being displayed after 'Edit' button is clicked |    |
 |                                      | All reviews button           |  - test if button is only showing when user is authenticated<br> - test if button redirects user to paginated collection<br> - test if button is not displayed when user is not authenticated |    |
 |                                      | View review button           |  - test if button redirects user to 'View review' page<br> - test if correct review is being displayed |    |
-|                                      | Cancel button                |  - test if button cancels all actions correctly (i.e. does not submit any changes made to the form)<br> - test if page if redirected correctly (as per template)<br> - In case of the cancel comment update, test if editable form is hidden and card with comment is displayed<br> - - In case of the cancel comment update, test if anchor works and page returns to the comments section |    |
+|                                      | Cancel button                |  - test if button cancels all actions correctly (i.e. does not submit any changes made to the form)<br> - test if page if redirected correctly (as per template)<br> - in case of the cancel comment update, test if editable form is hidden and card with comment is displayed<br> - in case of the cancel comment update, test if anchor works and page returns to the comments section |    |
 |                                      | Add review button            |  - test if button submits the data from the form to the reviews collection<br> - test if page if redirected correctly (as per template) |    |
 |                                      | Post comment button          |  - test if button submits the data from the form to the comments collection<br> - test if page if redirected correctly (as per template) and if anchor works |    |
 |                                      | Update review button         |  - test if button submits the data from the form to the reviews collection<br> - test if page if redirected correctly (as per template) |    |
@@ -343,42 +343,12 @@ All the features were tested manually throughout the application development pro
 |                                      | Update comment form, Edit review form | - test if update forms pull data correctly from the database<br> - test if input validation works correctly for each field<br> - test if there is any field left empty the form cannot be submitted<br> - test if submitted form saves data correctly into the database |    |
 | Structure                            | Navbar                       | - test if all navbar menu items redirect user to the appropriate page<br> - test if item that is currently active is highlighted<br> - test if navbar collapses on smaller devices |    |
 |                                      | Footer                       | - test if GitHub link works correctly<br> - test if footer stays at the bottom of the page |    |
-| Alerts                               |                        |   |    |
-
-
-
-
-#### Buttons
-
-Buttons were tested for the following scenarios:
-
-- **Sign up form** - flask register form that enables user to use the app. User input includes username, email address, and password (that has to be repeated);
-
-- **Sign in form** - flask login form that enables user to sig into the user account;
-
-- **Post comment form** - form that enables user to post a comment for a given review;
-
-- **Update comment form** - form that enables user to edit and resubmit the comment;
-
-- **Add review form** - form that enables user to add a new review to the website;
-
-- **Edit review form**
-
-
-
-##### Bugs:
-
-#### Commment counter
-
-Error `Cannot set property 'innerHTML' of null` resolved with [this](https://stackoverflow.com/questions/18239430/cannot-set-property-innerhtml-of-null) solution.
-
-##### Bugs:
-
-#### Search bar
-
-##### Bugs:
-
-On Safari search bar placeholder is offset and not visible.
+| Alerts                               | Toast messages               | - test if all flash messages are styled with toastr<br> - test if no text is cut off<br> - test if delete button and progress displays correctly<br> - test if different colors applied to different categories of toast messages | No unresolved bugs left. |
+|                                      | Delete confirmation messages | - test if confirmation message pops up when trying to delete a review or account<br> - test if clicking 'delete' button on the message performc deleting<br> - test if clicking 'cancel' cancels the action | No unresolved bugs left |
+| Other                                | Pagination                   | - test if ten reviews per page are displayed<br> - test pagination links<br> - check if total number of reviews is with accordance to the total number of records in the database | No unresolved bugs. Initially pagination did not work properly but moving `reviews = mongo.db.reviews.find().sort([("_id", -1)])` inside the `get_reviews()` function fixed the issue. |
+|                                      | Accordion                    | - check if only one element is un-wrapped at the time<br> test if clicking on the heading un-wraps the correct element | No bugs |
+|                                      | Search bar                   | - test various search bar inputs (ones that exist in the database and ones that do not)<br> - test search bar with no input provided<br> - test if inputs are submitted on 'enter'<br> - check if search bar in not collapsing along with other menu items on smaller devices  | Remaining bug: On Safari search bar placeholder is offset and not visible. |
+|                                      | Comment counter              | - test if comment counter is updated whenever comments is added or deleted<br> - test if counter re-calculates the total when one user adds multiple comments<br> - test if it re-calculates the total when different users add comments<br> - test if it re-calculates the total when user account is deleted and multiple comments along with it | Error `Cannot set property 'innerHTML' of null` resolved with [this](https://stackoverflow.com/questions/18239430/cannot-set-property-innerhtml-of-null) solution. |
 
 ### Responsiveness testing
 
