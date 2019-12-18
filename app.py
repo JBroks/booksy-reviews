@@ -1,4 +1,5 @@
 import os
+import re
 import logging
 from flask import Flask, render_template, flash, redirect, request, url_for, session
 from flask_paginate import Pagination, get_page_args, get_page_parameter
@@ -230,17 +231,33 @@ ref tag added to in the future implement affiliate link.
 '''
 
 def generate_amazon_link(title, author, amazon_input):
-        
+
+     # If no link provided by a user generate amazon search with tag for
+     # affiliate link
     if amazon_input == '':
-        
-	    base_link = 'https://www.amazon.co.uk/ref=joanna/s?k='
+
+	    base_link = 'https://www.amazon.co.uk/s?k='
 	    amazon_concat = base_link + title.replace(' ', '+') + '+' + author.replace(' ', '+')
-	    amazon_link = amazon_concat.replace('&', 'and')
-        
+	    amazon_link = amazon_concat.replace('&', 'and') + '&tag=joanna'
+
+    # If link provided and tag is already there than leave as it is
+    elif (amazon_input.find('tag=joanna') >= 0 ):
+
+            amazon_link = amazon_input
+    
+    # If link provided and tag is not there then add tag
     else:
-        
-        amazon_link = amazon_input.replace('ref=(*)', 'ref=joanna')
-        
+
+        # If link based on search no need for backslash
+        if any(re.findall(r'ref|keywords|k=', amazon_input, re.IGNORECASE)):
+
+            amazon_link = amazon_input +'&tag=joanna'
+
+        # If direct link to product add backslash
+        else:
+
+            amazon_link = amazon_input +'/?tag=joanna'
+
     return amazon_link
 
 # ADD REVIEW
@@ -430,17 +447,28 @@ Generate cover image placeholder in cases when use does not provide a link
 to the actual image.
 If form input is empty placeholder is pasted instead.
 '''
-
+    
 def generate_cover(cover_input):
-
+    
+    name, ext = os.path.splitext(cover_input)
+    
+    # If link to cover not provided at all
     if cover_input == '':
-        cover = "https://via.placeholder.com/250x350.png?text=No+image+available"
         
+        cover = "https://via.placeholder.com/250x350.png?text=No+image+available"
+    
+       
     else:
-        cover = cover_input
-  
+        if ('.jpeg' or '.jpg' or '.png') in cover_input:
+            
+            cover = cover_input
+        
+        # If link to cover does not contain correct extension 
+        else:
+            cover = "https://via.placeholder.com/250x350.png?text=No+image+available"
+   
     return cover
-
+    
 # UPDATE REVIEW
 '''
 Function that submits user input to the database
