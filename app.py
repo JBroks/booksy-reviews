@@ -450,8 +450,6 @@ If form input is empty placeholder is pasted instead.
     
 def generate_cover(cover_input):
     
-    name, ext = os.path.splitext(cover_input)
-    
     # If link to cover not provided at all
     if cover_input == '':
         
@@ -459,7 +457,7 @@ def generate_cover(cover_input):
     
        
     else:
-        if ('.jpeg' or '.jpg' or '.png') in cover_input:
+        if any(re.findall(r'jpeg|jpg|png', cover_input, re.IGNORECASE)):
             
             cover = cover_input
         
