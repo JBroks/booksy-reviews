@@ -193,3 +193,17 @@ function confirmationAcc(ev) {
 $(document).ready(function() {
   $('#counter').html($(".card").length);
 });
+
+
+// CURRENT YEAR
+/**
+ * Function that sets maximum for publication year input.
+ * Max attribute is set to the current year for 'Add review' and 'Update review'
+ * templates.
+ **/
+ 
+$(document).ready(function() {
+  var today = new Date();
+  var currentYear = today.getFullYear();
+  $('#publication_year').attr("max", currentYear);
+});
