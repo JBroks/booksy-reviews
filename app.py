@@ -455,13 +455,15 @@ def generate_cover(cover_input):
         
         cover = "https://via.placeholder.com/250x350.png?text=No+image+available"
     
-       
+    # If link to cover provided  
     else:
+        
+        # Link provided and has correct extension
         if any(re.findall(r'jpeg|jpg|png', cover_input, re.IGNORECASE)):
             
             cover = cover_input
         
-        # If link to cover does not contain correct extension 
+        # Link to cover does not contain correct extension or not provided at all
         else:
             cover = "https://via.placeholder.com/250x350.png?text=No+image+available"
    
