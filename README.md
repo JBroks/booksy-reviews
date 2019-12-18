@@ -254,6 +254,8 @@ List of features to be implemented in the future:
 
 - [DBDiagram](https://dbdiagram.io/home) - A relational database diagram design tool used to create database schema.
 
+- [Placeholder](https://placeholder.com/) - Online tool to create custom placeholder images. It was used to create image placeholder in cases when user did not provide a link to book cover image.
+
 <a name="testing"/>
 
 ## Testing
@@ -535,6 +537,10 @@ I used [flask-testing docs](https://pythonhosted.org/Flask-Testing/) to learn ab
 Styling active item in the navbar menu was inspired by [this](https://stackoverflow.com/questions/22173041/styling-active-element-menu-in-flask) solution. 
 
 To learn more about creating Materialize search bar [this](https://www.jquery-az.com/10-examples-learn-creating-materialize-navbar/) tutorial was used.
+
+[This](https://stackoverflow.com/questions/3389574/check-if-multiple-strings-exist-in-another-string) solution used for `generate_amazon_link` and `generate_cover` functions.
+
+Information about amazon affiliate links found in [here](https://amazon-affiliate.eu/en/how-to-add-amazon-affiliate-links/).
 
 Many thanks to my mentor **Maranatha Ilesanmi** for support and advice throughout the project.
 
