@@ -300,7 +300,7 @@ Three unused variables were flagged, namely confirmDel, confirmDelView, confirma
 
 In order to debug python code while coding I used logging module (`import logging`) and pdb module (`import pdb`).
 
-Python code was tested using unittest framework. Flask routes was tested using unittest framework and flask_testing extension, the following tests were run:
+Python code was tested using unittest framework ([test.py](https://github.com/JBroks/booksy-reviews/blob/master/test.py) file). Flask routes ([test_routes.py](https://github.com/JBroks/booksy-reviews/blob/master/test_routes.py) file) was tested using unittest framework and flask_testing extension, the following tests were run:
 
 - test for pages loading correctly without user being authenticated;
 
