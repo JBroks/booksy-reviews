@@ -465,7 +465,7 @@ To deploy my project I followed these steps:
 1. Create App: 
 
      - On Heroku website I logged onto my account and created [my app](https://dashboard.heroku.com/apps/booksy-reviews);
-     - Under the *Settings* tab I clicked button *Reveal Config Vars* and I set the IP to 0.0.0.0 and the PORT to 5000;
+     - Under the **Settings** tab I clicked button **Reveal Config Vars** and I set the IP to 0.0.0.0 and the PORT to 5000;
      - At the later stage configuration for the MongoDB database were added, namely 'MONGO URI' and 'SECRET KEY';
 
 2. Install the Heroku CLI: 
