@@ -10,11 +10,11 @@
 
         <!-- Selected book info container -->
         <div class="row">
-            
+
             <div class="col s12 author">
                 <p>By {{ review.author }}</p>
             </div>
-            
+
         </div>
 
         <div class="row">
@@ -61,16 +61,6 @@
 
                 </div>
 
-                <!-- Like / dislike totals -->
-                <div class="row left">
-
-                    <div class="col s3"><i class="material-icons thumb-up">thumb_up</i></div>
-                    <div class="col s2"><p class="thumb-up">{{ review.upvote_total }}</p></div>
-                    <div class="col s3"><i class="material-icons thumb-down">thumb_down</i></div>
-                    <div class="col s2"><p class="thumb-down">{{ review.downvote_total }}</p></div>
-
-                </div>
-
                 <!-- Buy online button that redirects to search on amazon website-->
                 <div class="row">
 
@@ -112,6 +102,15 @@
                 </ul>
             </div>
 
+        </div>
+
+        <!-- Like / dislike totals -->
+      
+        <div class="row" id="view-votes-container">
+
+            <div class="col s6 center"><i class="material-icons thumb-up">thumb_up</i><span class="thumb-up">{{ review.upvote_total }}</span></div>
+            <div class="col s6 center"><i class="material-icons thumb-down">thumb_down</i><span class="thumb-down">{{ review.downvote_total }}</span></div>
+            
         </div>
 
         <!-- Likes and Dislike, Delete and Edit buttons -->

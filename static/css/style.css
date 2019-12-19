@@ -64,14 +64,12 @@ nav .brand-logo {
 /* Book info styling - collection */
 
 .book-info-container div {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 300;
 }
 
 .book-info-container .title {
     font-weight: 700;
-    font-family: "Alegreya", sans-serif;
-    font-size: 1.8rem;
 }
 
 #view-review-container p {
@@ -454,7 +452,7 @@ textarea.comments-textarea:focus:not([readonly]) {
 
 /* THUMBS UP / DOWN */
 
-/* Adjust colors for thumbs up andthumbs down icons */
+/* Adjust colors for thumbs up and thumbs down icons */
 
 .thumb-up {
     color: #6c913c;
@@ -464,10 +462,30 @@ textarea.comments-textarea:focus:not([readonly]) {
     color: #d33d29;
 }
 
+/* Font size for votes on view review page */
+
+#view-votes-container {
+    font-size: 1.5rem;
+}
+
+/* Align text with icons */
+
+#view-votes-container span {
+    vertical-align: top;
+}
+
+#view-votes-container {
+    padding: 10px 0;
+}
+
 /* COLLECTION PAGE AND SEARCH RESULTS SPACING */
 
 .collection-item {
     padding: 15px 0;
+}
+
+.votes-container {
+    padding-top: 30px;
 }
 
 /* PROFILE PAGE SPACING */
