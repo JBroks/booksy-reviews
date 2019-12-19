@@ -11,14 +11,15 @@ $(window).on('load', function() {
 // INITIALIZE MATERIALIZE
 
 /** 
- * Function that initializes materialize side navbar, accordion collapsible
- * and select menu
+ * Function that initializes materialize side navbar, accordion collapsible,
+ * select menu and tabs
  **/
 
 $(document).ready(function() {
   $('.collapsible').collapsible();
   $('select').material_select();
   $('.button-collapse').sideNav();
+  $('.tabs').tabs();
 });
 
 // SEARCH BAR
