@@ -44,17 +44,17 @@ nav .brand-logo {
     overflow-wrap: break-word;
 }
 
-/* Card background color set to the same as comment textarea */
-
-.card {
-    background-color: #f5f5f5;
-}
-
 /* Card title font size decreased */
 
 .card .card-title {
     font-size: 20px;
     font-weight: 400;
+}
+
+/* Card comment font */
+
+#view-review-container p.comment-text {
+    font-size: 1.1rem;
 }
 
 #commented-by {
@@ -241,7 +241,7 @@ nav .nav-wrapper {
 /* Update comment buttons container margin to prevent overlapping with character counter */
 
 .buttons-container {
-    margin: 20px 0;
+    margin: 5px 0;
 }
 
 /* Overlay created for forms and text in content-containers */
@@ -460,13 +460,13 @@ textarea.comments-textarea:focus:not([readonly]) {
 /* Adjust colors for thumbs up and thumbs down icons */
 
 .thumb-up {
-    color: #6c913c;
+    color: #86a05c;
     padding-left: 10px;
     vertical-align: text-bottom;
 }
 
 .thumb-down {
-    color: #d33d29;
+    color: #e64e64;
     padding-left: 10px;
     vertical-align: bottom;
 }
@@ -537,6 +537,22 @@ ul.tabs {
 
 .tab-item {
     background-color: #f7f5f5a6;
+}
+
+/* CARD STYLING */
+
+/* Card background color set to the same as comment textarea */
+
+.card {
+    background-color: #f5f5f5;
+}
+
+.card .card-content {
+    padding: 18px;
+}
+
+.card .card-action {
+    padding: 5px 15px;
 }
 
 /* FOOTER */
