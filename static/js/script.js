@@ -19,7 +19,7 @@ $(document).ready(function() {
   $('.collapsible').collapsible();
   $('select').material_select();
   $('.button-collapse').sideNav();
-  $('.tabs').tabs();
+  $('.tabs').tabs('swipable', true);
 });
 
 // SEARCH BAR
