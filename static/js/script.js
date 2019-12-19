@@ -97,7 +97,7 @@ function confirmDel(ev) {
             }
           })
           .done(function(response) {
-           swal.fire('Review was deleted!', response.message, response.status);
+           swal.fire('Review has been deleted!', response.message, response.status);
           })
         
           .fail(function() {
@@ -131,7 +131,47 @@ function confirmDelView(ev) {
             }
           })
           .done(function(response) {
-           swal.fire('Review was deleted!', response.message, response.status);
+           swal.fire('Review has been deleted!', response.message, response.status);
+          })
+          
+          .fail(function() {
+            swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
+          });
+        
+      });
+    },
+    allowOutsideClick: false
+  });
+}
+
+/** 
+ * Functions confirming deletion of a comment.
+ * When user presses the delete button window requesting a confirmation pops up.
+ * User can then confirm deletion or cancel it.
+ **/
+ 
+function confirmDelCom(ev) {
+  ev.preventDefault();
+
+  swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!',
+    showLoaderOnConfirm: true,
+    preConfirm: function() {
+      return new Promise(function(resolve) {
+           $.ajax({
+            url: $(".delete-btn-comment a").attr('href'),
+            success: function(result) {
+              window.location.reload();
+            }
+          })
+          .done(function(response) {
+           swal.fire('Comment has been deleted!', response.message, response.status);
           })
           
           .fail(function() {
