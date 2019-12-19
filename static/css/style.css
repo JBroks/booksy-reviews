@@ -499,7 +499,7 @@ textarea.comments-textarea:focus:not([readonly]) {
 
 /* PROFILE PAGE SPACING */
 
-#profile-heading {
+#profile-heading, #collection-heading {
     padding-bottom: 15px;
 }
 
