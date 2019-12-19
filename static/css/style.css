@@ -461,10 +461,14 @@ textarea.comments-textarea:focus:not([readonly]) {
 
 .thumb-up {
     color: #6c913c;
+    padding-left: 10px;
+    vertical-align: text-bottom;
 }
 
 .thumb-down {
     color: #d33d29;
+    padding-left: 10px;
+    vertical-align: bottom;
 }
 
 /* Font size for votes on view review page */
@@ -477,10 +481,6 @@ textarea.comments-textarea:focus:not([readonly]) {
 
 #view-votes-container span {
     vertical-align: top;
-}
-
-#view-votes-container {
-    padding: 10px 0;
 }
 
 /* COLLECTION PAGE AND SEARCH RESULTS SPACING */

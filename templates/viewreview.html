@@ -61,6 +61,14 @@
 
                 </div>
 
+                <!-- Like / dislike totals -->
+                <div class="row center-on-small-only" id="view-votes-container">
+
+                    <div class="col m2 s6"><i class="material-icons thumb-up">thumb_up</i><span class="thumb-up">{{ review.upvote_total }}</span></div>
+                    <div class="col m2 s6"><i class="material-icons thumb-down">thumb_down</i><span class="thumb-down">{{ review.downvote_total }}</span></div>
+
+                </div>
+
                 <!-- Buy online button that redirects to search on amazon website-->
                 <div class="row">
 
@@ -102,15 +110,6 @@
                 </ul>
             </div>
 
-        </div>
-
-        <!-- Like / dislike totals -->
-      
-        <div class="row" id="view-votes-container">
-
-            <div class="col s6 center"><i class="material-icons thumb-up">thumb_up</i><span class="thumb-up">{{ review.upvote_total }}</span></div>
-            <div class="col s6 center"><i class="material-icons thumb-down">thumb_down</i><span class="thumb-down">{{ review.downvote_total }}</span></div>
-            
         </div>
 
         <!-- Likes and Dislike, Delete and Edit buttons -->
