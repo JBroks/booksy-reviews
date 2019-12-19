@@ -49,7 +49,7 @@ Website demo is available [here](https://booksy-reviews.herokuapp.com/ "booksy-r
 
 In this project I was aiming to achieve a simple and user friendly user design, while providing all required information. All sections are arranged in a logical order to provide intuitive user experience.
 
-To create warm and cosy design I used the following colors in my project: white (`#ffffff`), off-white (`#f5f5f5`), light-red (`#e64a1e`), black (`#373737`, `#292826`), grey (`#848482`, `#d2d1d1`), and range of gold / dark-gold colors (`#bdaa6c`, `#a99c72`, `#c0b283`, `#e4d29b`).
+To create warm and cosy design I used the following colors in my project: white (`#ffffff`), off-white (`#f5f5f5`), light-red (`#e64a1e`), black (`#373737`, `#292826`), grey (`#848482`, `#d2d1d1`), and range of gold / dark-gold colors (`#796a3b`,`#bdaa6c`, `#a99c72`, `#c0b283`, `#c3bb9e`, `#e4d29b`).
 
 ### Target Audience
 
