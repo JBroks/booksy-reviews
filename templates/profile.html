@@ -3,7 +3,7 @@
 <section class="content-container">
     
     <!-- Profile page heading -->
-    <h3>{{ user.username[0]|upper}}{{user.username[1:] }}'s Profile</h3>
+    <h3 id="profile-heading">{{ user.username[0]|upper}}{{user.username[1:] }}'s Profile</h3>
 
     <!-- Account details sub-section -->
     <section>
@@ -13,7 +13,7 @@
         <hr>
 
         <!-- User information i.e. username and last seen datetime -->
-        <div class="row">
+        <div id="account-details" class="row">
 
             <div class="col s12">Username: {{ user.username }}</div>
             <div class="col s12">Email: {{ user.email }}</div>
@@ -38,25 +38,25 @@
         <h4>User content</h4>
         <hr>
 
-        <div class="row">
+        <div id="tabs-container" class="row">
 
             <div class="col s12">
 
-                <ul id="tabs-swipe-demo" class="tabs">
+                <ul class="tabs">
 
-                    <li class="tab col s3"><a href="#test-swipe-1">Added reviews</a></li>
-                    <li class="tab col s3"><a href="#test-swipe-2">Commented reviews</a></li>
-                    <li class="tab col s3"><a href="#test-swipe-3">Likes</a></li>
-                    <li class="tab col s3"><a href="#test-swipe-4">Dislikes</a></li>
+                    <li class="tab col s3"><a href="#tab1">Added reviews</a></li>
+                    <li class="tab col s3"><a href="#tab2">Commented reviews</a></li>
+                    <li class="tab col s3"><a href="#tab3">Likes</a></li>
+                    <li class="tab col s3"><a href="#tab4">Dislikes</a></li>
 
                 </ul>
 
                 <!-- List of reviews added by the user -->
-                <div id="test-swipe-1" class="col s12">
+                <div id="tab1" class="col s12 tab-item">
 
                     {% for review in reviews %}
 
-                    <div class="row valign-wrapper">
+                    <div class="row valign-wrapper user-content-item">
 
                         <div class="col m2 s4 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
                         <div class="col m6 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
@@ -72,11 +72,11 @@
                 </div>
 
                 <!-- List of reviews commented on by the user -->
-                <div id="test-swipe-2" class="col s12">
+                <div id="tab2" class="col s12 tab-item">
 
                     {% for review in comments %}
 
-                    <div class="row valign-wrapper">
+                    <div class="row valign-wrapper user-content-item">
 
                         <div class="col m2 s4 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
                         <div class="col m10 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
@@ -88,11 +88,11 @@
                 </div>
 
                 <!-- List of reviews liked by the user -->
-                <div id="test-swipe-3" class="col s12">
+                <div id="tab3" class="col s12 tab-item">
 
                     {% for review in upvotes %}
 
-                    <div class="row valign-wrapper">
+                    <div class="row valign-wrapper user-content-item">
 
                         <div class="col m2 s4 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
                         <div class="col m10 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
@@ -104,11 +104,11 @@
                 </div>
 
                 <!-- List of reviews disliked by the user -->
-                <div id="test-swipe-4" class="col s12">
+                <div id="tab4" class="col s12 tab-item">
 
                     {% for review in downvotes %}
 
-                    <div class="row valign-wrapper">
+                    <div class="row valign-wrapper user-content-item">
 
                         <div class="col m2 s4 center-on-small-only image-profile-container"><img class="image-profile" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
                         <div class="col m10 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>

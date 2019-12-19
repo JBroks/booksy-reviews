@@ -452,6 +452,46 @@ textarea.comments-textarea:focus:not([readonly]) {
     color: #fff;
 }
 
+/* PROFILE PAGE SPACING */
+
+#profile-heading {
+    padding-bottom: 15px;
+}
+
+#account-details, #tabs-container {
+    padding-top: 20px;
+}
+
+.tab-item > div:first-of-type {
+    padding-top: 15px;
+}
+
+.user-content-item {
+    padding: 7px 0;
+}
+
+/* TABS */
+
+ul.tabs {
+    background-color: #c3bb9e;
+}
+
+.tabs .tab a {
+    color: #f7f5f5;
+}
+
+.tabs .tab a.active, .tabs .tab a:hover {
+    color: #796a3b;
+}
+
+.tabs .indicator {
+    background-color: #796a3b;
+}
+
+.tab-item {
+    background-color: #f7f5f5a6;
+}
+
 /* FOOTER */
 
 /* Footer gradient color effect */
