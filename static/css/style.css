@@ -13,6 +13,11 @@ body,
     color: #373737;
 }
 
+.profile-review-title a {
+    font-weight: 100;
+    font-size: 16px;
+}
+
 h3 {
     font-family: "Alegreya", sans-serif;
     font-weight: 500;
@@ -35,6 +40,12 @@ h4 {
 
 nav .brand-logo {
     font-size: 2.5rem;
+}
+
+/* Welcome section fort styling */
+
+.welcome-section p {
+    font-size: 1.2rem;
 }
 
 /* Break words in a card if too long */
@@ -513,7 +524,7 @@ textarea.comments-textarea:focus:not([readonly]) {
 }
 
 .user-content-item {
-    padding: 7px 0;
+    padding: 10px 5px;
 }
 
 /* TABS */
@@ -524,6 +535,7 @@ ul.tabs {
 
 .tabs .tab a {
     color: #f7f5f5;
+    font-size: 16px;
 }
 
 .tabs .tab a.active,
@@ -650,11 +662,15 @@ main {
     }
 
     h4 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+    }
+    
+    h5 {
+        font-size: 1.4rem;
     }
 
     .tabs .tab a {
-        font-size: 0.8rem;
+        font-size: 0.65rem;
         padding: 0 3px;
     }
 

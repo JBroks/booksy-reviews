@@ -44,10 +44,10 @@
 
                 <ul class="tabs">
 
-                    <li class="tab col s3"><a href="#tab1">Added</a></li>
-                    <li class="tab col s3"><a href="#tab2">Commented</a></li>
-                    <li class="tab col s3"><a href="#tab3">Liked</a></li>
-                    <li class="tab col s3"><a href="#tab4">Disliked</a></li>
+                    <li class="tab col s3"><a href="#tab1">Reviews</a></li>
+                    <li class="tab col s3"><a href="#tab2">Comments</a></li>
+                    <li class="tab col s3"><a href="#tab3">Likes</a></li>
+                    <li class="tab col s3"><a href="#tab4">Dislikes</a></li>
 
                 </ul>
 
@@ -62,8 +62,8 @@
                         <div class="col m6 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
 
                         <!-- Edit and delete review buttons -->
-                        <div class="col m2 s6 center hide-on-small-only user-reviews"><a href="{{url_for('edit_review', review_id=review._id)}}">Edit</a></div>
-                        <div class="col m2 s6 center hide-on-small-only user-reviews delete-btn"><a onclick="confirmDel(event)" href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
+                        <div class="col m2 center hide-on-small-only user-reviews"><a href="{{url_for('edit_review', review_id=review._id)}}">Edit</a></div>
+                        <div class="col m2 center hide-on-small-only user-reviews delete-btn"><a onclick="confirmDel(event)" href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
 
                     </div>
 
