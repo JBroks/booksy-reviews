@@ -15,12 +15,11 @@ body,
 
 h3 {
     font-family: "Alegreya", sans-serif;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 h4 {
     font-family: "Alegreya", sans-serif;
-    font-weight: 500;
 }
 
 .homepage-container h1 {
@@ -64,25 +63,26 @@ nav .brand-logo {
 
 /* Book info styling - collection */
 
-#book-info-container div {
+.book-info-container div {
     font-size: 1.2rem;
+    font-weight: 300;
 }
 
-#book-info-container .title {
+.book-info-container .title {
     font-weight: 700;
     font-family: "Alegreya", sans-serif;
     font-size: 1.8rem;
 }
 
-#book-info-container .added-by {
-    font-weight: 300;
-    font-size: 1.1rem;
-}
-
 #view-review-container p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-weight: 100;
     padding-bottom: 10px;
     margin: 0;
+}
+
+#view-review-container .author p {
+    font-weight: 400;
 }
 
 /* Style link in the login and register container */
@@ -452,17 +452,36 @@ textarea.comments-textarea:focus:not([readonly]) {
     color: #fff;
 }
 
+/* THUMBS UP / DOWN */
+
+/* Adjust colors for thumbs up andthumbs down icons */
+
+.thumb-up {
+    color: #6c913c;
+}
+
+.thumb-down {
+    color: #d33d29;
+}
+
+/* COLLECTION PAGE AND SEARCH RESULTS SPACING */
+
+.collection-item {
+    padding: 15px 0;
+}
+
 /* PROFILE PAGE SPACING */
 
 #profile-heading {
     padding-bottom: 15px;
 }
 
-#account-details, #tabs-container {
+#account-details,
+#tabs-container {
     padding-top: 20px;
 }
 
-.tab-item > div:first-of-type {
+.tab-item>div:first-of-type {
     padding-top: 15px;
 }
 
@@ -480,7 +499,8 @@ ul.tabs {
     color: #f7f5f5;
 }
 
-.tabs .tab a.active, .tabs .tab a:hover {
+.tabs .tab a.active,
+.tabs .tab a:hover {
     color: #796a3b;
 }
 
@@ -539,16 +559,12 @@ main {
     }
 
     /* Book information font size adjustments */
-    #book-info-container .title {
+    .book-info-container .title {
         font-size: 1.2rem;
     }
 
-    #book-info-container div {
+    .book-info-container div {
         font-size: 1rem;
-    }
-
-    #book-info-container .added-by {
-        font-size: 0.9rem;
     }
 
     /* Headings size adjustments on smaller displays */

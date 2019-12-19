@@ -11,7 +11,7 @@
         <!-- Selected book info container -->
         <div class="row">
             
-            <div class="col s12">
+            <div class="col s12 author">
                 <p>By {{ review.author }}</p>
             </div>
             
@@ -64,10 +64,10 @@
                 <!-- Like / dislike totals -->
                 <div class="row left">
 
-                    <div class="col s3"><i class="material-icons">thumb_up</i></div>
-                    <div class="col s2"><span>{{ review.upvote_total }}</span></div>
-                    <div class="col s3"><i class="material-icons">thumb_down</i></div>
-                    <div class="col s2"><span>{{ review.downvote_total }}</span></div>
+                    <div class="col s3"><i class="material-icons thumb-up">thumb_up</i></div>
+                    <div class="col s2"><p class="thumb-up">{{ review.upvote_total }}</p></div>
+                    <div class="col s3"><i class="material-icons thumb-down">thumb_down</i></div>
+                    <div class="col s2"><p class="thumb-down">{{ review.downvote_total }}</p></div>
 
                 </div>
 

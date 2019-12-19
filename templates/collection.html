@@ -8,13 +8,13 @@
     {% for review in reviews %}
 
     <!-- Paginated collection -->
-    <div class="row">
+    <div class="row collection-item">
         
         <!-- Book cover image -->
         <div class="col l4 m4 s12 center-on-small-only"><img class="image-collection" src="{{ review.cover }}" alt="Picture of {{ review.title }}"></div>
 
         <!-- Book information container -->
-        <div class="col l5 m4 s12 center-on-small-only" id="book-info-container">
+        <div class="col l5 m4 s12 center-on-small-only book-info-container">
             
             <!-- Book title -->
             <div class="row">
@@ -37,20 +37,13 @@
                 
             </div>
             
-            <!-- Book added by information -->
-            <div class="row">
-                
-                <div class="col s12 added-by">Added by: {{ review.added_by }}</div>
-                
-            </div>
-            
             <!-- Likes and dislikes count -->
             <div class="row left hide-on-small-only upvoting">
                 
-                <div class="col s3"><i class="material-icons" id="thumb_up">thumb_up</i></div>
-                <div class="col s2"><span id="upvote_total">{{ review.upvote_total }}</span></div>
-                <div class="col s3"><i class="material-icons" id="thumb_down">thumb_down</i></div>
-                <div class="col s2"><span id="downvote_total">{{ review.downvote_total }}</span></div>
+                <div class="col s3"><i class="material-icons thumb-up">thumb_up</i></div>
+                <div class="col s2"><span class="thumb-up" id="upvote_total">{{ review.upvote_total }}</span></div>
+                <div class="col s3"><i class="material-icons thumb-down">thumb_down</i></div>
+                <div class="col s2"><span class="thumb-down" id="downvote_total">{{ review.downvote_total }}</span></div>
             
             </div>
             
