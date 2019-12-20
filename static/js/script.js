@@ -27,7 +27,7 @@ $(document).ready(function() {
 /** 
  * Function that submits search input when user presses enter
  **/
- 
+
 $(document).ready(function() {
 
   $('.submit_on_enter').keydown(function(event) {
@@ -45,7 +45,7 @@ $(document).ready(function() {
 /**
  * Function implements smooth scrolling back to top after clicking the button
  */
- 
+
 $("a[href='#back-to-top']").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
@@ -90,20 +90,20 @@ function confirmDel(ev) {
     showLoaderOnConfirm: true,
     preConfirm: function() {
       return new Promise(function(resolve) {
-           $.ajax({
+        $.ajax({
             url: $(".delete-btn a").attr('href'),
             success: function(result) {
               window.location.reload();
             }
           })
           .done(function(response) {
-           swal.fire('Review has been deleted!', response.message, response.status);
+            swal.fire('Review has been deleted!', response.message, response.status);
           })
-        
+
           .fail(function() {
             swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
           });
-        
+
       });
     },
     allowOutsideClick: false
@@ -124,20 +124,20 @@ function confirmDelView(ev) {
     showLoaderOnConfirm: true,
     preConfirm: function() {
       return new Promise(function(resolve) {
-           $.ajax({
+        $.ajax({
             url: $(".delete-btn-view a").attr('href'),
             success: function(result) {
-              window.location.href='/show_collection';
+              window.location.href = '/show_collection';
             }
           })
           .done(function(response) {
-           swal.fire('Review has been deleted!', response.message, response.status);
+            swal.fire('Review has been deleted!', response.message, response.status);
           })
-          
+
           .fail(function() {
             swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
           });
-        
+
       });
     },
     allowOutsideClick: false
@@ -149,7 +149,7 @@ function confirmDelView(ev) {
  * When user presses the delete button window requesting a confirmation pops up.
  * User can then confirm deletion or cancel it.
  **/
- 
+
 function confirmDelCom(ev) {
   ev.preventDefault();
 
@@ -164,20 +164,20 @@ function confirmDelCom(ev) {
     showLoaderOnConfirm: true,
     preConfirm: function() {
       return new Promise(function(resolve) {
-           $.ajax({
+        $.ajax({
             url: $(".delete-btn-comment a").attr('href'),
             success: function(result) {
               window.location.reload();
             }
           })
           .done(function(response) {
-           swal.fire('Comment has been deleted!', response.message, response.status);
+            swal.fire('Comment has been deleted!', response.message, response.status);
           })
-          
+
           .fail(function() {
             swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
           });
-        
+
       });
     },
     allowOutsideClick: false
@@ -204,20 +204,20 @@ function confirmationAcc(ev) {
     showLoaderOnConfirm: true,
     preConfirm: function() {
       return new Promise(function(resolve) {
-           $.ajax({
+        $.ajax({
             url: $(".delete-acc a").attr('href'),
             success: function(result) {
-              window.location.href='/index';
+              window.location.href = '/index';
             }
           })
           .done(function(response) {
-           swal.fire('Your account has been pernamently deleted!', response.message, response.status);
+            swal.fire('Your account has been pernamently deleted!', response.message, response.status);
           })
-          
+
           .fail(function() {
             swal.fire('Oops...', 'Something went wrong with ajax !', 'error');
           });
-        
+
       });
     },
     allowOutsideClick: false
@@ -235,6 +235,22 @@ $(document).ready(function() {
   $('#counter').html($(".card").length);
 });
 
+// CHECK TRUNCATE
+
+/**
+ * Function that checks which comments were truncated in order to display
+ * 'show more' link only for those comments
+ **/
+
+$(function() {
+     $('.comment-text').each(function(index, elem) {
+
+         if(elem.offsetWidth === elem.scrollWidth){
+          	$(this).siblings('.show-more').hide()
+         }
+     });
+ });
+ 
 // SHOW MORE / LESS COMMENT
 
 /**
@@ -244,28 +260,28 @@ $(document).ready(function() {
  * On other other hand when user wants to hide the comment again he / she can 
  * click 'show less' which will truncate the comment 
  **/
- 
+
 // Show more
 $(document).ready(function() {
- $(function() {
-   $('.show-less').hide();
-   $('.show-more').click(function() {
-     $(this).siblings('.comment-text').toggleClass('truncate');
-     $(this).hide();
-     $(this).siblings('.show-less').show();
-   });
- });
+  $(function() {
+    $('.show-less').hide();
+    $('.show-more').click(function() {
+      $(this).siblings('.comment-text').toggleClass('truncate');
+      $(this).hide();
+      $(this).siblings('.show-less').show();
+    });
+  });
 });
 
 // Show less
 $(document).ready(function() {
- $(function() {
-   $('.show-less').click(function() {
-     $(this).siblings('.comment-text').toggleClass('truncate');
-     $(this).hide();
-     $(this).siblings('.show-more').show();
-   });
- });
+  $(function() {
+    $('.show-less').click(function() {
+      $(this).siblings('.comment-text').toggleClass('truncate');
+      $(this).hide();
+      $(this).siblings('.show-more').show();
+    });
+  });
 });
 
 // CURRENT YEAR
@@ -274,10 +290,9 @@ $(document).ready(function() {
  * Max attribute is set to the current year for 'Add review' and 'Update review'
  * templates.
  **/
- 
+
 $(document).ready(function() {
   var today = new Date();
   var currentYear = today.getFullYear();
   $('#publication_year').attr("max", currentYear);
 });
-

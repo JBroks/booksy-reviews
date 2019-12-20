@@ -353,6 +353,14 @@ a#cancel:hover {
     color: #c0b283;
 }
 
+/* Show more / less link styling */
+
+a.show-more, a.show-less {
+    color: #f9a602;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
 /* IMAGES */
 
 /* Set size for images in the collection page */
