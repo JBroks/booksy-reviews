@@ -235,6 +235,38 @@ $(document).ready(function() {
   $('#counter').html($(".card").length);
 });
 
+// SHOW MORE / LESS COMMENT
+
+/**
+ * Function that toggles materialize class truncate for the comment text
+ * in order to manage very long comments.
+ * When comments are truncated link 'more' can be clicked to see full text.
+ * On other other hand when user wants to hide the comment again he / she can 
+ * click 'show less' which will truncate the comment 
+ **/
+ 
+// Show more
+$(document).ready(function() {
+ $(function() {
+   $('.show-less').hide();
+   $('.show-more').click(function() {
+     $(this).siblings('.comment-text').toggleClass('truncate');
+     $(this).hide();
+     $(this).siblings('.show-less').show();
+   });
+ });
+});
+
+// Show less
+$(document).ready(function() {
+ $(function() {
+   $('.show-less').click(function() {
+     $(this).siblings('.comment-text').toggleClass('truncate');
+     $(this).hide();
+     $(this).siblings('.show-more').show();
+   });
+ });
+});
 
 // CURRENT YEAR
 /**
@@ -248,3 +280,4 @@ $(document).ready(function() {
   var currentYear = today.getFullYear();
   $('#publication_year').attr("max", currentYear);
 });
+

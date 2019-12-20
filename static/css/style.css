@@ -252,7 +252,7 @@ nav .nav-wrapper {
 /* Update comment buttons container margin to prevent overlapping with character counter */
 
 .buttons-container {
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 /* Overlay created for forms and text in content-containers */
