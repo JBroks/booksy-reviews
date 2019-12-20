@@ -66,7 +66,12 @@
                         <div class="col m2 center hide-on-small-only user-reviews delete-btn"><a onclick="confirmDel(event)" href="{{url_for('delete_review', review_id=review._id)}}">Delete</a></div>
 
                     </div>
+                    
+                     <!-- If no reviews added yet display paragraph with information about it -->
+                    {% else %}
 
+                    <p>No reviews added by you.</p>
+                    
                     {% endfor %}
 
                 </div>
@@ -82,7 +87,12 @@
                         <div class="col m10 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
 
                     </div>
+                    
+                    <!-- If no comments for the review display paragraph with information about it -->
+                    {% else %}
 
+                    <p>No reviews commented by you.</p>
+                    
                     {% endfor %}
 
                 </div>
@@ -98,7 +108,12 @@
                         <div class="col m10 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
 
                     </div>
+                    
+                    <!-- If no likes for the review display paragraph with information about it -->
+                    {% else %}
 
+                    <p>No reviews liked by you.</p>
+                    
                     {% endfor %}
 
                 </div>
@@ -114,7 +129,12 @@
                         <div class="col m10 s8 center-on-small-only profile-review-title"><a href="{{url_for('view_review', review_id=review._id)}}">{{ review.title }} by {{ review.author }}</a></div>
 
                     </div>
+                    
+                    <!-- If no dislikes for the review display paragraph with information about it -->
+                    {% else %}
 
+                    <p>No reviews disliked by you.</p>
+                    
                     {% endfor %}
 
                 </div>
