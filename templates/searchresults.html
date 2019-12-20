@@ -7,7 +7,7 @@
     <h3 class="center">Search results</h3>
 
     {% for review in reviews %}
-    
+
     <div class="row collection-item">
         
         <!-- Book cover image -->
@@ -47,11 +47,14 @@
    
     </div> 
     
-    {% if (loop.index - loop.length) %}
-
-    <hr> 
+    <!-- Line between each book info container -->
+    {% if (loop.index - loop.length) %} 
     
-    {% endif %} 
+    <!-- Don't show line if there is only on result from the loop -->
+    {% if (loop.first == loop.last) and (loop.first == true) %} 
+    
+    <!-- If more than one result show line -->
+    {% else %} <hr> {% endif %} {% endif %}
     
 {% endfor %}
 
