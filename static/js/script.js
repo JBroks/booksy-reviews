@@ -246,7 +246,7 @@ $(function() {
      $('.comment-text').each(function(index, elem) {
 
          if(elem.offsetWidth === elem.scrollWidth){
-          	$(this).siblings('.show-more').hide()
+          	$(this).siblings('.show-more').hide();
          }
      });
  });

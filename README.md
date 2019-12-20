@@ -292,7 +292,9 @@ The following issues were captured by the validator:
 
 - `Attribute href-return not allowed on element a at this point.` - issue highlighted for the **profile** and **view_review** template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the 'View review' page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the **profile** template;
 
-- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the **search_results** template. This warning was ignored as no additional heading is required.
+- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the **search_results** and **view_review** templates. This warning was ignored as no additional heading is required.
+
+All warnings related to Jinja templates syntax were ignored as they are not recognised by the HTML validator.
 
 #### JavaScript
 
