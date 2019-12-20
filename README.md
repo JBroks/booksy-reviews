@@ -49,7 +49,7 @@ Website demo is available [here](https://booksy-reviews.herokuapp.com/ "booksy-r
 
 In this project I was aiming to achieve a simple and user friendly user design, while providing all required information. All sections are arranged in a logical order to provide intuitive user experience.
 
-To create warm and cosy design I used the following colors in my project: white (`#ffffff`), off-white (`#f5f5f5`), light-red (`#e64a1e`), black (`#373737`, `#292826`), grey (`#848482`, `#d2d1d1`), and range of gold / dark-gold colors (`#796a3b`,`#bdaa6c`, `#a99c72`, `#c0b283`, `#c3bb9e`, `#e4d29b`).
+To create warm and cosy design I used the following colors in my project: white (`#ffffff`), off-white (`#f5f5f5`), light-red (`#e64a1e`), black (`#373737`, `#292826`), grey (`#848482`, `#d2d1d1`), and range of gold / dark-gold colors (`#796a3b`, `#bdaa6c`, `#a99c72`, `#c0b283`, `#c3bb9e`, `#e4d29b`).
 
 ### Target Audience
 
@@ -100,7 +100,7 @@ The following [wireframe](..........) sketches were created to design the projec
 
 For this project I used document-oriented cloud database called **MongoDB Atlas**.
 
-My database consists of three collections, namely : users, reviews, comments.
+My database consists of three collections, namely: users, reviews, comments.
 
 Users collection contains information about each user who signed up for the app. Reviews collection contains information about each book, person who added it and voting information. Comments collection contains comment text, username of person who added it, and id of the review about commented review.
 
@@ -194,7 +194,7 @@ The project consists of various features presented below.
 
 - **Search bar** - search bar that enables users to search any book by type, genre, title, author etc.
 
-- **Comment counter** - javascript function added that re-counts comments.
+- **Comment counter** - JavaScript function added that re-counts comments.
 
 ### Features left to implement
 
@@ -218,7 +218,7 @@ List of features to be implemented in the future:
 
 - **CSS** - the project used CSS stylesheets to specify style of the web document elements;
 
-- **JavaScript** - the project used Javascript to implement Maps Javascript API and customize it.
+- **JavaScript** - the project used JavaScript to implement Maps JavaScript API and customize it.
 
 - **Python** - the project back-end functions are written using Python. Flask and Python is used to build route functions;
 
@@ -331,8 +331,8 @@ All the features were tested manually throughout the application development pro
 |                                      | Overlay                                  | - test if overlay covers page when it is loading and disappears when the page is ready                                                                                                                                                                                                                                                                                                                                      | No bugs.                                                |
 | Buttons (including anchor links)     | Buy online button                        | - test if button redirects to amazon;<br> - test if search of a given book performed correctly;<br> - test if amazon page opens in a new tab                                                                                                                                                                                                                                                                                  | Initially there was an issue with '&' symbol but function was adjusted to replace it with 'and'. |
 |                                      | Like / Dislike button                    | - test if button not showing for the user that added a given content (i.e. user who added review should not be able to like it);<br> - test if text on the button changes afer clicking the button;<br> - check if vote added to the reviews collection;<br> - check if total incremented accordingly after vote has been added;<br> - check if 'View review' and 'Collection' page displays correct number of Likes / Dislikes; | No bugs remaining.                                      |
-|                                      | Delete review button                     | - test if button available only for the content added by the authenticated user;<br> - test if confirmation message pops up after button has been clicked;<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up;<br> - test if review deleted pernamentaly from the database after user confirms the deletion;<br> - test if page is redirected correctly after deletion;                         | No bugs remaining.                                      |
-|                                      | Delete account button                    | - test if confirmation message pops up after button has been clicked;<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up;<br> - test if account and all user votes, comments and reviews are deleted pernamentaly from the database after user confirms the deletion;<br> - test if page is redirected correctly after deletion;                                                               | No bugs remaining.                                      |
+|                                      | Delete review button                     | - test if button available only for the content added by the authenticated user;<br> - test if confirmation message pops up after button has been clicked;<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up;<br> - test if review deleted permanently from the database after user confirms the deletion;<br> - test if page is redirected correctly after deletion;                         | No bugs remaining.                                      |
+|                                      | Delete account button                    | - test if confirmation message pops up after button has been clicked;<br> - test if item is not deleted after user clicks 'Cancel' on confirmation pop up;<br> - test if account and all user votes, comments and reviews are deleted permanently from the database after user confirms the deletion;<br> - test if page is redirected correctly after deletion;                                                               | No bugs remaining.                                      |
 |                                      | Delete comment button                    | - test if button available only for the content added by the authenticated user;<br> - test if comment deleted from the database correctly;<br> - test if comment removed from the display on 'View review page';<br> - check if comment counter adjusted accordingly;                                                                                                                                                          |                                                         |
 |                                      | Edit review button                       | - test if button available only for the content added by the authenticated user;<br> - test if button redirects user to the correct page;<br> - check if form displays information about correct review;                                                                                                                                                                                                                       | No bugs remaining.                                      |
 |                                      | Edit comment button                      | - test if button available only for the content added by the authenticated user;<br> - test if card is replaced with editable form;<br> - check if 'Update' and 'Cancel buttons are being displayed after 'Edit' button is clicked;                                                                                                                                                                                            | No bugs remaining.                                      |
@@ -353,7 +353,7 @@ All the features were tested manually throughout the application development pro
 | Structure                            | Navbar                                   | - test if all navbar menu items redirect user to the appropriate page;<br> - test if item that is currently active is highlighted;<br> - test if navbar collapses on smaller devices;                                                                                                                                                                                                                                          | No bugs.                                                 |
 |                                      | Footer                                   | - test if GitHub link works correctly;<br> - test if footer stays at the bottom of the page;                                                                                                                                                                                                                                                                                                                                  | No bugs.                                                 |
 | Alerts                               | Toast messages                           | - test if all flash messages are styled with toastr;<br> - test if no text is cut off;<br> - test if delete button and progress displays correctly;<br> - test if different colors applied to different categories of toast messages;                                                                                                                                                                                           | No unresolved bugs left.                                 |
-|                                      | Delete confirmation messages             | - test if confirmation message pops up when trying to delete a review or account;<br> - test if clicking 'delete' button on the message performc deleting;<br> - test if clicking 'cancel' cancels the action;                                                                                                                                                                                                                 | No unresolved bugs left.                                 |
+|                                      | Delete confirmation messages             | - test if confirmation message pops up when trying to delete a review or account;<br> - test if clicking 'delete' button on the message performs deleting;<br> - test if clicking 'cancel' cancels the action;                                                                                                                                                                                                                 | No unresolved bugs left.                                 |
 | Other                                | Pagination                               | - test if ten reviews per page are displayed;<br> - test pagination links;<br> - check if total number of reviews is with accordance to the total number of records in the database;                                                                                                                                                                                                                                           | No unresolved bugs. Initially pagination did not work properly but moving `reviews = mongo.db.reviews.find().sort([("_id", -1)])` inside the `get_reviews()` function fixed the issue. |
 |                                      | Accordion                                | - check if only one element is un-wrapped at the time;<br> test if clicking on the heading un-wraps the correct element;                                                                                                                                                                                                                                                                                                      | No bugs.                                                 |
 |                                      | Tabs                                     | - check if tabs change when tab `li` is clicked;<br> test if information displays correctly in the tab;                                                                                                                                                                                                                                                                                                      | No bugs.                                                 |
@@ -492,7 +492,7 @@ To deploy my project I followed these steps:
         $ heroku git:remote -a 'app-name''
         ```
         
-    - For existing repositories add the heroku remote should be used: `$ heroku git:remote -a 'app-name'`;
+    - For existing repositories add the Heroku remote should be used: `$ heroku git:remote -a 'app-name'`;
 
 4. Requirements:
 
@@ -505,7 +505,7 @@ To deploy my project I followed these steps:
     - For the 'Procfile' run `$ echo web: python > Procfile` command in the terminal;
     - In order to start web processes run `heroku ps:scale web=1` command in the terminal;
 
-5. Deployment: Committed code was deployed to heroku using the following command: `$ git push heroku master`.
+5. Deployment: Committed code was deployed to Heroku using the following command: `$ git push heroku master`.
 
            
 <a name="credits"/>
