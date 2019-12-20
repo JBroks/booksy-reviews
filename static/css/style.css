@@ -623,12 +623,8 @@ main {
     }
 
     /* Book information font size adjustments */
-    .book-info-container .title {
+    .book-info-container .title, .book-info-container div {
         font-size: 1.2rem;
-    }
-
-    .book-info-container div {
-        font-size: 1rem;
     }
 
     /* Headings size adjustments on smaller displays */
