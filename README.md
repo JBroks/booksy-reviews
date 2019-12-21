@@ -90,7 +90,7 @@ The following user stories were used to design this project:
 
 ### Mockups & Wireframes
 
-The following [wireframe](..........) sketches were created to design the project layout options for large, medium and mobile displays.
+The following [wireframe](https://github.com/JBroks/booksy-reviews/blob/master/wireframes/wireframes.png) sketches were created to design the project layout options for large, medium and mobile displays.
 
 <a name="database"/>
 
