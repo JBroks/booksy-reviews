@@ -2,7 +2,7 @@
 
 Stream Three Project: Data Centric Development - Milestone Project
 
-![alt text](........................... "Gif")
+![alt text](https://github.com/JBroks/booksy-reviews/blob/master/gif/booksy.gif "Gif")
 
 This project is part of the 'Data Centric Development' module of the Code Institute Full Stack Software Development course.
 
