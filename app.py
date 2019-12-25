@@ -691,13 +691,18 @@ def search():
     
     search_input = request.form.get("search_input")
     search_string = str(search_input)
-    mongo.db.reviews.create_index([('$**', 'text')])
     
+    # Previous index on all fields removed to narrow down the results
+    # mongo.db.reviews.drop_index([('$**', 'text')])
+    mongo.db.reviews.create_index([('author', 'text'), 
+    ('title', 'text'), ('genre', 'text') ])
+    
+    # Search results and sort by id
     search_results = mongo.db.reviews.find(
-        {"$text": {"$search": search_string}})
+        {"$text": {"$search": search_string}}).sort([("_id", -1)])
+        
     results_count = mongo.db.reviews.count_documents(
         {"$text": {"$search": search_string}})
-    
     
     if request.method == 'POST':
         
