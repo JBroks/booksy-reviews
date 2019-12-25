@@ -603,6 +603,21 @@ main {
     text-decoration: underline;
 }
 
+/* README.MD TABLE */
+
+table th:first-of-type {
+    width: 10%;
+}
+table th:nth-of-type(2) {
+    width: 10%;
+}
+table th:nth-of-type(3) {
+    width: 70%;
+}
+table th:nth-of-type(4) {
+    width: 10%;
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 750px) {
