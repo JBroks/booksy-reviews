@@ -404,7 +404,7 @@ No bugs left unresolved.
 
 ### Peer-code-review
 
-The project was published on Code Institute Slack code-peer-review channel where other students and mentors could review the code and provide their feedback. No additional comments were provided.
+The project was published on Code Institute Slack code-peer-review channel where other students and mentors are able to review the code and provide their feedback. No additional comments were provided.
 
 #### Bugs:
 
