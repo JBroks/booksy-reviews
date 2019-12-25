@@ -323,22 +323,8 @@ All remaining features were tested manually.
 ### Features testing
 
 All the features were tested manually throughout the application development process. Table below outlines all features and tests performed on them, as well as all resolved and remaining bugs associated with tested features.
-<style>
-table th:first-of-type {
-    width: 15%;
-}
-table th:nth-of-type(2) {
-    width: 15%;
-}
-table th:nth-of-type(3) {
-    width: 50%;
-}
-table th:nth-of-type(4) {
-    width: 20%;
-}
-</style>
 
-| Feature type                         | Feature                                  | Tests                                                                                                                                                                                                                                                                                                                                                                                                                       | Bugs                                                    |
+| Feature type                         | Feature                                  | Tests &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                      | Bugs                                                    |
 | ------------------------------------ | :--------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------:|
 | Page loading                         | Spinner                                  | - test if spinner appears when page is loading and disappears when the page is ready;<br> - test if spinner is on top of the overlay                                                                                                                                                                                                                                                                                         | No bugs.                                                |
 |                                      | Overlay                                  | - test if overlay covers page when it is loading and disappears when the page is ready                                                                                                                                                                                                                                                                                                                                      | No bugs.                                                |
