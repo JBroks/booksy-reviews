@@ -284,15 +284,32 @@ HTML code was validated using the [W3C Markup Validation Service](https://valida
 
 The following issues were captured by the validator:
 
-- `The value of the for attribute of the label element must be the ID of a non-hidden form control.` - issue appeared in the **add_review**, **edit_review** and **base** template and it was resolved by amending `for` attribute;
+- The following issue appeared in the **add_review**, **edit_review** and **base** template and it was resolved by amending `for` attribute:
+   ```
+   The value of the for attribute of the label element must be the ID of a non-hidden form control.
+   ```
 
-- `Bad value for attribute action on element form: Must be non-empty` - issue appeared in the login and register form. `action` attribute was removed as the submit is handled by flask;
+- The following issue appeared in the login and register form. `action` attribute was removed as the submit is handled by flask:
+  ```
+  Bad value for attribute action on element form: Must be non-empty
+  ```
 
-- `Duplicate ID profile-review-title` - issue appeared in the **profile** template and it was fixed by replacing id with class;
+- The following issue appeared in the **profile** template and it was fixed by replacing id with class:
+  ```
+  Duplicate ID profile-review-title
+  ```
 
-- `Attribute href-return not allowed on element a at this point.` - issue highlighted for the **profile** and **view_review** template and was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the 'View review' page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the **profile** template;
+- The following issue highlighted for the **profile** and **view_review** template:
+  ```
+  Attribute href-return not allowed on element a at this point.
+  ```
+  The issue was resolved by removal of the attribute and adjustments made to the jQuery. `window.location.replace($(".delete-btn a").attr('href-return'));` code was replaced with `window.location.href='/show_collection'` for reviews deleted from the 'View review' page, with `window.location.href='/index'` for the account deletion, and with `window.location.reload()` for the reviews deleted from the **profile** template;
 
-- `Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.` - issue highlighted for the **search_results** and **view_review** templates. This warning was ignored as no additional heading is required.
+- The following issue highlighted for the **search_results** and **view_review** templates:
+  ```
+  Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections.
+  ```
+  This warning was ignored as no additional heading is required.
 
 All warnings related to Jinja templates syntax were ignored as they are not recognised by the HTML validator.
 
@@ -302,7 +319,7 @@ JavaScript code was validated using [JSHint](https://jshint.com/).
 
 Validator has indicated that there are two unknown / undefined variables, namely `$`, and `Swal`. The warning was ignored as I believe it is due to the fact that these libraries are separated and the validator does not have access to them.
 
-Three unused variables were flagged, namely confirmDel, confirmDelView, confirmationAcc. The warning was ignored as these functions are activated by onlclick event.
+Four unused variables were flagged, namely `confirmDel`, `confirmDelView`, `confirmDelCom`, `confirmationAcc`. The warning was ignored as these functions are activated by onlclick event.
 
 #### Python
 
