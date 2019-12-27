@@ -232,6 +232,10 @@ def delete_account(user_id):
     # Remove user
     mongo.db.users.remove({'_id': ObjectId(user_id)})
     
+    # Clear session to avoid errors associated with username/password 
+    # being trapped in a session
+    session.clear()
+    
     return redirect(url_for('index'))
 
 # AMAZON LINK
