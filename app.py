@@ -720,20 +720,20 @@ def search():
             
             flash('You have not provided any search input!', 'warning')
             
-            return redirect('/search')
+            return redirect('/show_collection')
         
         # If no results display info message     
         elif results_count == 0:
             
             flash(f'No matching results found for "{search_input}". Please try a different search input', 'info')
             
-            return redirect('/search')
+            return redirect('/show_collection')
             
         # Display search result
         else:
             
             search_results
-        
+                    
     return render_template('searchresults.html', reviews=search_results)
 
 
