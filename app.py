@@ -74,10 +74,16 @@ def register():
             flash(f'Congratulations {form.username.data.lower()}, you are now a registered user! You can now log into your account', 'success')
             
             return redirect(url_for('login'))
+        
+        # Flash message if username already in use
+        elif existing_user is not None:
             
+            flash('Username that you provided is already in use. Please try a different username.', 'warning')
+        
+        # Flash message if email address is already in use    
         else:
             
-            flash('Username or email that you provided already exists. Please try again with different input', 'warning')
+            flash('Email that you provided is already in use.', 'warning')
             
     return render_template('register.html', title='Sign Up', form=form)
 
@@ -118,12 +124,19 @@ def login():
             
             user_obj = User(user['username'])
             login_user(user_obj)
-            flash(f'Hello {form.username.data.lower()}, you have successfully logged into your account', 'success')
+            flash(f'Hello {form.username.data.lower()}, you have successfully logged into your account.', 'success')
             
             return redirect(request.args.get("next") or url_for("index"))
         
+        # Check if username exists in the database
+        elif user is None:
+            
+            flash("Username does not exist.", 'error')
+        
+        # If username exists but password if incorrect
         else:
-            flash("Wrong username or password", 'error')
+            
+            flash("Wrong password.", 'error')
 
     return render_template('login.html', title='Sign In', form=form)
 
@@ -341,12 +354,12 @@ def insert_review():
         
         })
         
-        flash('Your review has now been successfully added to our collection', 'success')
+        flash('Your review has now been successfully added to our collection.', 'success')
         
     # If review with the same title and author already exists throw an error message
     else: 
         
-        flash('Book with the same title and author already exists in our collection', 'error')
+        flash('Book with the same title and author already exists in our collection.', 'error')
     
     return redirect(url_for('show_collection'))
 
@@ -725,7 +738,7 @@ def search():
         # If no search input flash the message
         if search_string == '':
             
-            flash('You have not provided any search input! Please try again or browse through our collection', 'warning')
+            flash('You have not provided any search input! Please try again or browse through our collection.', 'warning')
             
             return redirect('/show_collection')
         
