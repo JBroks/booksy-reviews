@@ -202,6 +202,12 @@ nav .nav-wrapper {
     padding: 0;
 }
 
+/* To fix issue with the placeholder on the Safari browser */
+
+.input-field input[type=search] {
+    line-height: initial;
+}
+
 /* TOAST MESSAGES */
 
 /* Fixes word breaks in toast messages */
