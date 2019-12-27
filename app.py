@@ -57,10 +57,12 @@ def register():
     if form.validate_on_submit():
         
         existing_user = mongo.db.users.find_one(
-            {"username": form.username.data},
-            {"email": form.email.data})
+            {"username": form.username.data.lower() })
         
-        if existing_user is None:
+        existing_email = mongo.db.users.find_one(
+            {"email": form.email.data})
+            
+        if existing_user is None and existing_email is None:
             
             password = generate_password_hash(request.form['password'])
             mongo.db.users.insert_one({
@@ -119,8 +121,9 @@ def login():
             flash(f'Hello {form.username.data.lower()}, you have successfully logged into your account', 'success')
             
             return redirect(request.args.get("next") or url_for("index"))
-            
-        flash("Wrong username or password", 'error')
+        
+        else:
+            flash("Wrong username or password", 'error')
 
     return render_template('login.html', title='Sign In', form=form)
 
