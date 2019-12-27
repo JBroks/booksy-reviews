@@ -100,8 +100,16 @@ def load_user(username):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     
+    if current_user.is_authenticated:
+        
+        flash('You are currently logged in!', 'info')
+        
+        return redirect(url_for('index'))
+    
     form = LoginForm()
+    
     if request.method == 'POST' and form.validate_on_submit():
+        
         user = mongo.db.users.find_one({"username": form.username.data.lower()})
         
         if user and User.check_password(user['password'], form.password.data):
@@ -113,9 +121,10 @@ def login():
             return redirect(request.args.get("next") or url_for("index"))
             
         flash("Wrong username or password", 'error')
-        
+
     return render_template('login.html', title='Sign In', form=form)
 
+        
 # LOGOUT USER
 # Function that enables user logout
 
@@ -706,12 +715,9 @@ def search():
     
     if request.method == 'POST':
         
-        logging.error('Entering the POST if')
-        
         # If no search input flash the message
         if search_string == '':
             
-            logging.error('Entering the empty string if')
             flash('You have not provided any search input!', 'warning')
             
             return redirect('/search')
@@ -719,18 +725,17 @@ def search():
         # If no results display info message     
         elif results_count == 0:
             
-            logging.error('Entering no results if')
-            flash('No results found!', 'info')
+            flash(f'No matching results found for "{search_input}". Please try a different search input', 'info')
             
             return redirect('/search')
             
         # Display search result
         else:
             
-            logging.error('Entering results exist if')
             search_results
-            
+        
     return render_template('searchresults.html', reviews=search_results)
+
 
 '''
 Set up IP address and port number so that AWS how to run
