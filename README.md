@@ -80,7 +80,7 @@ The following user stories were used to design this project:
 
 **User Story 9:** As a user I would like to be able to interact with other users and share my views and opinions about various books.
 
-**User Story 10:** As a user I would like to see all my inputs within the app (i.e. comments, reviews, votes) in case I would like to edit or delete them.
+**User Story 10:** As a user I would like to see all of my inputs within the app (i.e. comments, reviews, votes) in case I would like to edit or delete them.
 
 **User Story 11:** As a user I would like to search any particular book quickly using e.g. book title, author, genre etc.
 
@@ -202,11 +202,17 @@ List of features to be implemented in the future:
 
 - add and edit username details;
 
-- affiliate link for the amazon link;
+- affiliate link for the amazon link (for now only tag added to all amazon links);
 
 - reset password option;
 
-- improved search function.
+- improved search function to find e.g. partial words;
+
+- add search button as additional option to enter search input;
+
+- add filters by e.g. genre, type, or year;
+
+- review any issues that will appear due to mongoDB upgrade.
 
 <a name="technologies-used"/>
 
