@@ -55,6 +55,15 @@ class TestAmazonLinkTag(unittest.TestCase):
         self.assertEqual(link, 
         'https://www.amazon.com/Carrie-Stephen-King/dp/B002C6LIGU/ref=sr_1_9?crid=36RCLYEH6RIZ2&keywords=carrie+stephen+king&qid=1576674670&s=books&sprefix=carrie+step%2Cstripbooks-intl-ship%2C216&sr=1-9&tag=joanna')
     
+    def test_amazon_endswith_backslash(self):
+        
+        # Test direct link to product with backlash at the end
+        link = app.generate_amazon_link('Carrie', 'Stephen King',
+        'https://www.amazon.com/Carrie-Stephen-King/dp/B002C6LIGU/')
+        
+        self.assertEqual(link, 
+        'https://www.amazon.com/Carrie-Stephen-King/dp/B002C6LIGU/?tag=joanna')
+    
     def test_incorrect_author(self):
         
         # Test link with different author and title information

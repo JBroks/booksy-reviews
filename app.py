@@ -269,7 +269,7 @@ def generate_amazon_link(title, author, amazon_input):
 	    amazon_concat = base_link + title.replace(' ', '+') + '+' + author.replace(' ', '+')
 	    amazon_link = amazon_concat.replace('&', 'and') + '&tag=joanna'
 
-    # If link provided and tag is already there than leave as it is
+    # If link provided and my tag is already there than leave as it is
     elif (amazon_input.find('tag=joanna') >= 0 ):
 
             amazon_link = amazon_input
@@ -277,10 +277,15 @@ def generate_amazon_link(title, author, amazon_input):
     # If link provided and tag is not there then add tag
     else:
 
-        # If link based on search no need for backslash
+        # If link based on search (or there is a backslash at the end) no need for backslash
         if any(re.findall(r'ref|keywords|k=', amazon_input, re.IGNORECASE)):
 
             amazon_link = amazon_input +'&tag=joanna'
+        
+        # If direct link to product and backslash at the end
+        elif amazon_input.endswith('/'):
+
+            amazon_link = amazon_input +'?tag=joanna'
 
         # If direct link to product add backslash
         else:
