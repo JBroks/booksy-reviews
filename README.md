@@ -540,7 +540,7 @@ Reviews, book information and comments are based on two main sources, namely [Wi
 
 ### Media
 
-Favicon used for the project was downloaded from [here](https://icons8.com/icons/).
+Favicon used for the project was created and downloaded from [here](https://favicon.io/favicon-generator/).
 
 Image that constitutes the background for all pages was downloaded from [here](https://www.qualtrics.com/m/assets/blog/wp-content/uploads/2018/08/shutterstock_1068141515.jpg)
 
