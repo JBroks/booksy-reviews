@@ -59,7 +59,7 @@ python-debian==0.1.32
 pytz==2019.2
 PyYAML==5.1.2
 roman==2.0.0
-rsa==3.4.2
+rsa==4.7
 s3transfer==0.2.1
 SecretStorage==2.3.1
 service-identity==16.0.0
